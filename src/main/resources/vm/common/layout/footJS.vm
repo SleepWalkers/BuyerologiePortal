@@ -1,0 +1,7 @@
+## 引入jquery作为JS框架 ##
+<script type="text/javascript" src="$gv_assetsRoot/lib/jquery-2.2.4.min.js" ></script>
+
+<script type="text/javascript" src="$gv_assetsRoot/lib/bootstrap.min.js" ></script>
+
+<script type="text/javascript" src="$gv_assetsRoot/lib/jquery.jscroll.min.js"></script>
+<script type="text/javascript" src="$gv_jsRoot/common/common.js" ></script>

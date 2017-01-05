@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yunjee.common.dao.R_UserSpuDao">
+
+  	<resultMap id="R_UserSpuMap" type="R_UserSpu" >
+	    <id column="id" property="id" jdbcType="BIGINT" />
+	    <result column="spu_id" property="spuId" jdbcType="BIGINT" />
+	    <result column="user_id" property="userId" jdbcType="BIGINT" />
+	    <result column="type" property="type" jdbcType="VARCHAR" />
+  	</resultMap>
+	<insert id="insertR_UserSpu" parameterType="R_UserSpu">
+		INSERT INTO yunjee_r_user_spu
+	      (spu_id, user_id, type)
+	    VALUES
+	      (#{spuId}, #{userId}, #{type})
+	</insert>
+	
+	<update id="updateR_UserSpu" parameterType="R_UserSpu">
+    	UPDATE yunjee_r_user_spu 
+    	<set>
+    		<if test="spuId != null">
+    			spu_id = #{spuId},
+	        </if>
+
+      		<if test="userId != null">
+    			user_id = #{userId},
+	        </if>
+
+      		<if test="type != null">
+    			type = #{type}
+	        </if>
+		</set>
+    	WHERE id = #{id}
+    </update>
+    
+    <delete id="deleteById" parameterType="int">
+    	DELETE FROM yunjee_r_user_spu where id = #{id}
+    </delete>
+    
+    <delete id="deleteByR_UserSpu" parameterType="R_UserSpu">
+    	DELETE 
+    	FROM yunjee_r_user_spu
+    	<trim prefix="WHERE" prefixOverrides="AND|OR">
+    	    <if test="spuId != null">
+    			spu_id = #{spuId}
+	        </if>
+
+      		<if test="userId != null">
+    			AND user_id = #{userId}
+	        </if>
+
+      		<if test="type != null">
+    			AND type = #{type}
+	        </if>
+	        	OR ID = 0
+    	</trim>
+    </delete>
+    
+    <select id="selectById" parameterType="int" resultMap="R_UserSpuMap">
+    	SELECT * FROM yunjee_r_user_spu WHERE id = #{id}
+    </select>
+    
+    <select id="countByR_UserSpu" parameterType="R_UserSpu" resultType="int">
+    	select count(*)
+    	FROM yunjee_r_user_spu
+    	<trim prefix="WHERE" prefixOverrides="AND|OR">
+    	    <if test="spuId != null">
+    			spu_id = #{spuId}
+	        </if>
+
+      		<if test="userId != null">
+    			AND user_id = #{userId}
+	        </if>
+
+      		<if test="type != null">
+    			AND type = #{type}
+	        </if>
+    	</trim> 
+    </select>
+   
+    <select id="selectByR_UserSpu" parameterType="R_UserSpu" resultMap="R_UserSpuMap">
+    	SELECT * 
+    	FROM yunjee_r_user_spu
+    	<trim prefix="WHERE" prefixOverrides="AND|OR">
+    	    <if test="spuId != null">
+    			spu_id = #{spuId}
+	        </if>
+
+      		<if test="userId != null">
+    			AND user_id = #{userId}
+	        </if>
+
+      		<if test="type != null">
+    			AND type = #{type}
+	        </if>
+    	</trim>    	
+    </select>
+</mapper>

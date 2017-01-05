@@ -1,0 +1,86 @@
+#parse("common/layout/head.vm")
+<body>
+#parse("page/brick/registerBrick.vm")
+#parse("common/layout/headNav.vm")    
+  <script src='http://player.polyv.net/script/polyvplayer.min.js'></script>
+  <div class="course_page">
+        <div class="container">
+            <div class="course_list clearfix">
+                <div class="col-sm-8">
+                    <div id='$!{course.videoId}'></div>
+                    <script>
+                    var player = polyvObject('#$!{course.videoId}').videoPlayer({
+                        'width':'760',
+                      	'height':'516',
+                        'vid' : '$!{course.videoId}'
+                    });
+                    </script>
+                    <h3 class="course_title">$!{course.title}</h3>
+                    <p class="description">$!{course.content.content}</p>
+					
+        			#if(!$!{newsDetail.isCollected})
+        			<button id="favourite_btn" class="btn favourite j_fav" data-logged=#if($!{gvUser})"true"#else"false"#end data-favourite="/api/topic/collect" data-info-id="$!{course.id}"><img src="$gv_imgRoot/star.png"><span>收藏</span></button>
+        			#else
+        			<button class="btn favourite" data-logged=#if($!{gvUser})"true"#else"false"#end data-favourite="/api/topic/uncollect" data-info-id="$!{course.id}" disabled>已收藏</button>
+        			#end
+                </div>
+                <div class="col-sm-4">
+                    <div class="list_name">$!{playList.title}</div>
+                    <div class="hr clearfix">
+                        <div class="col-xs-2"></div>
+                        <div class="col-xs-2"></div>
+                        <div class="col-xs-2"></div>
+                        <div class="col-xs-2"></div>
+                        <div class="col-xs-2"></div>
+                        <div class="col-xs-2"></div>
+                    </div>
+                    <div class="list_content">
+                        <ul>
+							#foreach($video in $!{playList.videos})
+                            <li>
+                                <!-- 选中的课程 -->
+                                #if($!{video.id}==$!{course.videoId})<div class="active_line"></div>#end
+                                <!-- 切换课程 -->
+                                <a href="/course/video/$!{video.courseId}.html">
+								<p class="name">$!{video.title}</p>
+                                <p class="time">时长：<span>$date.format("HH:mm:ss",$!{video.duration})</span>#if($!{video.learned})<span class="learned">已学习</span>#end</p>
+								</a>
+                            </li>
+							#end
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            
+            <div class="comment_block">
+                <div class="comment_heading">
+				<p class="comment_title">评论（$!{totalNum}）</p>
+    				#if($!{gvUser})
+        				<form class="comment_form clearfix" id="commentForm">
+        					<img src="$!{gvUser.avatar}">
+    						<input type="hidden" name="newsId" value=$!{newsDetail.id} />
+        					<textarea rows="4" name="comment"></textarea>
+    						<button type="submit" id="comment_btn" class="btn j_comment_button" data-comment="/api/comment/publish">发表评论</button>
+        				</form>
+    				#else                    
+						<p>您需要<a>购买课程</a>后，才可以进行评论哦。</p>
+					#end
+                </div>
+                
+			<div class="comment_body">
+				#set($comments = $!{newsDetail.comments})
+				#set($nextPage = $page+1)
+				#if($nextPage != $!{totalPage})
+					#set($nextPageCommentUrl = "/api/comment/getComment?topicId=$!{newsDetail.id}&page=$math.add($nextPage,1)&pageSize=3")
+				#end
+				#set($getCommentsUrl = "/api/comment/getComment?topicId=$!{newsDetail.id}&page=$!{nextPage}&pageSize=3&getCommentsUrl=$link.encode($!{nextPageCommentUrl})")
+				#parse("page/brick/commentBrick.vm")
+			</div>
+        </div>
+    </div>
+	#parse("common/layout/foot.vm")
+    <script type="text/javascript" src="$gv_jsRoot/page/course_detail.js"></script>
+</body>
+</html>

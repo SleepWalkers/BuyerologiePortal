@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yunjee.common.dao.TagTypeDao">
+    <resultMap id="TagTypeMap" type="TagType" >
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="type_name" property="typeName" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<insert id="insertTagType" parameterType="TagType">
+		INSERT INTO yunjee_tag_type
+	      (type_name)
+	    VALUES
+	      (#{typeName})
+	</insert>
+	
+	<update id="updateTagType" parameterType="TagType">
+    	UPDATE yunjee_tag_type 
+    	<set>
+    		<if test="typeName != null">
+    			type_name = #{typeName}
+	        </if>
+	    </set>
+    	WHERE id = #{id}
+    </update>
+    
+    <delete id="deleteById" parameterType="int">
+    	DELETE FROM yunjee_tag_type where id = #{id}
+    </delete>
+    
+    <delete id="deleteByTagType" parameterType="TagType">
+    	DELETE 
+    	FROM yunjee_tag_type
+    	<trim prefix="WHERE" prefixOverrides="AND|OR">
+     		<if test="typeName != null">
+    			type_name = #{typeName}
+	        </if>
+    	</trim>
+    </delete>
+    
+    <select id="selectById" parameterType="int" resultMap="TagTypeMap">
+    	SELECT * FROM yunjee_tag_type where id = #{id}
+    </select>
+    
+    <select id="selectByTagType" parameterType="int" resultMap="TagTypeMap">
+    	SELECT * 
+    	FROM yunjee_tag_type
+    	<trim prefix="WHERE" prefixOverrides="AND|OR">
+     		<if test="typeName != null">
+    			type_name = #{typeName}
+	        </if>
+    	</trim>
+    </select>
+</mapper>

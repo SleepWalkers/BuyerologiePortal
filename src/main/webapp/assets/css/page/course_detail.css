@@ -1,0 +1,82 @@
+.course_page {
+  padding: 70px 0;
+  background-color: #f2f2f3; }
+  .course_page .course_list {
+    margin-bottom: 18px; }
+  .course_page .col-sm-8 {
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 22px 22px 35px; }
+    .course_page .col-sm-8 .course_title {
+      font-size: 20px;
+      color: #2E2E2E;
+      margin: 20px 0; }
+    .course_page .col-sm-8 .description {
+      font-size: 16px;
+      color: #575757;
+      margin-bottom: 35px; }
+    .course_page .col-sm-8 .favourite {
+      display: block;
+      width: 126px;
+      height: 48px;
+      background-color: #8094CC;
+      color: #fff;
+      font-size: 20px;
+      border: none;
+      border-radius: 8px;
+      margin: 0 auto; }
+      .course_page .col-sm-8 .favourite[disabled] {
+        background-color: #A7A7AE;
+        cursor: default; }
+      .course_page .col-sm-8 .favourite img {
+        width: 26px;
+        height: 26px;
+        display: inline-block;
+        margin-right: 7px;
+        margin-bottom: 3px; }
+  .course_page .col-sm-4 {
+    border-radius: 4px;
+    padding: 0 0 0 16px; }
+    .course_page .col-sm-4 .list_name {
+      background-color: #fff;
+      color: #8094CC;
+      text-align: center;
+      font-size: 20px;
+      padding: 20px 0;
+      border-radius: 4px 4px 0px 0px; }
+    .course_page .col-sm-4 .hr .col-xs-2 {
+      height: 6px; }
+      .course_page .col-sm-4 .hr .col-xs-2:nth-child(odd) {
+        background-color: #9AA4BD; }
+      .course_page .col-sm-4 .hr .col-xs-2:nth-child(even) {
+        background-color: #9AA4BD;
+        opacity: 0.45; }
+    .course_page .col-sm-4 .list_content {
+      background-color: #fff;
+      border-radius: 0 0 4px 4px;
+      overflow-y: scroll; }
+      .course_page .col-sm-4 .list_content ul {
+        padding: 0 20px;
+        list-style-type: none; }
+        .course_page .col-sm-4 .list_content ul li {
+          position: relative;
+          padding: 18px 0 15px;
+          border-bottom: 1px solid #ccc; }
+          .course_page .col-sm-4 .list_content ul li .active_line {
+            width: 4px;
+            height: 68px;
+            background-color: #8094CC;
+            opacity: 0.4;
+            position: absolute;
+            left: -10px; }
+          .course_page .col-sm-4 .list_content ul li .name {
+            color: #2e2e2e;
+            cursor: pointer; }
+          .course_page .col-sm-4 .list_content ul li .time {
+            font-size: 12px;
+            color: #575757;
+            margin-bottom: 0; }
+            .course_page .col-sm-4 .list_content ul li .time .learned {
+              margin-left: 12px; }
+
+/*# sourceMappingURL=course_list.css.map */

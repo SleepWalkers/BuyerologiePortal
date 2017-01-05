@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yunjee.common.dao.R_SpuScentDao">
+  	<resultMap id="R_SpuScentMap" type="R_SpuScent" >
+	    <id column="id" property="id" jdbcType="BIGINT" />
+	    <result column="spu_id" property="spuId" jdbcType="BIGINT" />
+	    <result column="scent_id" property="scentId" jdbcType="BIGINT" />
+	    <result column="type" property="type" jdbcType="VARCHAR" />
+  	</resultMap>
+	<insert id="insertR_SpuScent" parameterType="R_SpuScent">
+		INSERT INTO yunjee_r_spu_scent
+	      (spu_id, type, scent_id)
+	    VALUES
+	      (#{spuId}, #{type}, #{scentId})
+	</insert>
+	
+	<update id="updateR_SpuScent" parameterType="R_SpuScent">
+    	UPDATE yunjee_r_spu_scent 
+    	<set>
+    		<if test="spuId != null">
+    			spu_id = #{spuId},
+	        </if>
+      		<if test="type != null">
+    			type = #{type},
+	        </if>
+      		<if test="scentId != null">
+    			scent_id = #{scentId}
+	        </if>
+	    </set>
+    	WHERE id = #{id}
+    </update>
+    
+    <delete id="deleteById" parameterType="int">
+    	DELETE FROM yunjee_r_spu_scent where id = #{id}
+    </delete>
+    
+    <delete id="deleteBySpuId" parameterType="int">
+    	delete from yunjee_r_spu_scent where spu_id = #{id}
+    </delete>
+    
+    <delete id="deleteByR_SpuScent" parameterType="R_SpuScent">
+    	DELETE FROM yunjee_r_spu_scent
+    	<trim prefix="WHERE" prefixOverrides="AND|OR">
+     		<if test="spuId != null">
+    			spu_id = #{spuId}
+	        </if>
+      		<if test="type != null">
+    			AND type = #{type}
+	        </if>
+      		<if test="scentId != null">
+    			AND scent_id = #{scentId}
+	        </if>   	
+	        	OR ID = 0
+    	</trim>
+    </delete>
+    
+    <select id="selectById" parameterType="int" resultMap="R_SpuScentMap">
+    	SELECT * FROM yunjee_r_spu_scent WHERE id = #{id}
+    </select>
+    
+    <select id="selectByR_SpuScent" parameterType="R_SpuScent" resultMap="R_SpuScentMap">
+    	SELECT *
+    	FROM yunjee_r_spu_scent
+     	<trim prefix="WHERE" prefixOverrides="AND|OR">
+     		<if test="spuId != null">
+    			spu_id = #{spuId}
+	        </if>
+      		<if test="type != null">
+    			AND type = #{type}
+	        </if>
+      		<if test="scentId != null">
+    			AND scent_id = #{scentId}
+	        </if>   	
+    	</trim>   	
+    </select>
+</mapper>

@@ -1,0 +1,17 @@
+#parse("common/layout/head.vm")
+<body class="info_page">
+#parse("common/layout/header.vm")
+    <hr>
+
+    <div class="container info_list" id="info_list">
+        <div id="scroll_content">
+		#parse("page/brick/infoListBrick.vm")
+		</div>
+    </div>
+	
+    <img class="to_top" src="$gv_imgRoot/to_top.png">
+		
+	#parse("common/layout/foot.vm")
+    <script type="text/javascript" src="$gv_jsRoot/page/info.js"></script>
+</body>
+</html>

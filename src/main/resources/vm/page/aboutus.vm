@@ -1,0 +1,31 @@
+#parse("common/layout/head.vm")
+<body>
+#parse("common/layout/header.vm")
+    <div class="about_us">
+        <img src="$gv_imgRoot/about_us.png" width="100%">
+        <div class="container story">
+            <div class="heading">
+                <h3>buyerology的故事</h3>
+                <h5>THE STORY</h5>
+            </div>
+            <p>如果说日系时尚的奥秘是“复杂”，那韩国的时尚就是“简化”。虽然日本Style风格独致，但是华丽又触手可及的时尚，恐怕更是需要的的健康力更的。将时尚这件事儿“拽”下神坛，让衣服实打实地变为人人可以驾驭并拥有的“衣橱款”，这种给人希望的时尚感怎能不受欢迎？华丽又触手可及的时尚，更是需要的的健康力更符量的。将时尚这件事儿“拽”下神坛，让衣服实打实地变为人人可以驾驭并拥有的“衣橱款”，这种给人希望的时尚感怎能不受欢迎？华丽又触手可及的时尚，恐怕更是需要的的健康力更符量的。</p>
+            <p>如果说日系时尚的奥秘是“复杂”，那韩国的时尚就是“简化”。虽然日本Style风格独致，但是华丽又触手可及的时尚，恐怕更是需要的的健康力更的。将时尚这件事儿“拽”下神坛，让衣服实打实地变为人人可以驾驭并拥有的“衣橱款”，这种给人希望的时尚感怎能不受欢迎？华丽又触手可及的时尚，更是需要的的健康力更符量的。将时尚这件事儿“拽”下神坛，让衣服实打实地变为人人可以驾驭并拥有的“衣橱款”，这种给人希望的时尚感怎能不受欢迎？华丽又触手可及的时尚，恐怕更是需要的的健康力更符量的。</p>
+        </div>
+
+        <div class="container contact">
+            <div class="heading">
+                <h3>联系我们</h3>
+                <h5>CONTACT US</h5>
+            </div>
+            <div class="right">
+                <img src="$gv_imgRoot/code.png"><br>
+                <span>官方微信公众号</span>
+            </div>
+            <p>商务合作请联系邮箱：eleganty@vip.126.com</p>
+            <p>导师微博：@刃力</p>
+            <p>官方公众号：fashion buyerology </p>
+        </div>
+    </div>
+	#parse("common/layout/foot.vm")
+</body>
+</html>

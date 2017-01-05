@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yunjee.common.dao.UserDao">
+  	<resultMap id="UserMap" type="User" >
+	    <id column="id" property="id" jdbcType="BIGINT" />
+	    <result column="avatar" property="avatar" jdbcType="VARCHAR" />
+	    <result column="email" property="email" jdbcType="VARCHAR" />
+	    <result column="nick" property="nick" jdbcType="VARCHAR" />
+	    <result column="tel" property="tel" jdbcType="VARCHAR" />
+	    <result column="sex" property="sex" jdbcType="VARCHAR" />
+	    <result column="password" property="password" jdbcType="VARCHAR" />
+	    <result column="birthday" property="birthday" jdbcType="DATE" />
+	    <result column="follow_num" property="followNum" jdbcType="INTEGER" />
+	    <result column="fans_num" property="fansNum" jdbcType="INTEGER" />
+	    <result column="come_from" property="comeFrom" jdbcType="VARCHAR" />
+	    <result column="register_date" property="registerDate" jdbcType="TIMESTAMP" />
+	    <result column="address" property="address" jdbcType="VARCHAR" />
+	    <result column="area_code" property="areaCode" jdbcType="VARCHAR" />
+	    <result column="industry" property="industry" jdbcType="VARCHAR" />
+	    <result column="position" property="position" jdbcType="VARCHAR" />
+	    <result column="level" property="level" jdbcType="VARCHAR" />
+	    <result column="mood" property="mood" jdbcType="VARCHAR" />
+	    <result column="qq" property="qq" jdbcType="VARCHAR" />
+	    <result column="wangwang" property="wangwang" jdbcType="VARCHAR" />
+	    <result column="weibo" property="weibo" jdbcType="VARCHAR" />
+	    <result column="factor" property="factor" jdbcType="DOUBLE" />
+	    <result column="authorities" property="authorities" jdbcType="VARCHAR"/>
+	    <result column="enable" property="enable" jdbcType="TINYINT"/>
+  	</resultMap>
+  
+	<insert id="insertUser" parameterType="User">
+		INSERT INTO yunjee_user
+	      (avatar, email, nick, tel, sex, password, birthday, follow_num, fans_num, 
+	      		come_from,register_date, address,area_code, industry, position, level,
+	      	 	mood, qq, wangwang, weibo,factor,authorities,enable
+	      )
+	    VALUES
+	      (#{avatar}, #{email}, #{nick}, #{tel}, #{sex}, #{password}, #{birthday}, #{followNum},#{fansNum}, 
+	      		#{comeFrom}, #{registerDate},#{address}, #{areaCode}, #{industry}, #{position}, #{level}, 
+	      		#{mood}, #{qq}, #{wangwang},#{weibo}, #{factor},#{authorities},#{enable}
+	      	)
+	</insert>
+	
+	<update id="updateUser" parameterType="User">
+    	UPDATE yunjee_user 
+    	<set>
+    	    <if test="avatar != null">
+      			avatar = #{avatar},
+	        </if>
+	        
+	        <if test="email != null">
+      			email = #{email},
+	        </if>
+	        
+      		<if test="nick != null">
+	        	nick = #{nick},
+	        </if>
+	        
+	        <if test="tel != null">
+      			tel = #{tel},
+	        </if>
+	        
+	        <if test="sex != null">
+      			sex = #{sex},
+	        </if>
+	        
+      		<if test="password != null">
+      			password = #{password},
+	        </if>
+
+			<if test="birthday != null">
+      			birthday = #{birthday},
+	        </if>
+
+			<if test="followNum != null">
+      			follow_num = #{followNum},
+	        </if>
+
+		    <if test="fansNum != null">
+      			fans_num = #{fansNum},
+	        </if>		    
+
+		    <if test="comeFrom != null">
+      			come_from = #{comeFrom},
+	        </if>
+	        
+		    <if test="registerDate != null">
+      			register_date = #{registerDate},
+	        </if>	        
+
+      		<if test="address != null">
+      			address = #{address},
+	        </if>
+		    
+      		<if test="areaCode != null">
+      			area_code = #{areaCode},
+	        </if>
+
+		    <if test="industry != null">
+      			industry = #{industry},
+	        </if>
+
+      		<if test="position != null">
+      			position = #{position},
+	        </if>
+	        
+	        <if test="level != null">
+      			level = #{level},
+	        </if>
+	        
+	        <if test="mood != null">
+      			mood = #{mood},
+	        </if>
+	        
+		    <if test="qq != null">
+      			qq = #{qq},
+	        </if>
+
+		    <if test="wangwang != null">
+      			wangwang = #{wangwang},
+	        </if>
+
+		    <if test="weibo != null">
+      			weibo = #{weibo},
+	        </if>
+
+		    <if test="factor != null">
+      			factor = #{factor},
+	        </if>
+	        
+	        <if test="authorities != null">
+	        	authorities = #{authorities},
+	        </if>
+	        
+	        <if test="enable != null">
+	        	enable = #{enable}
+	        </if>
+		</set>
+    	WHERE id = #{id}
+    </update>
+    
+    <delete id="deleteById" parameterType="int">
+    	DELETE FROM yunjee_user where id = #{id}
+    </delete>
+    
+    <delete id="deleteByUser" parameterType="int">
+    	DELETE 
+    	FROM yunjee_user
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+      		<if test="nick != null">
+	        	nick = #{nick}
+	        </if>
+	        
+      		<if test="password != null">
+      			AND password = #{password}
+	        </if>
+
+      		<if test="avatar != null">
+      			AND avatar = #{avatar}
+	        </if>
+
+		    <if test="email != null">
+      			AND email = #{email}
+	        </if>
+
+		    <if test="tel != null">
+      			AND tel = #{tel}
+	        </if>
+
+		    <if test="sex != null">
+      			AND sex = #{sex}
+	        </if>
+
+		    <if test="qq != null">
+      			AND qq = #{qq}
+	        </if>
+
+		    <if test="weibo != null">
+      			AND weibo = #{weibo}
+	        </if>
+
+		    <if test="wangwang != null">
+      			AND wangwang = #{wangwang}
+	        </if>
+
+      		<if test="areaCode != null">
+      			AND area_code = #{areaCode}
+	        </if>
+
+      		<if test="address != null">
+      			AND address = #{address}
+	        </if>
+
+		    <if test="birthday != null">
+      			AND birthday = #{birthday}
+	        </if>
+
+		    <if test="registerDate != null">
+      			AND register_date = #{registerDate}
+	        </if>
+
+		    <if test="comeFrom != null">
+      			AND come_from = #{comeFrom}
+	        </if>
+
+		    <if test="fansNum != null">
+      			AND fans_num = #{fansNum}
+	        </if>
+
+		    <if test="followNum != null">
+      			AND follow_num = #{followNum}
+	        </if>
+
+		    <if test="industry != null">
+      			AND industry = #{industry}
+	        </if>
+
+      		<if test="position != null">
+      			AND position = #{position}
+	        </if>
+
+      		<if test="level != null">
+      			AND level = #{level}
+	        </if>
+
+		    <if test="mood != null">
+      			AND mood = #{mood}
+	        </if>
+
+		    <if test="factor != null">
+      			AND factor = #{factor}
+	        </if>	
+	        
+	        <if test="authorities != null">
+	        	AND authorities = #{authorities}
+	        </if>
+	        
+	        <if test="enable != null">
+	        	AND enable = #{enable}
+	        </if>
+	        
+	        	OR ID = 0		
+		</trim>
+    </delete>
+    
+    <select id="selectById" parameterType="int" resultMap="UserMap">
+    	SELECT * FROM yunjee_user WHERE id = #{id}
+    </select>
+    
+    <select id="selectByIdListOrderByFollwNum" parameterType="string" resultMap="UserMap">
+    	select * 
+    	from yunjee_user
+    	where id in (${idList})
+    	order by follow_num desc
+    </select>
+    
+    <select id="selectByIdList" parameterType="string" resultMap="UserMap">
+    	select * 
+    	from yunjee_user
+    	where id in (${idList})
+    </select>
+    
+    <select id="selectMsgSender" parameterType="Msg" resultMap="UserMap">
+    	select * 
+    	from yunjee_user
+    	where id in (
+    		select distinct sender_id 
+    		from yunjee_msg
+    		where receiver_id = #{receiverId}
+    	)
+    </select>
+    
+    <select id="selectOrderByFansNumWithLimit" parameterType="map" resultMap="UserMap">
+    	select * 
+    	from yunjee_user
+    	where avatar != ''
+	    order by fans_num desc
+	    
+	    <if test="start != null">
+        	<if test="limit != null">
+        		limit ${start},${limit}    
+        	</if>
+        </if>
+   	
+   		<if test="start == null">
+   			<if test="limit != null">
+   				limit ${limit}
+   			</if>
+   		</if>
+    </select>
+    
+    <select id="selectWithLimit" parameterType="map" resultMap="UserMap">
+    	select * 
+    	from yunjee_user
+    	where avatar != ''
+    	
+        <if test="start != null">
+        	<if test="limit != null">
+        		limit ${start},${limit}    
+        	</if>
+        </if>
+   	
+   		<if test="start == null">
+   			<if test="limit != null">
+   				limit ${limit}
+   			</if>
+   		</if>
+    </select>
+    
+    <select id="selectOrderByRegisterDateWithLimit" parameterType="map" resultMap="UserMap">
+    	select * 
+    	from yunjee_user
+    	where avatar != ''
+    	order by register_date desc
+        <if test="start != null">
+        	<if test="limit != null">
+        		limit ${start},${limit}    
+        	</if>
+        </if>
+   	
+   		<if test="start == null">
+   			<if test="limit != null">
+   				limit ${limit}
+   			</if>
+   		</if>
+    </select>
+    
+    <select id="selectByReceiverId" parameterType="SQLParameters" resultMap="UserMap">
+    	select * 
+    	from yunjee_user
+    	where id in (
+    		select distinct sender_id 
+    		from yunjee_msg
+    		where status != #{status} and receiver_id = #{receiverId})
+    </select>
+    
+    <select id="selectFansList" parameterType="int" resultMap="UserMap">
+        select *
+    	from yunjee_user
+    	where 
+    		id in (
+	    		select user_id 
+	    		from yunjee_r_user
+	    		where user_liked_id = #{id}
+    		)
+    </select>
+    
+    <select id="selectFansListOrderByRegisterDateWithLimit" parameterType="map" resultMap="UserMap">
+    	select *
+    	from yunjee_user
+    	where
+    		id in (
+	    		select user_id 
+	    		from yunjee_r_user
+	    		where user_liked_id = #{id}
+    		)
+  		order by register_date
+  		
+  		<if test="start != null">
+  			<if test="limit != null">
+  				limit ${start},${limit}
+  			</if>
+  		</if>
+  		
+  		<if test="start == null">
+  			<if test="limit != null">
+  				limit ${limit}
+  			</if>
+  		</if>
+    </select>
+   
+	<select id="selectFavorList" parameterType="int" resultMap="UserMap">
+	   	select *
+	   	from yunjee_user
+	   	where id in (
+	    		select user_liked_id 
+	    		from yunjee_r_user
+	    		where user_id = #{id}
+	   		)
+	</select>
+    
+    <select id="selectByUser" parameterType="User" resultMap="UserMap">
+    	SELECT * FROM yunjee_user
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+      		<if test="nick != null">
+	        	nick = #{nick}
+	        </if>
+	        
+      		<if test="password != null">
+      			AND password = #{password}
+	        </if>
+
+      		<if test="avatar != null">
+      			AND avatar = #{avatar}
+	        </if>
+
+		    <if test="email != null">
+      			AND email = #{email}
+	        </if>
+
+		    <if test="tel != null">
+      			AND tel = #{tel}
+	        </if>
+
+		    <if test="sex != null">
+      			AND sex = #{sex}
+	        </if>
+
+		    <if test="qq != null">
+      			AND qq = #{qq}
+	        </if>
+
+		    <if test="weibo != null">
+      			AND weibo = #{weibo}
+	        </if>
+
+		    <if test="wangwang != null">
+      			AND wangwang = #{wangwang}
+	        </if>
+
+      		<if test="areaCode != null">
+      			AND area_code = #{areaCode}
+	        </if>
+
+      		<if test="address != null">
+      			AND address = #{address}
+	        </if>
+
+		    <if test="birthday != null">
+      			AND birthday = #{birthday}
+	        </if>
+
+		    <if test="registerDate != null">
+      			AND register_date = #{registerDate}
+	        </if>
+
+		    <if test="comeFrom != null">
+      			AND come_from = #{comeFrom}
+	        </if>
+
+		    <if test="fansNum != null">
+      			AND fans_num = #{fansNum}
+	        </if>
+
+		    <if test="followNum != null">
+      			AND follow_num = #{followNum}
+	        </if>
+
+		    <if test="industry != null">
+      			AND industry = #{industry}
+	        </if>
+
+      		<if test="position != null">
+      			AND position = #{position}
+	        </if>
+
+      		<if test="level != null">
+      			AND level = #{level}
+	        </if>
+
+		    <if test="mood != null">
+      			AND mood = #{mood}
+	        </if>
+		</trim>    
+    </select>
+</mapper>

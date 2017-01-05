@@ -1,0 +1,113 @@
+   <!-- 登录弹窗 -->
+    <div class="modal fade myModal" id="loginModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              </div>
+
+              <div class="modal-body">
+                <img src="$gv_imgRoot/logo1.png">
+                <p class="title">会员登录</p>
+
+                <form role="form">
+                    <input name="phone" type="tel" class="form-control" placeholder="输入手机号">
+                    <input name="password" type="password" class="form-control" placeholder="输入密码">
+                    <button id="login_btn" type="submit" class="btn btn-default" data-login="/api/user/login">登录</button>
+                </form>
+                <div class="clearfix">
+                    <a class="left_btn" onclick="changeModal(this,'#forgetModal')">忘记密码</a>
+                    <a class="right_btn" onclick="changeModal(this,'#registerModal')">注册</a>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 注册弹窗 -->
+    <div class="modal fade myModal" id="registerModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              </div>
+
+              <div class="modal-body">
+                <img src="$gv_imgRoot/logo1.png">
+                <p class="title">会员注册</p>
+
+                <form role="form" onsubmit="return false;" method="POST">
+                    <input name="phone" type="tel" class="form-control" placeholder="输入手机号">
+                    <div class="v_code">
+                        <input name="code" type="tel" class="form-control" placeholder="输入验证码">
+                        <!-- 发送验证码请求 -->
+                        <button class="btn btn-default send_btn" onclick="event.preventDefault();send_v_code(this)" data-send-code="/api/user/getCheckCode">发送验证码</button>
+                    </div>
+                    <input name="password" type="password" class="form-control" placeholder="输入密码">
+                    <button id="register_btn" type="submit" class="btn btn-default j_Register_btn" data-register="/api/user/register">注册</button>
+                </form>
+                <div class="clearfix">
+                    <a class="right_btn" onclick="changeModal(this,'#loginModal')">去登录</a>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+	
+	
+
+    <!-- 注册成功弹窗 -->
+    <div class="modal fade myModal" id="registerSuccessModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              </div>
+
+              <div class="modal-body">
+                <img src="$gv_imgRoot/logo1.png">
+                <p class="title">注册成功</p>
+                <p>恭喜您注册成为BUYEROLOGY会员，请您进一步完善您的个人信息。</p>
+                <!-- 前往个人信息页 -->
+                <form role="form" action="/account/usercenter.html">
+                    <button class="btn btn-default">立即前往</button>
+                </form>
+                <a class="skip_btn" href="$!{requestUri}">跳过</a>
+              </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 忘记密码弹窗 -->
+    <div class="modal fade myModal" id="forgetModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              </div>
+
+              <div class="modal-body">
+                <img src="$gv_imgRoot/logo1.png">
+                <p class="title">请输入您注册时绑定的手机号，以便接收验证码</p>
+
+                <form role="form">
+                    <input name="phone" type="tel" class="form-control" placeholder="输入手机号">
+                    <div class="v_code">
+                        <input name="code" type="tel" class="form-control" placeholder="输入验证码">
+                        <button class="btn btn-default send_forget_btn" onclick="event.preventDefault();send_f_code(this)" data-send-reset-code="/api/user/getResetCheckCode">发送验证码</button>
+                    </div>
+                    <input name="password" type="password" class="form-control" placeholder="输入密码">
+                    <button id="forget_btn" type="submit" class="btn btn-default" data-forget="/api/user/reset">确认</button>
+                </form>
+                <div class="clearfix">
+                    <a class="right_btn" onclick="changeModal(this,'#loginModal')">去登录</a>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>

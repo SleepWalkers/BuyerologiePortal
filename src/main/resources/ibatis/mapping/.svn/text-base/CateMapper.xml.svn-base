@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yunjee.common.dao.CateDao">
+	<resultMap id="CateMap" type="Cate" >
+		<id column="id" property="id" jdbcType="BIGINT" />
+	    <result column="parent_id" property="parentId" jdbcType="BIGINT" />
+	    <result column="NAME" property="name" jdbcType="VARCHAR" />
+	</resultMap>
+  
+	<insert id="insertCate" parameterType="Cate">
+		INSERT INTO yunjee_cate
+	      (parent_id, name)
+	    VALUES
+	      (#{parentId}, #{name})
+	</insert>
+	
+	<update id="updateCate" parameterType="Cate">
+    	UPDATE yunjee_cate 
+    	<set>
+    	    <if test="parentId != null">
+    			parent_id = #{parentId},
+	        </if>
+	        
+      		<if test="name != null">
+    			name = #{name}
+	        </if>
+	    </set>
+    	WHERE id = #{id}
+    </update>
+    
+    <delete id="deleteById" parameterType="int">
+    	DELETE FROM yunjee_cate where id = #{id}
+    </delete>
+    
+    <delete id="deleteByCate" parameterType="Cate">
+    	DELETE
+    	FROM yunjee_cate
+    	<trim prefix="WHERE" prefixOverrides="AND|OR">
+    	    <if test="parentId != null">
+    			parent_id = #{parentId}
+	        </if>
+	        
+      		<if test="name != null">
+    			AND name = #{name}
+	        </if>
+	        OR ID = 0
+    	</trim>
+    </delete>
+    
+    <select id="selectById" parameterType="int" resultMap="CateMap">
+    	SELECT * FROM yunjee_cate WHERE id = #{id}
+    </select>
+    
+    <select id="selectByCate" parameterType="Cate" resultMap="CateMap">
+    	SELECT * 
+    	FROM yunjee_cate
+    	<where>
+    		<if test="parentId != null">
+    			parent_id = #{parentId}
+	        </if>
+	        
+      		<if test="name != null">
+    			AND name = #{name}
+	        </if>
+    	</where>
+    </select>
+	
+<!-- 	  <select id="getAccountByUsernameAndPassword" parameterType="Account" resultMap="Account"> -->
+<!-- 	    SELECT -->
+<!-- 	      SIGNON.USERNAME, -->
+<!-- 	      ACCOUNT.EMAIL, -->
+<!-- 	      ACCOUNT.FIRSTNAME, -->
+<!-- 	      ACCOUNT.LASTNAME, -->
+<!-- 	      ACCOUNT.STATUS, -->
+<!-- 	      ACCOUNT.ADDR1 AS address1, -->
+<!-- 	      ACCOUNT.ADDR2 AS address2, -->
+<!-- 	      ACCOUNT.CITY, -->
+<!-- 	      ACCOUNT.STATE, -->
+<!-- 	      ACCOUNT.ZIP, -->
+<!-- 	      ACCOUNT.COUNTRY, -->
+<!-- 	      ACCOUNT.PHONE, -->
+<!-- 	      PROFILE.LANGPREF AS languagePreference, -->
+<!-- 	      PROFILE.FAVCATEGORY AS favouriteCategoryId, -->
+<!-- 	      PROFILE.MYLISTOPT AS listOption, -->
+<!-- 	      PROFILE.BANNEROPT AS bannerOption, -->
+<!-- 	      BANNERDATA.BANNERNAME -->
+<!-- 	    FROM ACCOUNT, PROFILE, SIGNON, BANNERDATA -->
+<!-- 	    WHERE ACCOUNT.USERID = #{username} -->
+<!-- 	      AND SIGNON.PASSWORD = #{password} -->
+<!-- 	      AND SIGNON.USERNAME = ACCOUNT.USERID -->
+<!-- 	      AND PROFILE.USERID = ACCOUNT.USERID -->
+<!-- 	      AND PROFILE.FAVCATEGORY = BANNERDATA.FAVCATEGORY -->
+<!-- 	  </select> -->
+</mapper>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yunjee.common.dao.PicTagDao">
+    <resultMap id="PicTagMap" type="PicTag" >
+	    <id column="id" property="id" jdbcType="BIGINT" />
+	    <result column="src" property="src" jdbcType="VARCHAR" />
+	    <result column="pic_tag_type_id" property="picTagTypeId" jdbcType="BIGINT" />
+	    <result column="heat" property="heat" jdbcType="BIGINT"/>
+	    <result column="is_front_display" property="isFrontDisplay" jdbcType="TINYINT"/>
+  	</resultMap>
+  	
+	<insert id="insertPicTag" parameterType="PicTag" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO yunjee_pic_tag
+	      (src, pic_tag_type_id, heat, is_front_display)
+	    VALUES
+	      (#{src}, #{picTagTypeId}, #{heat}, #{isFrontDisplay})
+	</insert>
+	
+	<update id="updatePicTag" parameterType="PicTag">
+    	UPDATE yunjee_pic_tag 
+    	<set>
+      		<if test="src != null">
+    			src = #{src},
+	        </if>
+
+      		<if test="picTagTypeId != null">
+    			pic_tag_type_id = #{picTagTypeId},
+	        </if>
+	        
+	        <if test="heat != null">
+    			heat = #{heat},
+	        </if>
+	        
+	        <if test="isFrontDisplay != null">
+    			is_front_display = #{isFrontDisplay}
+	        </if>
+		</set>
+    	WHERE id = #{id}
+    </update>
+    
+    <delete id="deleteById" parameterType="int">
+    	DELETE FROM yunjee_pic_tag where id = #{id}
+    </delete>
+    
+    <delete id="deleteByPicTag" parameterType="PicTag">
+    	DELETE FROM yunjee_pic_tag
+    	<trim prefix="WHERE" prefixOverrides="AND|OR">
+        	<if test="src != null">
+    			src = #{src}
+	        </if>
+
+      		<if test="picTagTypeId != null">
+    			AND pic_tag_type_id = #{picTagTypeId}
+	        </if>
+	        
+	        <if test="heat != null">
+    			AND heat = #{heat}
+	        </if>
+	        
+	        <if test="isFrontDisplay != null">
+    			AND is_front_display = #{isFrontDisplay}
+	        </if>
+	        	OR ID = 0
+    	</trim>
+    </delete>
+    
+    <select id="selectById" parameterType="int" resultMap="PicTagMap">
+    	SELECT * FROM yunjee_pic_tag WHERE id = #{id}
+    </select>
+    
+    <select id="selectByTypeIdWithLimit" parameterType="map" resultMap="PicTagMap">
+    	select * 
+    	from yunjee_pic_tag
+    	where pic_tag_type_id = #{picTagTypeId}
+    	
+    	<if test="start != null">
+        	<if test="limit != null">
+        		limit ${start},${limit}    
+        	</if>
+        </if>
+   	
+   		<if test="start == null">
+   			<if test="limit != null">
+   				limit ${limit}
+   			</if>
+   		</if>
+    </select>
+    
+    <select id="selectByPicTag" parameterType="PicTag" resultMap="PicTagMap">
+    	SELECT * FROM yunjee_pic_tag
+      	<trim prefix="WHERE" prefixOverrides="AND|OR">
+        	<if test="src != null">
+    			src = #{src}
+	        </if>
+
+      		<if test="picTagTypeId != null">
+    			AND pic_tag_type_id = #{picTagTypeId}
+	        </if>	
+	        
+	        <if test="heat != null">
+    			AND heat = #{heat}
+	        </if>
+	        
+	        <if test="isFrontDisplay != null">
+    			AND is_front_display = #{isFrontDisplay}
+	        </if>
+	        
+    	</trim>  	
+    </select>
+</mapper>

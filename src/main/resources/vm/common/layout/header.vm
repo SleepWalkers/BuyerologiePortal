@@ -1,0 +1,2 @@
+#parse("common/layout/headNav.vm")
+#parse("page/brick/registerBrick.vm")

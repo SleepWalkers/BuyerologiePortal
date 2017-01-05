@@ -1,0 +1,8 @@
+#parse("common/layout/head.vm")
+<body class="index">
+    <div class="cover"></div>
+    <img src="$gv_imgRoot/index_logo.png">
+    <a href="/news/news.html">资讯｜NEWS</a>
+    <a href="/course/course.html">尚课|COURSE</a>
+</body>
+</html>

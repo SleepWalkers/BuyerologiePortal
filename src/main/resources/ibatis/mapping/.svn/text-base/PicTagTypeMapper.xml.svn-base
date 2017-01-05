@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yunjee.common.dao.PicTagTypeDao">
+    <resultMap id="PicTagTypeMap" type="PicTagType" >
+	    <id column="id" property="id" jdbcType="BIGINT" />
+	    <result column="type_name" property="typeName" jdbcType="VARCHAR" />
+  	</resultMap>
+  	
+	<insert id="insertPicTagType" parameterType="PicTagType">
+		INSERT INTO yunjee_pic_tag_type
+	      (type_name)
+	    VALUES
+	      (#{typeName})
+	</insert>
+	
+	<update id="updatePicTagType" parameterType="PicTagType">
+    	UPDATE yunjee_pic_tag_type 
+    	<set>
+      		<if test="typeName != null">
+    			type_name = #{typeName}
+	        </if>
+		</set>
+    	WHERE id = #{id}
+    </update>
+    
+    <delete id="deleteById" parameterType="int">
+    	DELETE FROM yunjee_pic_tag_type where id = #{id}
+    </delete>
+   
+    <select id="selectById" parameterType="int" resultMap="PicTagTypeMap">
+    	SELECT * FROM yunjee_pic_tag_type WHERE id = #{id}
+    </select>
+    
+    <select id="selectAll" resultMap="PicTagTypeMap">
+    	select * FROM yunjee_pic_tag_type
+    </select>
+    
+    
+    <select id="selectByTypeName" parameterType="string" resultMap="PicTagTypeMap">
+    	select * 
+    	from yunjee_pic_tag_type 
+    	where type_name = #{typeName}
+    </select>
+    
+    <select id="selectByPicTagType" parameterType="PicTagType" resultMap="PicTagTypeMap">
+    	SELECT * FROM yunjee_pic_tag_type
+      	<trim prefix="WHERE" prefixOverrides="AND|OR">
+        	<if test="typeName != null">
+    			type_name = #{typeName}
+	        </if>
+    	</trim>  	
+    </select>
+</mapper>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yunjee.common.dao.R_UserBrandDao">
+  	<resultMap id="R_UserBrandMap" type="R_UserBrand" >
+	    <id column="id" property="id" jdbcType="BIGINT" />
+	    <result column="user_id" property="userId" jdbcType="BIGINT" />
+	    <result column="brand_id" property="brandId" jdbcType="BIGINT" />
+  	</resultMap>
+  	
+	<insert id="insertR_UserBrand" parameterType="R_UserBrand">
+		INSERT INTO yunjee_r_user_brand
+	      (user_id, brand_id)
+	    VALUES
+	      (#{userId}, #{brandId})
+	</insert>
+	
+	<update id="updateR_UserBrand" parameterType="R_UserBrand">
+    	UPDATE yunjee_r_user_brand 
+    	<set>
+    		<if test="userId != null">
+    			user_id = #{userId},
+	        </if>
+      		<if test="brandId != null">
+    			brand_id = #{brandId}
+	        </if>
+	    </set>
+    	WHERE id = #{id}
+    </update>
+    
+    <delete id="deleteById" parameterType="int">
+    	DELETE FROM yunjee_r_user_brand where id = #{id}
+    </delete>
+    
+    <delete id="deleteByR_UserBrand" parameterType="R_UserBrand">
+    	DELETE
+    	FROM yunjee_r_user_brand
+    	<trim prefix="WHERE" prefixOverrides="AND|OR">
+    		<if test="userId != null">
+    			user_id = #{userId}
+	        </if>
+      		<if test="brandId != null">
+    			AND brand_id = #{brandId}
+	        </if>  
+	        	OR ID = 0  	
+    	</trim>
+    </delete>
+    
+    <select id="selectById" parameterType="int" resultMap="R_UserBrandMap">
+    	SELECT * FROM yunjee_r_user_brand WHERE id = #{id}
+    </select>
+    
+    <select id="selectByR_UserBrand" parameterType="R_UserBrand" resultMap="R_UserBrandMap">
+    	SELECT * 
+    	FROM yunjee_r_user_brand
+     	<trim prefix="WHERE" prefixOverrides="AND|OR">
+    		<if test="userId != null">
+    			user_id = #{userId}
+	        </if>
+      		<if test="brandId != null">
+    			AND brand_id = #{brandId}
+	        </if>
+    	</trim>   	
+    </select>
+</mapper>

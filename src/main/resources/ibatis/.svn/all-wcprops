@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/Yunjee-Common/!svn/ver/58/trunk/src/main/resources/ibatis
+END
+sqlMapConfig.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/Yunjee-Common/!svn/ver/58/trunk/src/main/resources/ibatis/sqlMapConfig.xml
+END
+generatorConfig.xml
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/Yunjee-Common/!svn/ver/58/trunk/src/main/resources/ibatis/generatorConfig.xml
+END

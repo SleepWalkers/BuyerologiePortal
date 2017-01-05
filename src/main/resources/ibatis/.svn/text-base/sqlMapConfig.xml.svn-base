@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">  
+<configuration>  
+ 	<typeAliases>
+       <typeAlias alias="Activity" type="com.yunjee.common.model.Activity"/>
+       <typeAlias alias="Brand" type="com.yunjee.common.model.Brand"/>
+       <typeAlias alias="Cate" type="com.yunjee.common.model.Cate"/>
+       <typeAlias alias="Comment" type="com.yunjee.common.model.Comment"/>
+       <typeAlias alias="FeedBack" type="com.yunjee.common.model.FeedBack"/>
+       <typeAlias alias="Msg" type="com.yunjee.common.model.Msg"/>
+       <typeAlias alias="MsgCtn" type="com.yunjee.common.model.MsgCtn"/>
+       <typeAlias alias="PicTag" type="com.yunjee.common.model.PicTag"/>
+       <typeAlias alias="PicTagType" type="com.yunjee.common.model.PicTagType"/>
+       <typeAlias alias="R_CateSpu" type="com.yunjee.common.model.R_CateSpu"/>
+       <typeAlias alias="R_ObjTag" type="com.yunjee.common.model.R_ObjTag"/>
+       <typeAlias alias="R_SpuScent" type="com.yunjee.common.model.R_SpuScent"/>
+       <typeAlias alias="R_TagPicTag" type="com.yunjee.common.model.R_TagPicTag"/>
+       <typeAlias alias="R_User" type="com.yunjee.common.model.R_User"/>
+       <typeAlias alias="R_UserBrand" type="com.yunjee.common.model.R_UserBrand"/>
+       <typeAlias alias="R_UserComment" type="com.yunjee.common.model.R_UserComment"/>
+       <typeAlias alias="R_UserSpu" type="com.yunjee.common.model.R_UserSpu"/>
+       <typeAlias alias="R_UserTopic" type="com.yunjee.common.model.R_UserTopic"/>
+       <typeAlias alias="Scent" type="com.yunjee.common.model.Scent"/>
+       <typeAlias alias="ScentTotal" type="com.yunjee.common.model.ScentTotal"/>
+       <typeAlias alias="ScentType" type="com.yunjee.common.model.ScentType"/>
+       <typeAlias alias="Share" type="com.yunjee.common.model.Share"/>
+       <typeAlias alias="SKU" type="com.yunjee.common.model.SKU"/>
+       <typeAlias alias="SPU" type="com.yunjee.common.model.SPU"/>
+       <typeAlias alias="Star" type="com.yunjee.common.model.Star"/>
+       <typeAlias alias="Tag" type="com.yunjee.common.model.Tag"/>  
+       <typeAlias alias="TagType" type="com.yunjee.common.model.TagType"/>  
+       <typeAlias alias="Topic" type="com.yunjee.common.model.Topic"/>
+       <typeAlias alias="TopicReply" type="com.yunjee.common.model.TopicReply"/>
+       <typeAlias alias="TopicType" type="com.yunjee.common.model.TopicType"/>
+       <typeAlias alias="User" type="com.yunjee.common.model.User"/>
+       <typeAlias alias="TimeRange" type="com.yunjee.common.vo.TimeRange"/>
+       <typeAlias alias="SQLParameters" type="com.yunjee.common.mybatis.SQLParameters"/>
+       <typeAlias alias="CommentVO" type="com.yunjee.common.vo.CommentVO"/>
+       <typeAlias alias="UserVO" type="com.yunjee.common.vo.UserVO"/>
+    </typeAliases>  
+    
+    <mappers>  
+        <mapper resource="ibatis/mapping/ActivityMapper.xml"/>
+        <mapper resource="ibatis/mapping/BrandMapper.xml"/>
+        <mapper resource="ibatis/mapping/CateMapper.xml"/>
+        <mapper resource="ibatis/mapping/CommentMapper.xml"/>
+        <mapper resource="ibatis/mapping/FeedBackMapper.xml"/>
+        <mapper resource="ibatis/mapping/MsgCtnMapper.xml"/>
+        <mapper resource="ibatis/mapping/MsgMapper.xml"/>
+        <mapper resource="ibatis/mapping/PicTagMapper.xml"/>
+        <mapper resource="ibatis/mapping/PicTagTypeMapper.xml"/>
+        <mapper resource="ibatis/mapping/R_CateSpuMapper.xml"/>
+        <mapper resource="ibatis/mapping/R_ObjTagMapper.xml"/>
+        <mapper resource="ibatis/mapping/R_SpuScentMapper.xml"/>
+        <mapper resource="ibatis/mapping/R_TagPicTagMapper.xml"/>
+        <mapper resource="ibatis/mapping/R_UserBrandMapper.xml"/>
+        <mapper resource="ibatis/mapping/R_UserCommentMapper.xml"/>
+        <mapper resource="ibatis/mapping/R_UserMapper.xml"/>
+        <mapper resource="ibatis/mapping/R_UserSpuMapper.xml"/>
+        <mapper resource="ibatis/mapping/R_UserTopicMapper.xml"/>
+        <mapper resource="ibatis/mapping/ScentMapper.xml"/>
+        <mapper resource="ibatis/mapping/ScentTotalMapper.xml"/>
+        <mapper resource="ibatis/mapping/ScentTypeMapper.xml"/>
+        <mapper resource="ibatis/mapping/ShareMapper.xml"/>
+        <mapper resource="ibatis/mapping/SKUMapper.xml"/>
+        <mapper resource="ibatis/mapping/SPUMapper.xml"/>
+        <mapper resource="ibatis/mapping/StarMapper.xml"/>
+        <mapper resource="ibatis/mapping/TagMapper.xml"/>
+        <mapper resource="ibatis/mapping/TagTypeMapper.xml"/>
+        <mapper resource="ibatis/mapping/TopicMapper.xml"/>
+        <mapper resource="ibatis/mapping/TopicReplyMapper.xml"/>
+        <mapper resource="ibatis/mapping/TopicTypeMapper.xml"/>
+        <mapper resource="ibatis/mapping/UserMapper.xml"/>        
+    </mappers>  
+</configuration>    

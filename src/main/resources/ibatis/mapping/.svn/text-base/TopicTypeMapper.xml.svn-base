@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yunjee.common.dao.TopicTypeDao">
+  	<resultMap id="TopicTypeMap" type="TopicType" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+  	</resultMap>
+  
+	<insert id="insertTopicType" parameterType="TopicType">
+		INSERT INTO yunjee_topic_type
+	      (name)
+	    VALUES
+	      (#{name})
+	</insert>
+	
+	<update id="updateTopicType" parameterType="TopicType">
+    	UPDATE yunjee_topic_type 
+    	<set>
+      		<if test="name != null">
+      			name = #{name}
+	        </if>
+	    </set>
+    	WHERE id = #{id}
+    </update>
+    
+    <delete id="deleteById" parameterType="int">
+    	DELETE FROM yunjee_topic_type where id = #{id}
+    </delete>
+    
+    <delete id="deleteByTopicType" parameterType="TopicType">
+    	DELETE 
+    	FROM yunjee_topic_type
+    	<trim prefix="WHERE" prefixOverrides="AND|OR">
+    	    <if test="name != null">
+      			name = #{name}
+	        </if>
+	       		OR ID = 0
+    	</trim>
+    </delete>
+    
+    <select id="selectAll" resultMap="TopicTypeMap">
+    	select * from yunjee_topic_type
+    </select>
+    
+    <select id="selectById" parameterType="int" resultMap="TopicTypeMap">
+    	SELECT * FROM yunjee_topic_type WHERE id = #{id}
+    </select>
+    
+    <select id="selectByTopicType" parameterType="TopicType" resultMap="TopicTypeMap">
+    	SELECT * 
+    	FROM yunjee_topic_type
+    	<trim prefix="WHERE" prefixOverrides="AND|OR">
+    	    <if test="name != null">
+      			name = #{name}
+	        </if>
+    	</trim>    	
+    </select>
+</mapper>

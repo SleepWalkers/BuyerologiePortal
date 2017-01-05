@@ -1,0 +1,49 @@
+#set($title = $!{user.nickname})
+#parse("common/layout/head.vm")
+<body class="user_center">
+    
+#parse("common/layout/header.vm")
+    <hr>
+
+    <div class="container heading">
+        <img class="avatar" src="$gv_imgRoot/avatar3.png">
+        <div class="right">
+            <p class="user_name">$!{user.nickname}</p>
+            ##<span class="member_type">全年会员</span>
+            <p class="note">$!{user.profession}</p>
+            <button class="btn" id="edit_btn"><a href="/account/usermodify.html">编辑个人资料</a></button>
+            <!-- 进度条，两个60%都要修改 -->
+            <div class="progress_point">
+                <img class="point" src="$gv_imgRoot/member_point.png" style="left: 60%;">
+            </div>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                    <span class="sr-only">60% Complete</span>
+                </div>
+            </div>
+            <p class="day_left">您还可以学习<span>28天</span></p>
+        </div>
+    </div>
+
+    <div class="content_body">
+        <div class="container">
+             <nav class="user_nav">
+                <ul class="nav nav-pills">
+                    <li #if($pageName == "userCourse")class="active"#end><a href="/account/usercenter.html"><span>课程</span></a></li>
+                    <li #if($pageName == "userNews")class="active"#end><a href="/account/favourite.html"><span>资讯</span></a></li>
+                </ul>
+            </nav>
+			
+			#if($!{pageName}=="userCourse")
+				#parse("/page/user/userCourse.vm")
+			#else
+				#parse("/page/user/userNews.vm")
+			#end
+        </div>
+    </div>
+
+
+	#parse("common/layout/foot.vm")
+    <script type="text/javascript" src="$gv_jsRoot/page/user_center.js"></script>
+</body>
+</html>

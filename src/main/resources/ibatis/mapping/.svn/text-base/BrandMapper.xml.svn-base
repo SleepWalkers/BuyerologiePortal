@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yunjee.common.dao.BrandDao">
+	<resultMap id="BrandMap" type="Brand">
+	    <id column="id" jdbcType="BIGINT" property="id" />
+	    <result column="cradle" jdbcType="VARCHAR" property="cradle" />
+	    <result column="founded_time" jdbcType="VARCHAR" property="foundedTime" />
+	    <result column="en_name" jdbcType="VARCHAR" property="enName" />
+	    <result column="in_china_time" jdbcType="VARCHAR" property="inChinaTime" />
+	    <result column="alias_name" jdbcType="VARCHAR" property="aliasName" />
+	    <result column="parent_company" jdbcType="VARCHAR" property="parentCompany" />
+	    <result column="parent_id" jdbcType="BIGINT" property="parentId" />
+	    <result column="officialurl" jdbcType="VARCHAR" property="officialurl" />
+	    <result column="founder" jdbcType="VARCHAR" property="founder" />
+	    <result column="zh_name" jdbcType="VARCHAR" property="zhName" />
+	    <result column="logo_image_path" jdbcType="VARCHAR" property="logoImagePath" />
+	    <result column="history" jdbcType="VARCHAR" property="history" />
+	    <result column="categories" jdbcType="VARCHAR" property="categories" />
+	    <result column="status" jdbcType="INTEGER" property="status" />
+	    <result column="logo_thumb_path" jdbcType="VARCHAR" property="logoThumbPath" />
+	    <result column="last_modify_date" jdbcType="VARCHAR" property="lastModifyDate" />
+	    <result column="path_name" jdbcType="VARCHAR" property="pathName" />
+	    <result column="seo_desc" jdbcType="VARCHAR" property="seoDesc"/>
+	</resultMap>
+	
+	<insert id="insertBrand" parameterType="Brand">
+	    insert into yunjee_brand (cradle, founded_time, 
+	      en_name, in_china_time, alias_name, 
+	      parent_company, parent_id, officialurl, 
+	      founder, zh_name, logo_image_path, 
+	      history, categories, status, 
+	      logo_thumb_path, last_modify_date, path_name, 
+	      description)
+	    values (#{cradle,jdbcType=VARCHAR}, #{foundedTime,jdbcType=VARCHAR}, 
+	      #{enName,jdbcType=VARCHAR}, #{inChinaTime,jdbcType=VARCHAR}, #{aliasName,jdbcType=VARCHAR}, 
+	      #{parentCompany,jdbcType=VARCHAR}, #{parentId,jdbcType=BIGINT}, #{officialurl,jdbcType=VARCHAR}, 
+	      #{founder,jdbcType=VARCHAR}, #{zhName,jdbcType=VARCHAR}, #{logoImagePath,jdbcType=VARCHAR}, 
+	      #{history,jdbcType=VARCHAR}, #{categories,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+	      #{logoThumbPath,jdbcType=VARCHAR}, #{lastModifyDate,jdbcType=VARCHAR}, #{pathName,jdbcType=VARCHAR}, 
+	      #{description,jdbcType=LONGVARCHAR})
+  	</insert>
+  	
+  	<update id="updateBrand" parameterType="Brand">
+    	update yunjee_brand
+    	<set>
+    		<if test="cradle != null">
+    			cradle = #{cradle,jdbcType=VARCHAR},
+	        </if>
+		    <if test="foundedTime != null">
+		        founded_time = #{foundedTime,jdbcType=VARCHAR},
+		    </if>
+	      	<if test="enName != null">
+	        	en_name = #{enName,jdbcType=VARCHAR},
+	      	</if>
+		      <if test="inChinaTime != null">
+		        in_china_time = #{inChinaTime,jdbcType=VARCHAR},
+		      </if>
+		      <if test="aliasName != null">
+		        alias_name = #{aliasName,jdbcType=VARCHAR},
+		      </if>
+		      <if test="parentCompany != null">
+		        parent_company = #{parentCompany,jdbcType=VARCHAR},
+		      </if>
+		      <if test="parentId != null">
+		        parent_id = #{parentId,jdbcType=BIGINT},
+		      </if>
+		      <if test="officialurl != null">
+		        officialurl = #{officialurl,jdbcType=VARCHAR},
+		      </if>
+		      <if test="founder != null">
+		        founder = #{founder,jdbcType=VARCHAR},
+		      </if>
+		      <if test="zhName != null">
+		        zh_name = #{zhName,jdbcType=VARCHAR},
+		      </if>
+		      <if test="logoImagePath != null">
+		        logo_image_path = #{logoImagePath,jdbcType=VARCHAR},
+		      </if>
+		      <if test="history != null">
+		        history = #{history,jdbcType=VARCHAR},
+		      </if>
+		      <if test="categories != null">
+		        categories = #{categories,jdbcType=VARCHAR},
+		      </if>
+		      <if test="status != null">
+		        status = #{status,jdbcType=INTEGER},
+		      </if>
+		      <if test="logoThumbPath != null">
+		        logo_thumb_path = #{logoThumbPath,jdbcType=VARCHAR},
+		      </if>
+		      <if test="lastModifyDate != null">
+		        last_modify_date = #{lastModifyDate,jdbcType=VARCHAR},
+		      </if>
+		      <if test="pathName != null">
+		        path_name = #{pathName,jdbcType=VARCHAR},
+		      </if>
+		      <if test="description != null">
+		        description = #{description,jdbcType=LONGVARCHAR}
+		      </if>
+		</set>
+   	 	where id = #{id,jdbcType=BIGINT}
+  		</update>
+    <delete id="deleteById" parameterType="int">
+    	DELETE FROM yunjee_brand WHERE id = #{id}
+    </delete>
+    
+    <delete id="deleteByBrand" parameterType="Brand">
+    	DELETE 
+    	FROM yunjee_brand
+    	<trim prefix="WHERE" prefixOverrides="AND|OR">
+    		<if test="cradle != null">
+    			cradle = #{cradle,jdbcType=VARCHAR}
+	        </if>
+		    <if test="foundedTime != null">
+		        AND founded_time = #{foundedTime,jdbcType=VARCHAR}
+		    </if>
+	      	<if test="enName != null">
+	        	AND en_name = #{enName,jdbcType=VARCHAR}
+	      	</if>
+		    <if test="inChinaTime != null">
+		        AND in_china_time = #{inChinaTime,jdbcType=VARCHAR}
+		    </if>
+		    <if test="aliasName != null">
+		        AND alias_name = #{aliasName,jdbcType=VARCHAR}
+		    </if>
+		    <if test="parentCompany != null">
+		        AND parent_company = #{parentCompany,jdbcType=VARCHAR}
+		    </if>
+		    <if test="parentId != null">
+		        AND parent_id = #{parentId,jdbcType=BIGINT}
+		    </if>
+		    <if test="officialurl != null">
+		        AND officialurl = #{officialurl,jdbcType=VARCHAR}
+		    </if>
+		    <if test="founder != null">
+		        AND founder = #{founder,jdbcType=VARCHAR}
+		    </if>
+		    <if test="zhName != null">
+		        AND zh_name = #{zhName,jdbcType=VARCHAR}
+		    </if>
+		    <if test="logoImagePath != null">
+		        AND logo_image_path = #{logoImagePath,jdbcType=VARCHAR}
+		    </if>
+		    <if test="history != null">
+		        AND history = #{history,jdbcType=VARCHAR}
+		    </if>
+		    <if test="categories != null">
+		        AND categories = #{categories,jdbcType=VARCHAR}
+		    </if>
+		    <if test="status != null">
+		        AND status = #{status,jdbcType=INTEGER}
+		    </if>
+		    <if test="logoThumbPath != null">
+		        AND logo_thumb_path = #{logoThumbPath,jdbcType=VARCHAR}
+		    </if>
+		    <if test="lastModifyDate != null">
+		        AND last_modify_date = #{lastModifyDate,jdbcType=VARCHAR}
+		    </if>
+		    <if test="pathName != null">
+		        AND path_name = #{pathName,jdbcType=VARCHAR}
+		    </if>
+		    <if test="description != null">
+		        AND description = #{description,jdbcType=LONGVARCHAR}
+		    </if>
+		    OR ID = 0
+    	</trim>
+    </delete>
+    
+    <select id="selectAllUsefullBrand" resultMap="BrandMap">
+    	select b.id,b.zh_name,b.en_name,b.path_name,b.logo_thumb_path,sum(s.liked_num) as num 
+    	from yunjee_brand b inner join yunjee_spu s 
+    	on b.id = s.brand_id 
+    	where b.status = 1 and b.logo_image_path != '' and b.logo_thumb_path != '' 
+    	group by b.id
+    	order by num desc
+    </select>
+    
+    <select id="selectBySpuIdList" parameterType="string" resultMap="BrandMap">
+    	select * 
+    	from yunjee_brand
+    	where id in ( 
+    		select distinct brand_id 
+    		from yunjee_spu
+    		where id in (${idList})
+    	)
+    </select>
+    
+    <select id="selectByBrand" parameterType="Brand" resultMap="BrandMap">
+    	SELECT *
+    	FROM yunjee_brand
+    	<trim prefix="WHERE" prefixOverrides="AND|OR">
+    		<if test="cradle != null">
+    			cradle = #{cradle,jdbcType=VARCHAR}
+	        </if>
+		    <if test="foundedTime != null">
+		        AND founded_time = #{foundedTime,jdbcType=VARCHAR}
+		    </if>
+	      	<if test="enName != null">
+	        	AND en_name = #{enName,jdbcType=VARCHAR}
+	      	</if>
+		    <if test="inChinaTime != null">
+		        AND in_china_time = #{inChinaTime,jdbcType=VARCHAR}
+		    </if>
+		    <if test="aliasName != null">
+		        AND alias_name = #{aliasName,jdbcType=VARCHAR}
+		    </if>
+		    <if test="parentCompany != null">
+		        AND parent_company = #{parentCompany,jdbcType=VARCHAR}
+		    </if>
+		    <if test="parentId != null">
+		        AND parent_id = #{parentId,jdbcType=BIGINT}
+		    </if>
+		    <if test="officialurl != null">
+		        AND officialurl = #{officialurl,jdbcType=VARCHAR}
+		    </if>
+		    <if test="founder != null">
+		        AND founder = #{founder,jdbcType=VARCHAR}
+		    </if>
+		    <if test="zhName != null">
+		        AND zh_name = #{zhName,jdbcType=VARCHAR}
+		    </if>
+		    <if test="logoImagePath != null">
+		        AND logo_image_path = #{logoImagePath,jdbcType=VARCHAR}
+		    </if>
+		    <if test="history != null">
+		        AND history = #{history,jdbcType=VARCHAR}
+		    </if>
+		    <if test="categories != null">
+		        AND categories = #{categories,jdbcType=VARCHAR}
+		    </if>
+		    <if test="status != null">
+		        AND status = #{status,jdbcType=INTEGER}
+		    </if>
+		    <if test="logoThumbPath != null">
+		        AND logo_thumb_path = #{logoThumbPath,jdbcType=VARCHAR}
+		    </if>
+		    <if test="lastModifyDate != null">
+		        AND last_modify_date = #{lastModifyDate,jdbcType=VARCHAR}
+		    </if>
+		    <if test="pathName != null">
+		        AND path_name = #{pathName,jdbcType=VARCHAR}
+		    </if>
+		    <if test="description != null">
+		        AND description = #{description,jdbcType=LONGVARCHAR}
+		    </if>
+    	</trim>
+    </select>
+    
+	<select id="selectById" parameterType="int" resultMap="BrandMap">
+	    SELECT * FROM yunjee_brand WHERE id = #{id}
+	</select>
+</mapper>

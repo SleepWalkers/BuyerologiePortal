@@ -1,0 +1,16 @@
+## 加载全局模板配置
+#parse("common/config/gv_config.vm")
+<!DOCTYPE HTML>
+<html lang="zh-CN" xmlns:wb="http://open.weibo.com/wb">
+<head>
+<title>#if($pageName == "homepage" || $pageName == "course")$gv_siteTitle#else$!{title} - $gv_siteTitle#end</title>
+<meta charset="utf-8" />
+<meta name="keywords" content="$!{keywords}" />
+<meta name="description" content="$!{description}" />
+
+#set($commonLayout = true)
+
+## 引入头部CSS
+#parse("common/layout/headCSS.vm")
+
+</head>

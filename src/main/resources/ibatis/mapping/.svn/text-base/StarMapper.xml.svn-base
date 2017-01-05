@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yunjee.common.dao.StarDao">
+
+    <resultMap id="StarMap" type="Star" >
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="avatar" property="avatar" jdbcType="VARCHAR" />
+		<result column="nick" property="nick" jdbcType="VARCHAR" />
+		<result column="type" property="type" jdbcType="VARCHAR" />
+		<result column="description" property="description" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<insert id="insertStar" parameterType="Star">
+		INSERT INTO yunjee_star
+	      (nick, avatar, type, description)
+	    VALUES
+	      (#{nick}, #{avatar}, #{type}, #{description})
+	</insert>
+	
+	<update id="updateStar" parameterType="Star">
+    	UPDATE yunjee_star 
+    	<set>
+      		<if test="nick != null">
+    			nick = #{nick},
+	        </if>
+	        
+      		<if test="avatar != null">
+    			avatar = #{avatar},
+	        </if>
+	        
+      		<if test="type != null">
+    			type = #{type},
+	        </if>
+	        
+      		<if test="description != null">
+    			description = #{description}
+	        </if>
+	    </set>
+    	WHERE id = #{id}
+    </update>
+    
+    <delete id="deleteById" parameterType="int">
+    	DELETE FROM yunjee_star where id = #{id}
+    </delete>
+    
+    <delete id="deleteByStar" parameterType="Star">
+    	DELETE
+    	FROM yunjee_star
+    	<trim prefix="WHERE" prefixOverrides="AND|OR">
+       		<if test="nick != null">
+    			nick = #{nick}
+	        </if>
+	        
+      		<if test="avatar != null">
+    			AND avatar = #{avatar}
+	        </if>
+	        
+      		<if test="type != null">
+    			AND type = #{type}
+	        </if>
+	        
+      		<if test="description != null">
+    			AND description = #{description}
+	        </if>   
+	       		OR ID = 0	
+    	</trim>
+    </delete>
+    
+    <select id="selectById" parameterType="int" resultMap="StarMap">
+    	SELECT * FROM yunjee_star WHERE id = #{id}
+    </select>
+    
+    <select id="selectByTypeAndBrandId" parameterType="map" resultMap="StarMap">
+    	select * 
+    	from yunjee_star
+    	where type = #{type} and id in ( 
+    		select user_id 
+    		from yunjee_r_user_brand
+    		where brand_id = #{brandId}
+    	)
+    </select>
+    
+    <select id="selectByTypeAndSpuId" parameterType="CommentVO" resultMap="StarMap">
+    	select * 
+    	from yunjee_star
+		where type = #{type} and id in ( 
+			select user_id 
+			from yunjee_r_user_spu
+			where type = #{type} and spu_id = #{spuId}
+		)
+    </select>
+    
+    <select id="selectByStar" parameterType="Star" resultMap="StarMap">
+    	SELECT * 
+    	FROM yunjee_star
+        <trim prefix="WHERE" prefixOverrides="AND|OR">
+       		<if test="nick != null">
+    			nick = #{nick}
+	        </if>
+	        
+      		<if test="avatar != null">
+    			AND avatar = #{avatar}
+	        </if>
+	        
+      		<if test="type != null">
+    			AND type = #{type}
+	        </if>
+	        
+      		<if test="description != null">
+    			AND description = #{description}
+	        </if>  
+    	</trim>
+    </select>
+</mapper>

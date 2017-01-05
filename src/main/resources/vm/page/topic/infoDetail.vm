@@ -1,0 +1,54 @@
+#set($title = $!{newsDetail.title})
+#parse("common/layout/head.vm")
+
+<body class="info_detail">
+#parse("page/brick/registerBrick.vm")
+	<div class="container">
+		<div class="title">
+			<a href='javascript:history.go(-1)'><img class="back" src="$gv_imgRoot/back.png"></a>
+			<img class="logo" src="$gv_imgRoot/detail_logo.png">
+			<p>$!{newsDetail.title}</p>
+			<span class="author">作者：$!{newsDetail.creatorName}</span>
+			<span class="date">时间：$!date.format('yyyy-MM-dd HH:mm:ss ',$!newsDetail.postTime)</span>
+		</div>
+		
+
+		<div class="content">
+			$!{newsDetail.content.content}
+			#if(!$!{newsDetail.isCollected})
+			<button id="favourite_btn" class="btn favourite j_fav" data-logged=#if($!{gvUser})"true"#else"false"#end data-favourite="/api/topic/collect" data-info-id="$!{newsDetail.id}"><img src="$gv_imgRoot/star.png"><span>收藏</span></button>
+			#else
+			<button class="btn favourite" data-logged=#if($!{gvUser})"true"#else"false"#end data-favourite="/api/topic/uncollect" data-info-id="$!{newsDetail.id}" disabled>已收藏</button>
+			#end
+		</div>
+
+		<div class="comment_block">
+			<div class="comment_heading">
+				<p class="comment_title">评论（$!{totalNum}）</p>
+				#if($!{gvUser})
+    				<form class="comment_form clearfix" id="commentForm">
+    					<img src="$!{gvUser.avatar}">
+						<input type="hidden" name="newsId" value=$!{newsDetail.id} />
+    					<textarea rows="4" name="comment"></textarea>
+						<button type="submit" id="comment_btn" class="btn j_comment_button" data-comment="/api/comment/publish">发表评论</button>
+    				</form>
+				#else
+					<p >您需要<a data-toggle="modal" data-target="#loginModal">登录</a>后才可以进行评论。</p>
+				#end
+			</div>
+			<div class="comment_body">
+				#set($comments = $!{newsDetail.comments})
+				#set($nextPage = $page+1)
+				#if($nextPage != $!{totalPage})
+					#set($nextPageCommentUrl = "/api/comment/getComment?topicId=$!{newsDetail.id}&page=$math.add($nextPage,1)&pageSize=3")
+				#end
+				#set($getCommentsUrl = "/api/comment/getComment?topicId=$!{newsDetail.id}&page=$!{nextPage}&pageSize=3&getCommentsUrl=$link.encode($!{nextPageCommentUrl})")
+				#parse("page/brick/commentBrick.vm")
+			</div>
+		</div>
+	</div>
+    <!-- end -->	
+	#parse("common/layout/foot.vm")
+    <script type="text/javascript" src="$gv_jsRoot/page/info_detail.js"></script>
+</body>
+</html>

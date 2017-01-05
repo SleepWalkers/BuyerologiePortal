@@ -1,0 +1,23 @@
+## TODO 做成自动配置
+#set($isTestEnv = false)
+
+## 是否活动期间 ##
+#set($gv_isInEvent=false)
+##
+
+## 网站主title ##
+#set($gv_siteTitle = "尚课 - Buyerology")
+
+## api 根目录 ##
+#set($gv_apiRoot = "/api")
+
+## assets 根目录 ##
+#set($gv_assetsRoot = "/assets")
+## 图片 根目录 ##
+#set($gv_imgRoot = "$gv_assetsRoot/img")
+## css 根目录 ##
+#set($gv_cssRoot = "$gv_assetsRoot/css")
+## js 根目录 ##
+#set($gv_jsRoot = "$gv_assetsRoot/js")
+
+#set($domain = "http://localhost")

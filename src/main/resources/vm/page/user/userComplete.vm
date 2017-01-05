@@ -1,0 +1,80 @@
+#set($title = $!{user.username})
+<#parse("common/layout/head.vm")
+<body class="about_us">
+
+    <div class="user_complete">
+        <div class="container">
+            <img src="$gv_imgRoot/sub_logo.png">
+            <p>恭喜您注册成为BUYEROLOGY会员，请您进一步完善您的个人信息。</p>
+
+            <form class="form-horizontal" enctype="multipart/form-data" action="/api/user/edit" method="POST">
+                <div class="form-group account">
+                    <label class="col-sm-2">账号</label>
+                    <span class="col-sm-10 not_send">
+                        <span id="account">$!{user.username}</span>
+                    </span>
+                </div>
+
+                <div class="form-group nick">
+                    <label class="col-sm-2">昵称</label>
+                    <div class="col-sm-10">
+                      <input id="nickname" type="text" name="nickname" class="form-control" placeholder="请填写您的昵称" value="$!{user.nickname}">
+                    </div>
+                </div>
+
+                <div class="form-group avatar">
+                    <label class="col-sm-2">头像</label>
+                    <div class="col-sm-10">
+                        <img id="avatar_preview" src="$!{user.avatar}">
+                        <a class="btn btn-default upload">上传头像
+                            <input id="avatar_input" type="file" name="avatarFile" />
+                        </a>
+                    </div>
+                </div>
+
+                <div class="form-group job">
+                    <label class="col-sm-2">职业</label>
+                    <div class="col-sm-10">
+                        <div class="select_job">
+                            <div class="block"><span id="job" name="profession">#if($!{user.profession}!="")$!{user.profession}#{else}请选择您的职业#end</span><img src="$gv_imgRoot/black_down.png"></div>
+
+                            <ul class="selectJobModal">
+                                <div class="arrow"></div>
+                                <li><span class="glyphicon glyphicon-ok"></span>设计师</li>
+                                <li><span class="glyphicon glyphicon-ok"></span>学生</li>
+                                <li><span class="glyphicon glyphicon-ok"></span>自由职业者</li>
+                                <li><span class="glyphicon glyphicon-ok"></span>其他</li>
+                            </ul>
+                            <input name="profession" type="hidden" value="$!{user.profession}">
+                        </div>
+                    </div>
+                </div>
+
+                <p><img src="$gv_imgRoot/success.png">我已经认真阅读并接受<a>《BUYEROLOGY免责声明》</a></p>
+                <button id="submit_btn" class="btn btn-default">提交</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 验证码错误弹窗 -->
+    <div class="modal fade myModal" id="codeWrongModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              </div>
+
+              <div class="modal-body clearfix">
+                <img src="$gv_imgRoot/logo1.png">
+                <p>提示：</p>
+                <p><img src="$gv_imgRoot/failed.png">验证码错误，请您核对后重新填写！</p>
+                <button class="btn btn-default confirm_btn" data-dismiss="modal">确定</button>
+              </div>
+            </div>
+        </div>
+    </div>
+	#parse("common/layout/foot.vm")
+	<script type="text/javascript" src="$gv_jsRoot/page/user_complete.js"></script>
+</body>
+</html>

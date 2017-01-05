@@ -1,0 +1,56 @@
+<!-- 重复此段到标记end位置 -->
+#foreach($news in $!{newses})
+#if($math.mod($velocityCount,2) == 1)
+<div class="row">
+#end
+	#set($sectionNum = $math.add($math.mod($math.sub($velocityCount,"1"),"6"),"1"))
+    <div class="col-sm-6 section$sectionNum">
+		#if($velocityCount == 1)
+		<img class="dec" src="$gv_imgRoot/wave_line2.png">
+        <img class="dec" src="$gv_imgRoot/cross.png">
+        <img class="dec" src="$gv_imgRoot/up_tri.png">
+		#end
+		#if($velocityCount == 4)
+        <img class="dec" src="$gv_imgRoot/up_tri.png">
+		#end
+		#if($velocityCount == 5)
+        <img class="dec" src="$gv_imgRoot/wave_line3.png">
+		#end
+		#if($velocityCount == 6)
+        <img class="dec" src="$gv_imgRoot/points.png">
+        <img class="dec" src="$gv_imgRoot/cross.png">
+		#end
+		#if($velocityCount == 9)
+        <img class="dec" src="$gv_imgRoot/up_tri.png">
+		#end
+		#if($velocityCount == 10)
+        <img class="dec1" src="$gv_imgRoot/wave_line3.png">
+		#end
+		#if($velocityCount == 11)
+        <img class="dec1" src="$gv_imgRoot/points.png">
+        <img class="dec1" src="$gv_imgRoot/cross.png">
+        <img class="dec1" src="$gv_imgRoot/up_tri.png">
+		#end
+		#if($velocityCount == 12)
+        <img class="dec1" src="$gv_imgRoot/wave_line2.png">
+        <img class="dec1" src="$gv_imgRoot/cross.png">
+		#end
+        <a href="/news/articles/$!{news.id}.html">
+			#foreach($image in $!{news.images})
+            <img src="$!{image.imagePath}">
+			#end
+            <p>$!{news.title}</p>
+        </a>
+    </div>
+#if($math.mod($velocityCount,2) == 0 || $velocityCount == $!{newses.size()})
+</div>
+#end
+#end
+
+#if($!{totalPage} >= $!{page})
+<div class="infinite_scroll_next" style="hidden">
+    <!-- 请求下拉页面url -->
+    <a href="/news/list?page=$!{page}"></a>
+</div>
+#end
+<!-- end -->

@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yunjee.common.dao.TopicDao">
+    <resultMap id="TopicMap" type="Topic" >
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="creator_id" property="creatorId" jdbcType="BIGINT" />
+		<result column="type_id" property="typeId" jdbcType="BIGINT" />
+		<result column="title" property="title" jdbcType="VARCHAR" />
+		<result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+		<result column="tags" property="tags" jdbcType="VARCHAR" />
+		<result column="keywords" property="keywords" jdbcType="LONGVARCHAR"/>
+		<result column="content" property="content" jdbcType="LONGVARCHAR"/>
+		<result column="preview_img" property="previewImg" jdbcType="VARCHAR" />
+		<result column="preview_text" property="previewText" jdbcType="LONGVARCHAR" />
+		<result column="reply_num" property="replyNum" jdbcType="INTEGER" />
+		<result column="view_num" property="viewNum" jdbcType="INTEGER" />
+		<result column="status" property="status" jdbcType="BIT" />
+		<result column="hot" property="hot" jdbcType="BIT" />
+		<result column="new_reply_id" property="newReplyId" jdbcType="BIGINT" />
+		<result column="last_modify_date" property="lastModifyDate" jdbcType="TIMESTAMP" />
+		<result column="main_reply_num" property="mainReplyNum" jdbcType="INTEGER" />
+	</resultMap>
+	
+	<insert id="insertTopic" parameterType="Topic" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO yunjee_topic
+	      (type_id, creator_id, create_date, last_modify_date, title, content, 
+	      		preview_img, preview_text, tags, keywords,
+	      		main_reply_num, reply_num, view_num, status, hot,
+	      		new_reply_id)
+	    VALUES
+	      (#{typeId}, #{creatorId}, #{createDate}, #{lastModifyDate}, #{title},  #{content}, 
+	      		#{previewImg}, #{previewText}, #{tags}, #{keywords},
+	      		#{mainReplyNum}, #{replyNum}, #{viewNum},#{status}, #{hot}, 
+	      		#{newReplyId})
+	</insert>
+	
+	<update id="updateTopic" parameterType="Topic">
+    	UPDATE yunjee_topic 
+    	<set>
+    		<if test="typeId != null">
+    			type_id = #{typeId},
+	        </if>
+
+      		<if test="creatorId != null">
+    			creator_id = #{creatorId},
+	        </if>
+
+      		<if test="createDate != null">
+    			create_date = #{createDate},
+	        </if>
+
+		    <if test="lastModifyDate != null">
+    			last_modify_date = #{lastModifyDate},
+	        </if>
+
+		    <if test="title != null">
+    			title = #{title},
+	        </if>
+
+		    <if test="content != null">
+    			content = #{content},
+	        </if>
+
+		    <if test="previewImg != null">
+    			preview_img = #{previewImg},
+	        </if>
+
+		    <if test="previewText != null">
+    			preview_text = #{previewText},
+	        </if>
+
+		    <if test="tags != null">
+    			tags = #{tags},
+	        </if>
+
+      		<if test="keywords != null">
+    			keywords = #{keywords},
+	        </if>
+
+      		<if test="mainReplyNum != null">
+    			main_reply_num = #{mainReplyNum},
+	        </if>
+
+		    <if test="replyNum != null">
+    			reply_num = #{replyNum},
+	        </if>
+
+		    <if test="viewNum != null">
+    			view_num = #{viewNum},
+	        </if>
+
+		    <if test="status != null">
+    			status = #{status},
+	        </if>
+
+		    <if test="hot != null">
+    			hot = #{hot},
+	        </if>
+
+		    <if test="newReplyId != null">
+    			new_reply_id = #{newReplyId}
+	        </if>
+		</set>
+    	WHERE id = #{id}
+    </update>
+    
+    <delete id="deleteById" parameterType="int">
+    	DELETE FROM yunjee_topic WHERE id = #{id}
+    </delete>
+    
+    <delete id="deleteByTopic" parameterType="int">
+    	DELETE 
+    	FROM yunjee_topic
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="typeId != null">
+    			type_id = #{typeId}
+	        </if>
+
+      		<if test="creatorId != null">
+    			AND creator_id = #{creatorId}
+	        </if>
+
+      		<if test="createDate != null">
+    			AND create_date = #{createDate}
+	        </if>
+
+		    <if test="lastModifyDate != null">
+    			AND last_modify_date = #{lastModifyDate}
+	        </if>
+
+		    <if test="title != null">
+    			AND title = #{title}
+	        </if>
+
+		    <if test="content != null">
+    			AND content = #{content}
+	        </if>
+
+		    <if test="previewImg != null">
+    			AND preview_img = #{previewImg}
+	        </if>
+
+		    <if test="previewText != null">
+    			AND preview_text = #{previewText}
+	        </if>
+
+		    <if test="tags != null">
+    			AND tags = #{tags}
+	        </if>
+
+      		<if test="keywords != null">
+    			AND keywords = #{keywords}
+	        </if>
+
+      		<if test="mainReplyNum != null">
+    			AND main_reply_num = #{mainReplyNum}
+	        </if>
+
+		    <if test="replyNum != null">
+    			AND reply_num = #{replyNum}
+	        </if>
+
+		    <if test="viewNum != null">
+    			AND view_num = #{viewNum}
+	        </if>
+
+		    <if test="status != null">
+    			AND status = #{status}
+	        </if>
+
+		    <if test="hot != null">
+    			AND hot = #{hot}
+	        </if>
+
+		    <if test="newReplyId != null">
+    			AND new_reply_id = #{newReplyId}
+	        </if>
+	        	OR ID = 0
+		</trim>
+    </delete>
+    
+    <select id="selectById" parameterType="int" resultMap="TopicMap">
+    	SELECT * FROM yunjee_topic WHERE id = #{id}
+    </select>
+    
+    
+    <select id="selectByUserIdOrderByCreateDateWithLimit" parameterType="map" resultMap="TopicMap">
+    	select *
+    	from yunjee_topic
+    	where status != -1 and creator_id = #{userId}
+		order by create_date desc
+        <if test="start != null">
+        	<if test="limit != null">
+        		limit ${start},${limit}    
+        	</if>
+        </if>
+   	
+   		<if test="start == null">
+   			<if test="limit != null">
+   				limit ${limit}
+   			</if>
+   		</if>
+    </select>  
+    
+    <select id="selectByTypeListOrderByHotWithLimit" parameterType="map" resultMap="TopicMap">
+        select *
+    	from yunjee_topic
+    	where status != -1 AND type_id in (${typeList}) AND hot >= #{hot}
+    	order by last_modify_date desc
+    	<if test="start != null">
+        	<if test="limit != null">
+        		limit ${start},${limit}    
+        	</if>
+        </if>
+   	
+   		<if test="start == null">
+   			<if test="limit != null">
+   				limit ${limit}
+   			</if>
+   		</if>
+    </select>
+    
+    <select id="selectByUserIdAndTypeWithLimit" parameterType="map" resultMap="TopicMap">
+        select *
+    	from yunjee_topic
+    	where status != -1 AND type_id in (${typeList})    				
+   			AND id in (
+   					select distinct topic_id 
+   					from yunjee_r_user_topic
+   					where type = #{type} and  user_id =#{userId} )
+    	order by last_modify_date desc
+    	<if test="start != null">
+        	<if test="limit != null">
+        		limit ${start},${limit}    
+        	</if>
+        </if>
+   	
+   		<if test="start == null">
+   			<if test="limit != null">
+   				limit ${limit}
+   			</if>
+   		</if>
+    </select>
+     
+    <select id="selectByParameters" parameterType="SQLParameters" resultMap="TopicMap">
+    	select *
+    	from yunjee_topic
+		<where>
+			status != -1
+			
+	        <if test="userId != null">
+    			<if test="type == null">
+    				AND creator_id = #{userId}
+    			</if>
+	        </if>
+	        
+	        <if test="type != null">
+    			<if test="userId != null">
+    				AND id in (
+    					select distinct topic_id 
+    					from yunjee_r_user_topic
+    					where type = #{type} and  user_id =#{userId} )
+	        	</if>
+	        </if>
+		
+			<if test="hot != null">
+    			AND hot >= #{hot}
+	        </if>
+	        
+	        <if test="typeList != null">
+	        	AND type_id in (${typeList})
+	        </if>
+		</where>
+		
+        <if test="orderBy != null">
+   			order by ${orderBy}
+        </if>
+        
+        <if test="start != null">
+        	<if test="limit != null">
+        		limit ${start},${limit}    
+        	</if>
+        </if>
+   	
+   		<if test="start == null">
+   			<if test="limit != null">
+   				limit ${limit}
+   			</if>
+   		</if>
+    </select>
+    
+    <select id="countAll" parameterType="String" resultType="int">
+    	select count(*)
+    	from yunjee_topic
+    	where status != -1
+    	    <if test="typeList != null">
+    			AND type_id in (${typeList})
+    		</if>
+    </select>
+    
+    <select id="countHot" parameterType="String" resultType="int">
+    	select count(*)
+    	from yunjee_topic
+    	where status != -1 and hot >= 1
+    	    <if test="typeList != null">
+    			AND type_id in (${typeList})
+    		</if>
+    </select>
+    
+    <select id="countByUserId" parameterType="int" resultType="int">
+    	select count(*)
+    	from yunjee_topic
+    	where status != -1 AND creator_id = #{userId}
+    </select>   
+
+    <select id="countByUserIdAndTypeList" parameterType="map" resultType="int">
+    	select count(*)
+    	from yunjee_topic
+    	where status != -1 AND creator_id = #{userId}
+    	    <if test="typeList != null">
+    			AND type_id in (${typeList})
+    		</if>
+    </select>   
+    
+    <select id="countByUserIdAndType" parameterType = "map" resultType="int">
+    	select count(*)
+    	from yunjee_topic
+    	where status != -1     			    
+    		AND id in (
+ 				select distinct topic_id 
+ 				from yunjee_r_user_topic
+ 				where type = #{type} and  user_id = #{userId})
+ 		    <if test="typeList != null">
+    			AND type_id in (${typeList})
+    		</if>		
+    </select>         
+        
+        
+    <select id="countByParameters" parameterType="SQLParameters" resultType="int">
+    	select count(*) 
+    	from yunjee_topic
+    	<where>
+    		status != -1
+    		<if test="userId != null">
+    			<if test="type == null">
+    				AND creator_id = #{userId}
+    			</if>
+	        </if>
+    	
+    		<if test="typeList != null">
+    			AND type_id in (${typeList})
+    		</if>
+    		
+    		<if test="type != null">
+    			<if test="userId != null">
+    			    AND id in (
+	    				select distinct topic_id 
+	    				from yunjee_r_user_topic
+	    				where type = #{type} and  user_id = #{userId})
+	        	</if>
+	        </if>
+	        
+	        <if test="hot != null">
+    			AND hot >= ${hot}
+	        </if>
+    	</where>
+    </select>
+    
+    <select id="selectByTopic" parameterType="Topic" resultMap="TopicMap">
+    	SELECT * 
+    	FROM yunjee_topic
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="typeId != null">
+    			type_id = #{typeId}
+	        </if>
+
+      		<if test="creatorId != null">
+    			AND creator_id = #{creatorId}
+	        </if>
+
+      		<if test="createDate != null">
+    			AND create_date = #{createDate}
+	        </if>
+
+		    <if test="lastModifyDate != null">
+    			AND last_modify_date = #{lastModifyDate}
+	        </if>
+
+		    <if test="title != null">
+    			AND title = #{title}
+	        </if>
+
+		    <if test="content != null">
+    			AND content = #{content}
+	        </if>
+
+		    <if test="previewImg != null">
+    			AND preview_img = #{previewImg}
+	        </if>
+
+		    <if test="previewText != null">
+    			AND preview_text = #{previewText}
+	        </if>
+
+		    <if test="tags != null">
+    			AND tags = #{tags}
+	        </if>
+
+      		<if test="keywords != null">
+    			AND keywords = #{keywords}
+	        </if>
+
+      		<if test="mainReplyNum != null">
+    			AND main_reply_num = #{mainReplyNum}
+	        </if>
+
+		    <if test="replyNum != null">
+    			AND reply_num = #{replyNum}
+	        </if>
+
+		    <if test="viewNum != null">
+    			AND view_num = #{viewNum}
+	        </if>
+
+		    <if test="status != null">
+    			AND status = #{status}
+	        </if>
+
+		    <if test="hot != null">
+    			AND hot = #{hot}
+	        </if>
+
+		    <if test="newReplyId != null">
+    			AND new_reply_id = #{newReplyId}
+	        </if>
+		</trim>    	
+    </select>
+</mapper>

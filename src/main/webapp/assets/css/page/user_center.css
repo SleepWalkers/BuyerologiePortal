@@ -1,0 +1,217 @@
+.user_center hr {
+  height: 12px;
+  background-color: #f2f2f3;
+  margin: 0; }
+.user_center .heading {
+  padding: 36px;
+  position: relative; }
+  .user_center .heading .avatar {
+    width: 145px;
+    height: 145px;
+    position: absolute;
+    top: 36px;
+    left: 36px;
+    border-radius: 6px; }
+  .user_center .heading .right {
+    padding-left: 205px; }
+    .user_center .heading .right .user_name {
+      font-size: 24px;
+      color: #2E2E2E;
+      margin: 12px 0 15px;
+      display: inline-block; }
+    .user_center .heading .right .member_type {
+      display: inline-block;
+      line-height: 24px;
+      background: #F4D485;
+      border-radius: 64px;
+      color: #fff;
+      font-size: 14px;
+      margin-left: 18px;
+      padding: 0 9px;
+      position: relative;
+      top: -4px; }
+    .user_center .heading .right .note {
+      font-size: 16px;
+      color: #2E2E2E;
+      margin-bottom: 0; }
+    .user_center .heading .right #edit_btn {
+      float: right;
+      background-color: #fff;
+      border-color: #8094CC;
+      color: #8094CC; }
+    .user_center .heading .right .progress_point {
+      width: 220px; }
+      .user_center .heading .right .progress_point .point {
+        width: 9px;
+        height: 12px;
+        position: relative;
+        margin-left: -4.5px; }
+    .user_center .heading .right .progress {
+      width: 220px;
+      height: 6px;
+      margin-bottom: 13px;
+      border-radius: 8px; }
+      .user_center .heading .right .progress .progress-bar {
+        background-color: #F4D485;
+        box-shadow: none;
+        -webkit-box-shadow: none;
+        -o-box-shadow: none; }
+    .user_center .heading .right .day_left {
+      font-size: 12px;
+      color: #575757; }
+.user_center .content_body {
+  background-color: #f2f2f3;
+  padding: 10px 0 50px; }
+  .user_center .content_body .user_nav {
+    text-align: center;
+    margin-bottom: 18px; }
+    .user_center .content_body .user_nav .nav-pills {
+      display: inline-block; }
+      .user_center .content_body .user_nav .nav-pills li {
+        font-size: 16px;
+        background-color: #f2f2f3;
+        margin: 0 30px; }
+        .user_center .content_body .user_nav .nav-pills li a {
+          color: #2E2E2E; }
+          .user_center .content_body .user_nav .nav-pills li a span {
+            display: inline-block;
+            line-height: 27px;
+            padding: 0 4px; }
+        .user_center .content_body .user_nav .nav-pills li.active a, .user_center .content_body .user_nav .nav-pills li:hover a, .user_center .content_body .user_nav .nav-pills li:focus a, .user_center .content_body .user_nav .nav-pills li:active a {
+          background-color: #f2f2f3;
+          color: #8094CC; }
+          .user_center .content_body .user_nav .nav-pills li.active a span, .user_center .content_body .user_nav .nav-pills li:hover a span, .user_center .content_body .user_nav .nav-pills li:focus a span, .user_center .content_body .user_nav .nav-pills li:active a span {
+            border-bottom: 3px solid #8094CC; }
+  .user_center .content_body .lesson_part .col-sm-4 {
+    padding: 0 5px 50px; }
+    .user_center .content_body .lesson_part .col-sm-4 .title {
+      height: 65px;
+      line-height: 65px;
+      border-radius: 4px 4px 0px 0px;
+      font-size: 20px;
+      color: #FFFFFF;
+      text-align: center;
+      margin-bottom: 4px; }
+      .user_center .content_body .lesson_part .col-sm-4 .title img {
+        display: inline-block;
+        margin-right: 10px; }
+    .user_center .content_body .lesson_part .col-sm-4 .content {
+      background-color: #fff;
+      height: 600px;
+      overflow-y: scroll; }
+      .user_center .content_body .lesson_part .col-sm-4 .content .series .series_title {
+        font-size: 16px;
+        color: #6E778F;
+        padding: 8px 20px;
+        margin: 0;
+        cursor: pointer; }
+        .user_center .content_body .lesson_part .col-sm-4 .content .series .series_title img {
+          margin-right: 10px; }
+      .user_center .content_body .lesson_part .col-sm-4 .content .series ul {
+        padding: 0; }
+        .user_center .content_body .lesson_part .col-sm-4 .content .series ul li {
+          list-style-type: none;
+          padding: 0 20px;
+          clear: both; }
+          .user_center .content_body .lesson_part .col-sm-4 .content .series ul li p {
+            font-size: 12px;
+            color: #575757;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 0; }
+          .user_center .content_body .lesson_part .col-sm-4 .content .series ul li .name {
+            font-size: 14px;
+            color: #2E2E2E;
+            padding-top: 12px;
+            border-bottom: none;
+            -o-text-overflow: ellipsis;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap; }
+          .user_center .content_body .lesson_part .col-sm-4 .content .series ul li img {
+            float: right;
+            margin-left: 20px;
+            height: 20px;
+            width: 20px;
+            cursor: pointer; }
+            .user_center .content_body .lesson_part .col-sm-4 .content .series ul li img.delete_icon {
+              display: none; }
+          .user_center .content_body .lesson_part .col-sm-4 .content .series ul li:hover {
+            background-color: rgba(128, 148, 204, 0.07); }
+            .user_center .content_body .lesson_part .col-sm-4 .content .series ul li:hover img.delete_icon {
+              display: block; }
+    .user_center .content_body .lesson_part .col-sm-4 .footer .col-xs-2 {
+      height: 6px; }
+      .user_center .content_body .lesson_part .col-sm-4 .footer .col-xs-2:nth-child(odd) {
+        background-color: #9AA4BD; }
+      .user_center .content_body .lesson_part .col-sm-4 .footer .col-xs-2:nth-child(even) {
+        background-color: #9AA4BD;
+        opacity: 0.45; }
+  .user_center .content_body .lesson_part .buy_lesson .title {
+    background: #9AA4BD; }
+  .user_center .content_body .lesson_part .learn_lesson .title {
+    background: #C5BCBF; }
+  .user_center .content_body .lesson_part .learn_lesson .footer .col-xs-2:nth-child(odd) {
+    background-color: #C5BCBF; }
+  .user_center .content_body .lesson_part .learn_lesson .footer .col-xs-2:nth-child(even) {
+    background-color: #C5BCBF; }
+  .user_center .content_body .lesson_part .favourite_lesson .title {
+    background: #C8C7CF; }
+  .user_center .content_body .lesson_part .favourite_lesson .footer .col-xs-2:nth-child(odd) {
+    background-color: #C8C7CF; }
+  .user_center .content_body .lesson_part .favourite_lesson .footer .col-xs-2:nth-child(even) {
+    background-color: #C8C7CF; }
+  .user_center .content_body .info_part .col-sm-4 {
+    font-size: 16px; }
+    .user_center .content_body .info_part .col-sm-4 p {
+      z-index: 1;
+      position: relative;
+      padding: 20px 1em;
+      background-color: #fff;
+      height: 84px;
+      margin-bottom: 25px;
+      border-radius: 0 0 4px 4px; }
+      .user_center .content_body .info_part .col-sm-4 p span {
+        display: block;
+        height: 44px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden; }
+    .user_center .content_body .info_part .col-sm-4 .vedio {
+      position: relative;
+      display: block;
+      text-decoration: none;
+      color: #2e2e2e; }
+      .user_center .content_body .info_part .col-sm-4 .vedio img {
+        width: 100%;
+        border-radius: 4px 4px 0 0; }
+      .user_center .content_body .info_part .col-sm-4 .vedio .delete_cover {
+        display: none;
+        background-color: rgba(0, 0, 0, 0.4);
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 73.5%;
+        border-radius: 4px 4px 0 0; }
+        .user_center .content_body .info_part .col-sm-4 .vedio .delete_cover .delete_btn {
+          width: 50px;
+          position: absolute;
+          left: 50%;
+          margin-left: -25px;
+          top: 50%;
+          margin-top: -33px; }
+          .user_center .content_body .info_part .col-sm-4 .vedio .delete_cover .delete_btn img {
+            height: 50px;
+            width: 50px; }
+          .user_center .content_body .info_part .col-sm-4 .vedio .delete_cover .delete_btn span {
+            display: inline-block;
+            width: 50px;
+            text-align: center;
+            margin-top: 16px;
+            color: #fff; }
+    .user_center .content_body .info_part .col-sm-4:hover .delete_cover {
+      display: block; }
+
+/*# sourceMappingURL=user_center.css.map */

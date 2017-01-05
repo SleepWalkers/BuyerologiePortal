@@ -1,0 +1,203 @@
+#set($title = $!{page.title})
+#set($description = $!{page.description})
+#set($keywords = $!{page.keywords})
+
+#parse("common/layout/head.vm")
+<script src='https://player.polyv.net/script/polyvplayer.min.js'></script>
+<body class="shangke_page">
+#parse("common/layout/header.vm")
+
+    <div id="Carousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#Carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#Carousel" data-slide-to="1"></li>
+            <li data-target="#Carousel" data-slide-to="2"></li>
+        </ol>
+
+        <div class="carousel-inner" role="listbox">		
+			#foreach($mainBannerCircle in $!{page.moduleMap.get("首屏Banner")})
+				#if($!{StringUtils.isNotBlank($!{mainBannerCircle.recordMap.get("Banner图片地址").value})})
+					<div class="item #if($velocityCount == 1) active#end" >
+                        <a href="#">
+                            <img src="$!{domain}$!{mainBannerCircle.recordMap.get("Banner图片地址").value}">
+                        </a>
+                    </div>
+				#end
+			#end
+        </div>
+
+        <a class="left carousel-control" href="#Carousel" role="button" data-slide="prev">
+            <img src="$gv_imgRoot/prev.png">
+        </a>
+        <a class="right carousel-control" href="#Carousel" role="button" data-slide="next">
+            <img src="$gv_imgRoot/next.png">
+        </a>
+    </div>
+
+    <div class="work_section">
+        <div class="container">
+            <h3>认识您的工作</h3>
+            <h4>WORK</h4>
+			#foreach($work in $!{page.moduleMap.get("认识您的工作")})
+            <img src="$!{domain}$!{work.recordMap.get("图片1地址").value}">
+            <img src="$!{domain}$!{work.recordMap.get("图片2地址").value}">
+            <p>$!{work.recordMap.get("文字描述").value}
+            </p>
+			#end
+        </div>
+    </div>
+    
+    <div class="row_blue tutor_section">
+        <div class="container">
+            <h3>了解您的导师</h3>
+            <h4>TUTOR</h4>
+			#foreach($tutor in $!{page.moduleMap.get("了解您的导师")})
+            <div class="tutor_info">
+                <img src="$gv_imgRoot/wave_line3.png" class="wave_line">
+                <img src="$!{domain}$!{tutor.recordMap.get("导师头像地址").value}" class="tutor">
+                <p><span>$!{tutor.recordMap.get("导师名字").value}</span><br>$!{tutor.recordMap.get("导师描述").value}</p>
+            </div>
+            <div class="tutor_history row">
+                <div class="col-sm-3">
+                    <div class="diamond"></div>
+                    <p class="year">$!{tutor.recordMap.get("经历描述1-时间").value}</p>
+                    <p>$!{tutor.recordMap.get("经历描述1").value}</p>
+                </div>
+                <div class="col-sm-3">
+                    <div class="diamond"></div>
+                    <p class="year">$!{tutor.recordMap.get("经历描述2-时间").value}</p>
+                    <p>$!{tutor.recordMap.get("经历描述2").value}</p>
+                </div>
+                <div class="col-sm-3">
+                    <div class="diamond"></div>
+                    <p class="year">$!{tutor.recordMap.get("经历描述3-时间").value}</p>
+                    <p>$!{tutor.recordMap.get("经历描述3").value}</p>
+                </div>
+                <div class="col-sm-3">
+                    <div class="diamond"></div>
+                    <p class="year">$!{tutor.recordMap.get("经历描述4-时间").value}</p>
+                    <p>$!{tutor.recordMap.get("经历描述4").value}</p>
+                </div>
+            </div>
+			#end
+        </div>
+    </div>
+
+    <div class="course_section">
+        <div class="container">
+            <h3>免费试听课程</h3>
+            <h4>COURSE</h4>
+            <!-- data-logged判断登录，需登录链接到对应的课程列表页 -->
+            <div class="row">
+				
+				#foreach($trialCourse in $!{page.moduleMap.get("免费试听课程")})
+				#if($!{StringUtils.isNotBlank($!{trialCourse.recordMap.get("试看视频标题").value})})
+                <div class="col-sm-4">
+                    <a class="vedio" data-logged="#if($!{gvUser})true#{else}false#end" data-course-id="$!{trialCourse.recordMap.get("尚课ID").value}" onclick="go_course_page(this)">
+                        <img src="$!{trialCourse.recordMap.get("试看视频图片地址").value}">
+                        <img src="$gv_imgRoot/course_play.png" class="play_icon">
+                    </a>
+                    <p>$!{trialCourse.recordMap.get("试看视频标题").value}</p>
+                </div>
+				#end
+				#end
+            </div>
+        </div>
+    </div>
+
+    <div class="row_blue member_section">
+        <div class="container">
+            <h3>会员介绍</h3>
+            <h4>MEMBER</h4>
+            <div class="row">
+                <!-- 4种会员时，class设为col-sm-3, 3种时是col-sm-4 -->
+                <!-- <div class="col-sm-3">
+                    <div class="member">
+                        <img src="$gv_imgRoot/member3.png">
+                        <p class="price">￥599</p>
+                        <p class="explain">90天（3个月）相当于每天6.6元</p>
+                        <ul class="details">
+                            <li>买手、产品开发、工作实操系列课程</li>
+                            <li>xxx课时（持续更新）</li>
+                            <li>加入会员群</li>
+                            <li>3个月账户有效期</li>
+                        </ul>
+                        <a class="btn" data-logged="false" onclick="go_member_page(this)">立即购买</a>
+                    </div>
+                </div> -->
+
+				#set($memberCount = 0)
+				
+				#foreach($member in $!{page.moduleMap.get("会员介绍")})
+					#if($!{StringUtils.isNotBlank($!{member.recordMap.get("内容描述").value})})
+						#set($memberCount = $memberCount+1)
+					#end
+				#end
+                <!-- 链到会员套餐页 -->
+				#foreach($member in $!{page.moduleMap.get("会员介绍")})
+                <div class="col-sm-#if($memberCount==3)4#{else}3#end">
+                    <div class="member">
+                        <img src="$!{domain}$!{member.recordMap.get("会员名称图片地址").value}">
+                        <p class="price">￥$!{member.recordMap.get("价格").value}</p>
+                        <p class="explain">$!{member.recordMap.get("时间备注").value}</p>
+                        <ul class="details">
+                            $!{member.recordMap.get("内容描述").value}
+                        </ul>
+                        <!-- (data-logged=false)未登录，弹出登录框登录并跳转到会员套餐页；
+                             (data-logged=true)已登录，直接跳转 -->
+                        <a class="btn" data-logged="#if($!{gvUser})true#{else}false#end" onclick="go_member_page(this)">立即购买</a>
+                    </div>
+                </div>
+				#end
+            </div>
+        </div>
+    </div>
+
+    <div class="example_section">
+        <div class="container">
+            <h3>学员案例</h3>
+            <h4>EXAMPLE</h4>
+            <div class="rows">
+				#foreach($memberCase in $!{page.moduleMap.get("学员案例")})
+                <div class="single_row">
+                    <img src="$!{domain}$!{memberCase.recordMap.get("用户头像").value}">
+					<div class="content">
+                        <p>$!{memberCase.recordMap.get("案例描述").value}</p>
+                        <p>$!{memberCase.recordMap.get("案例时间").value}</p>
+                        <span>昵称：$!{memberCase.recordMap.get("昵称").value}</span><span>职业：$!{memberCase.recordMap.get("职业").value}</span><span>年龄：$!{memberCase.recordMap.get("年龄").value}</span>
+                    </div>
+                </div>
+				#end
+            </div>
+        </div>
+    </div>
+
+    <div class="learn_section">
+        <img src="$gv_imgRoot/learn_bg.png" class="bg">
+        <div class="content">
+            <img src="$gv_imgRoot/learn_font.png" class="font">
+            <!-- (data-logged=false)未登录，弹出登录框登录并跳转到课程列表页；
+                 (data-logged=true)已登录，直接跳转 -->
+            <a class="btn" data-logged="false" onclick="go_lesson_list(this)">去试听</a>
+        </div>
+    </div>
+
+    <div class="about_us_section">
+        <div class="container">
+            <h3>关于我们</h3>
+            <h4>ABOUT</h4>
+            <div class="row">
+				#foreach($aboutus in $!{page.moduleMap.get("关于我们")})
+                <div class="col-sm-4">
+                    <p class="title">$!{aboutus.recordMap.get("标题").value}</p>
+                    <p>$!{aboutus.recordMap.get("描述").value}</p>
+                </div>
+				#end
+            </div>
+        </div>
+    </div>
+#parse("common/layout/footer.vm")
+#parse("common/layout/foot.vm")
+<script type="text/javascript" src="$gv_jsRoot/page/shangke.js"></script>
+</body>
+</html>

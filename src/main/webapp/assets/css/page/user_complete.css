@@ -1,0 +1,199 @@
+@charset "UTF-8";
+.user_complete {
+  background-color: #f2f2f3;
+  text-align: center;
+  padding: 50px 0 100px; }
+  .user_complete .container {
+    padding-top: 70px;
+    padding-bottom: 100px;
+    background-color: #fff;
+    border-radius: 6px; }
+    .user_complete .container img {
+      margin-bottom: 24px; }
+    .user_complete .container p {
+      font-size: 16px;
+      color: #575757;
+      margin-bottom: 70px; }
+    .user_complete .container form {
+      width: 780px;
+      display: inline-block;
+      text-align: start;
+      font-size: 20px;
+      color: #2E2E2E; }
+      .user_complete .container form .form-group {
+        margin-bottom: 22px; }
+        .user_complete .container form .form-group label {
+          letter-spacing: 20px;
+          text-align: right;
+          padding-right: 0; }
+        .user_complete .container form .form-group input {
+          box-shadow: none; }
+      .user_complete .container form .account {
+        margin-bottom: 16px; }
+        .user_complete .container form .account label {
+          padding-top: 0; }
+        .user_complete .container form .account .send_text {
+          font-size: 18px;
+          line-height: 28px;
+          display: inline-block;
+          margin-bottom: 10px; }
+          .user_complete .container form .account .send_text a {
+            color: #8094CC; }
+        .user_complete .container form .account input {
+          width: 280px;
+          margin-bottom: 10px;
+          margin-right: 18px;
+          display: inline-block; }
+          .user_complete .container form .account input:focus {
+            outline-color: #8094CC; }
+        .user_complete .container form .account button {
+          display: inline-block;
+          width: 110px;
+          background-color: #A7A7AE;
+          color: #fff;
+          margin: 12px 18px 16px 0; }
+        .user_complete .container form .account .btn-blue {
+          background-color: #8094CC;
+          border-color: #8094CC;
+          color: #fff; }
+      .user_complete .container form #edit_email {
+        color: #8094CC;
+        font-size: 14px;
+        position: relative;
+        left: 90px;
+        bottom: 3px; }
+        .user_complete .container form #edit_email .glyphicon {
+          font-size: 14px; }
+      .user_complete .container form .nick input {
+        width: 280px; }
+        .user_complete .container form .nick input:focus {
+          outline-color: #8094CC; }
+      .user_complete .container form .avatar {
+        position: relative; }
+        .user_complete .container form .avatar img {
+          width: 160px;
+          height: 160px; }
+        .user_complete .container form .avatar .upload {
+          position: absolute;
+          left: 195px;
+          top: 0;
+          background-color: #fff;
+          color: #8094CC;
+          border-color: #8094CC;
+          height: 35px;
+          width: 80px;
+          cursor: pointer; }
+          .user_complete .container form .avatar .upload input {
+            position: absolute;
+            height: 35px;
+            width: 80px;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            cursor: pointer; }
+      .user_complete .container form p {
+        margin: 45px 40px 32px; }
+        .user_complete .container form p img {
+          height: 16px;
+          width: 16px;
+          margin: 0 14px 0 0; }
+      .user_complete .container form #submit_btn {
+        margin-left: 40px;
+        background-color: #8094CC;
+        border-color: #8094CC;
+        color: #fff;
+        font-size: 22px;
+        width: 200px; }
+  .user_complete .select_job {
+    position: relative; }
+    .user_complete .select_job .block {
+      border: 1px solid #E8E8E8;
+      color: #555;
+      border-radius: 4px;
+      width: 280px;
+      font-size: 14px;
+      padding: 6px 12px;
+      height: 34px;
+      cursor: default; }
+      .user_complete .select_job .block img {
+        float: right;
+        position: relative;
+        top: 2px; }
+    .user_complete .select_job .selectJobModal {
+      display: none;
+      position: absolute;
+      left: 145px;
+      top: 55px;
+      width: 145px;
+      background: #FFFFFF;
+      box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.29);
+      border-radius: 3px;
+      z-index: 1;
+      padding-left: 0; }
+      .user_complete .select_job .selectJobModal li {
+        position: relative;
+        display: inline-block;
+        line-height: 30px;
+        width: 100%;
+        font-size: 16px;
+        color: #2E2E2E;
+        text-align: start;
+        cursor: default;
+        z-index: 2; }
+        .user_complete .select_job .selectJobModal li span {
+          display: inline-block;
+          width: 40px;
+          text-align: center;
+          visibility: hidden; }
+        .user_complete .select_job .selectJobModal li:hover {
+          background-color: rgba(128, 148, 204, 0.6); }
+      .user_complete .select_job .selectJobModal .active {
+        color: #8094CC; }
+        .user_complete .select_job .selectJobModal .active span {
+          visibility: visible; }
+        .user_complete .select_job .selectJobModal .active:hover {
+          background-color: #fff; }
+      .user_complete .select_job .selectJobModal .arrow {
+        z-index: 1;
+        position: absolute;
+        left: 72%;
+        top: -6px;
+        width: 16px;
+        height: 16px;
+        background-color: #fff;
+        box-shadow: -2px -2px 4px -3px rgba(0, 0, 0, 0.29);
+        transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        /* IE 9 */
+        -moz-transform: rotate(45deg);
+        /* Firefox */
+        -webkit-transform: rotate(45deg);
+        /* Safari 和 Chrome */
+        -o-transform: rotate(45deg);
+        /* Opera */ }
+
+#codeWrongModal img {
+  margin-bottom: 40px; }
+#codeWrongModal p {
+  text-align: start;
+  font-size: 18px;
+  color: #575757; }
+  #codeWrongModal p:last-of-type {
+    font-size: 16px;
+    margin-bottom: 45px; }
+  #codeWrongModal p img {
+    height: 24px;
+    width: 24px;
+    margin-bottom: 0;
+    margin-right: 12px; }
+#codeWrongModal .modal-body {
+  padding: 0 30px 40px 40px; }
+#codeWrongModal .confirm_btn {
+  background-color: #8094CC;
+  border-color: #8094CC;
+  color: #fff;
+  width: 110px;
+  float: right; }
+
+/*# sourceMappingURL=user_complete.css.map */

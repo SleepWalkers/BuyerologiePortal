@@ -1,0 +1,16 @@
+#if($!{comments})
+	#foreach($comment in $!{comments})
+		<div class="comment_line">
+			<img src="$!{comment.creator.avatar}">
+			<div class="right">
+				<span class="user_name">$!{comment.creator.nickname}</span>
+				<span class="time">$!date.format('yyyy-MM-dd HH:mm:ss ',$!{comment.postTime})</span>
+				<p class="comment_content">$!{comment.comment}</p>
+			</div>
+		</div>						
+	#end
+	<div class="pager" hidden>$!{page}/$!{totalPage}</div>		
+	<div class="see_more" data-more="$!{getCommentsUrl}" #if($!{totalPage}==$!{page})hidden#end>查看更多
+		<span class="glyphicon glyphicon-chevron-down"></span>
+	</div>
+#end
