@@ -39,6 +39,7 @@ public class FileUploadUtils {
                           + multipartFile.getOriginalFilename();
 
         File file = new File(filePath);
+        file.setWritable(true, false);
         try {
             FileCopyUtils.copy(fileBytes, file);
         } catch (IOException e) {

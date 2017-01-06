@@ -19,5 +19,3 @@
 #set($gv_cssRoot = "$gv_assetsRoot/css")
 ## js 根目录 ##
 #set($gv_jsRoot = "$gv_assetsRoot/js")
-
-#set($domain = "http://localhost")

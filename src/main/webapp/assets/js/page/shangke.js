@@ -18,7 +18,7 @@ function go_member_page(obj) {
 
 	if ($logged) {
 		// 跳转会员套餐页
-		// location.href=''
+		location.href='/confirm/order.html'
 	} else {
 		$("#loginModal").modal('show');
 	};

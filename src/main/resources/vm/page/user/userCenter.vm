@@ -6,7 +6,7 @@
     <hr>
 
     <div class="container heading">
-        <img class="avatar" src="$gv_imgRoot/avatar3.png">
+        <img class="avatar" src="$!{user.avatar}">
         <div class="right">
             <p class="user_name">$!{user.nickname}</p>
             ##<span class="member_type">全年会员</span>
