@@ -50,6 +50,7 @@ public class CommentApiController {
         model.addAttribute("getCommentsUrl", getCommentsUrl);
         model.addAttribute("page", page);
 
+        model.addAttribute("topicId", topicId);
         int totalNum = commentService.countComment(topicId);
         model.addAttribute("totalNum", totalNum);
         model.addAttribute("totalPage", PageUtil.calcPageTotal(totalNum, pageSize));

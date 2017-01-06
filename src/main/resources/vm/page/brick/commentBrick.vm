@@ -1,3 +1,9 @@
+#set($nextPage = $page+1)
+#if($nextPage != $!{totalPage})
+	#set($nextPageCommentUrl = "/api/comment/getComment?topicId=$!{topicId}&page=$math.add($nextPage,1)&pageSize=3")
+#end
+#set($getCommentsUrl = "/api/comment/getComment?topicId=$!{topicId}&page=$!{nextPage}&pageSize=3&getCommentsUrl=$!{link.encode($!{nextPageCommentUrl})}")
+
 #if($!{comments})
 	#foreach($comment in $!{comments})
 		<div class="comment_line">
@@ -10,7 +16,7 @@
 		</div>						
 	#end
 	<div class="pager" hidden>$!{page}/$!{totalPage}</div>		
-	<div class="see_more" data-more="$!{getCommentsUrl}" #if($!{totalPage}==$!{page})hidden#end>查看更多
+	<div class="see_more" onclick="show_more(this)" data-more="$!{getCommentsUrl}" #if($!{totalPage}==$!{page})hidden#end>查看更多
 		<span class="glyphicon glyphicon-chevron-down"></span>
 	</div>
 #end

@@ -38,11 +38,7 @@
 			</div>
 			<div class="comment_body">
 				#set($comments = $!{newsDetail.comments})
-				#set($nextPage = $page+1)
-				#if($nextPage != $!{totalPage})
-					#set($nextPageCommentUrl = "/api/comment/getComment?topicId=$!{newsDetail.id}&page=$math.add($nextPage,1)&pageSize=3")
-				#end
-				#set($getCommentsUrl = "/api/comment/getComment?topicId=$!{newsDetail.id}&page=$!{nextPage}&pageSize=3&getCommentsUrl=$link.encode($!{nextPageCommentUrl})")
+				#set($topicId = $!{newsDetail.id})
 				#parse("page/brick/commentBrick.vm")
 			</div>
 		</div>

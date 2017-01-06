@@ -18,7 +18,7 @@
                     <h3 class="course_title">$!{course.title}</h3>
                     <p class="description">$!{course.content.content}</p>
 					
-        			#if(!$!{newsDetail.isCollected})
+        			#if(!$!{course.isCollected})
         			<button id="favourite_btn" class="btn favourite j_fav" data-logged=#if($!{gvUser})"true"#else"false"#end data-favourite="/api/topic/collect" data-info-id="$!{course.id}"><img src="$gv_imgRoot/star.png"><span>收藏</span></button>
         			#else
         			<button class="btn favourite" data-logged=#if($!{gvUser})"true"#else"false"#end data-favourite="/api/topic/uncollect" data-info-id="$!{course.id}" disabled>已收藏</button>
@@ -68,14 +68,9 @@
 						<p>您需要<a>购买课程</a>后，才可以进行评论哦。</p>
 					#end
                 </div>
-                
 			<div class="comment_body">
-				#set($comments = $!{newsDetail.comments})
-				#set($nextPage = $page+1)
-				#if($nextPage != $!{totalPage})
-					#set($nextPageCommentUrl = "/api/comment/getComment?topicId=$!{newsDetail.id}&page=$math.add($nextPage,1)&pageSize=3")
-				#end
-				#set($getCommentsUrl = "/api/comment/getComment?topicId=$!{newsDetail.id}&page=$!{nextPage}&pageSize=3&getCommentsUrl=$link.encode($!{nextPageCommentUrl})")
+				#set($comments = $!{course.comments})
+				#set($topicId = $!{course.id})
 				#parse("page/brick/commentBrick.vm")
 			</div>
         </div>

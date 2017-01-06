@@ -113,17 +113,17 @@ $("#forget_btn").click(function(e) {
 	});
 })
 
-$(".see_more").click(function() {
-	var $current_page = $(".pager:last").text().split("/")[0]
-	var $total_page = $(".pager:last").text().split("/")[1]
+function show_more(obj) {
+	var $current_page = $(".pager:last").text().split("/")[0];
+	var $total_page = $(".pager:last").text().split("/")[1];
 
 	$.ajax({
-		url: $(this).data("more"),
+		url: $(obj).data("more"),
 		data: {
 			//$current_page+1
 		},
 		success: function(data) {
-			$(".see_more:first").remove();
+			$(".see_more").hide();
 			$(".comment_body").append(data);
 			$current_page = $(".pager:last").text().split("/")[0];
 			$total_page = $(".pager:last").text().split("/")[1];
@@ -133,7 +133,7 @@ $(".see_more").click(function() {
 		},
 		type: 'GET',
 	})
-})
+}
 
 function changeModal(obj,target) {
 	$(obj).parents(".myModal").modal('hide');
