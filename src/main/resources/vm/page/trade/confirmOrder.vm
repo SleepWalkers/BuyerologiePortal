@@ -1,0 +1,97 @@
+#set($title = "课程购买")
+#parse("common/layout/head.vm")
+<body>
+#parse("common/layout/header.vm")
+    <div class="course_payment">
+        <div class="container">
+            <div class="sets clearfix">
+				#if($!{products.size()}==3)
+					#set($memberCount = 4)
+				#else
+					#set($memberCount = 3)
+				#end
+                <h5>会员套餐：</h5>
+                <!-- 4个套餐时class设为col-sm-3 -->
+				#foreach($product in $!{products})
+                <div class="col-sm-$memberCount">
+                    <div class="course #if($velocityCount == 1)active#end" data-set="$!{product.id}">
+                        <p><span class="price">¥$!{product.price}</span>／$!{product.availableDays}天</p>
+                        <p>$!{product.name}</p>
+                    </div>
+                </div>
+				#end
+            </div>
+
+			#foreach($product in $!{products})
+            <div class="description set$!{product.id}" hidden>
+                <p>$!{product.name}权益说明：</p>
+                <ul>
+                    $!{product.description}
+                </ul>  
+            </div>
+			#end
+
+            <div class="payment_block">
+                <p>需支付：<span class="payment_amount">¥599.00</span></p>
+                <p>请选择支付方式：</p>
+                <form>
+                    <div style="display:inline-block">
+                        <input type="radio" id="alipay" name="payment" value="alipay" checked="checked" />
+                        <label for="alipay"><p><img src="$gv_imgRoot/alipay.png">支付宝</p></label>
+                    </div>
+
+                    <div style="display:inline-block">
+                        <input type="radio" id="weixinpay" name="payment" value="weixin" />
+                        <label for="weixinpay"><p><img src="$gv_imgRoot/weixin.png">微信支付</p></label>
+                    </div>
+                </form>
+                <button class="btn" id="pay_btn" data-pay="url">确认支付</button>
+                <button class="btn" id="cancel_btn">取消</button>
+            </div>
+        </div>
+	</div>
+
+    <!-- 购买成功弹窗 -->
+    <div class="modal fade myModal" id="paySuccessModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              </div>
+
+              <div class="modal-body">
+                <img src="$gv_imgRoot/logo1.png">
+                <p>恭喜您注册成为BUYEROLOGY尚课的<span class="set_type">全年会员</span>，您可以前往个人中心查看课程列表。</p>
+                <form role="form">
+                    <button class="btn btn-default" onclick="location.href='/account/usercenter'">开始学习</button>
+                </form>
+              </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 购买失败弹窗 -->
+    <div class="modal fade myModal" id="payFailedModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              </div>
+
+              <div class="modal-body clearfix">
+                <img src="$gv_imgRoot/logo1.png">
+                <p>提示：</p>
+                <p><img src="$gv_imgRoot/failed.png">跳转支付失败，请您检查您的网络，重新购买。</p>
+                <button class="btn btn-default confirm_btn" data-dismiss="modal">确定</button>
+              </div>
+            </div>
+        </div>
+    </div>
+
+    #parse("common/layout/footer.vm")
+    #parse("common/layout/foot.vm")
+    <script type="text/javascript" src="$gv_jsRoot/page/course_payment.js"></script>
+</body>
+</html>

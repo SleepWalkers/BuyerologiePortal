@@ -1,0 +1,133 @@
+.course_payment {
+  background-color: #f2f2f3;
+  padding: 50px 0 100px; }
+  .course_payment .container {
+    background-color: #fff;
+    padding: 50px 110px 70px 50px;
+    border-radius: 6px 6px 0 0; }
+    .course_payment .container h5 {
+      font-size: 16px;
+      color: #2E2E2E;
+      margin: 0 0 30px; }
+    .course_payment .container .sets .col-sm-3, .course_payment .container .sets .col-sm-4 {
+      padding: 0 15px 0 0; }
+    .course_payment .container .sets .course {
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      padding: 40px 0;
+      text-align: center;
+      max-width: 270px;
+      cursor: pointer; }
+      .course_payment .container .sets .course p {
+        color: #575757; }
+        .course_payment .container .sets .course p:first-of-type .price {
+          color: #8094CC;
+          font-size: 24px; }
+        .course_payment .container .sets .course p:last-of-type {
+          font-size: 20px; }
+    .course_payment .container .sets .active {
+      border: 2px solid #8094CC; }
+    .course_payment .container .description {
+      margin-bottom: 38px;
+      border-bottom: 2px solid rgba(151, 151, 151, 0.5); }
+      .course_payment .container .description p {
+        font-size: 18px;
+        color: #F09077;
+        margin: 30px 0 23px; }
+      .course_payment .container .description ul {
+        margin-bottom: 30px;
+        padding: 26px 30px;
+        background-color: rgba(242, 242, 243, 0.4);
+        border-radius: 2px; }
+        .course_payment .container .description ul li {
+          list-style-type: decimal;
+          margin-left: 20px;
+          line-height: 28px; }
+    .course_payment .container .payment_block p {
+      font-size: 16px;
+      color: #2E2E2E;
+      margin-bottom: 25px; }
+    .course_payment .container .payment_block .payment_amount {
+      font-size: 26px;
+      color: #F09077;
+      margin-left: 20px; }
+    .course_payment .container .payment_block form {
+      margin-bottom: 40px; }
+      .course_payment .container .payment_block form input[type=radio]:empty {
+        visibility: hidden; }
+      .course_payment .container .payment_block form input[type=radio]:empty ~ label {
+        position: relative;
+        float: left;
+        cursor: pointer;
+        padding-left: 32px;
+        margin-right: 65px;
+        /*					-webkit-user-select: none;
+        					-moz-user-select: none;
+        					-ms-user-select: none;
+        					user-select: none;*/ }
+        .course_payment .container .payment_block form input[type=radio]:empty ~ label p {
+          line-height: 40px;
+          font-size: 16px;
+          border: 1px solid #ccc;
+          border-radius: 2px;
+          margin-bottom: 0;
+          padding: 0 18px; }
+          .course_payment .container .payment_block form input[type=radio]:empty ~ label p img {
+            height: 26px;
+            margin-right: 12px; }
+      .course_payment .container .payment_block form input[type=radio]:empty ~ label:before {
+        position: absolute;
+        display: block;
+        border: 2px solid #979797;
+        border-radius: 50%;
+        top: 50%;
+        margin-top: -8px;
+        left: 0;
+        content: '';
+        width: 16px;
+        height: 16px; }
+      .course_payment .container .payment_block form input[type=radio]:checked ~ label:before {
+        border: 5px solid #8094CC; }
+    .course_payment .container .payment_block .btn {
+      background-color: #a7a7ae;
+      width: 180px;
+      font-size: 22px;
+      padding: 0;
+      line-height: 50px;
+      margin-right: 40px;
+      color: #fff; }
+    .course_payment .container .payment_block #pay_btn {
+      background-color: #8094CC; }
+
+#paySuccessModal img {
+  margin-bottom: 40px; }
+#paySuccessModal p {
+  font-size: 18px;
+  color: #575757;
+  text-align: start;
+  margin-bottom: 14px; }
+
+#payFailedModal img {
+  margin-bottom: 40px; }
+#payFailedModal p {
+  text-align: start;
+  font-size: 18px;
+  color: #575757; }
+  #payFailedModal p:last-of-type {
+    font-size: 16px;
+    margin-bottom: 45px; }
+  #payFailedModal p img {
+    height: 24px;
+    width: 24px;
+    margin-bottom: 0;
+    margin-right: 12px; }
+#payFailedModal .modal-body {
+  padding: 0 30px 40px 40px; }
+#payFailedModal .confirm_btn {
+  background-color: #8094CC;
+  border-color: #8094CC;
+  color: #fff;
+  width: 110px;
+  float: right; }
+
+/*# sourceMappingURL=course_payment.css.map */
