@@ -16,12 +16,12 @@ $("#pay_btn").click(function(e) {
 
 	$.ajax({
 		url: $(this).data("pay"),
-		data: JSON.stringify({
-			set: $set,
-			price: $price,
-			way: $("input[type=radio]:checked").val()
-			//...
-		}),
+		data: {
+			productId: $set,
+			payType: $("input[type=radio]:checked").val()
+		},
+		type: 'POST',
+		dataType:json,
 		success: function(data) {
 			if (data.isRedirect) {
 				location.href=data.redirectURL;
@@ -31,15 +31,10 @@ $("#pay_btn").click(function(e) {
 					$("#paySuccessModal .set_type").text(data.data.set_type);
 					$("#paySuccessModal").modal('show');
 				} else {
-					alert(data.msg);
+					$("#payFailedModal").modal('show');
 				};
 			};
-		},
-		contentType: 'application/json',
-		type: 'POST',
-	}).fail(function() {
-		// 跳转失败弹窗
-		$("#payFailedModal").modal('show');
+		}
 	})
 })
 

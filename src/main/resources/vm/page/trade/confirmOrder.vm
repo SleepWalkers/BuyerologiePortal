@@ -36,16 +36,16 @@
                 <p>请选择支付方式：</p>
                 <form>
                     <div style="display:inline-block">
-                        <input type="radio" id="alipay" name="payment" value="alipay" checked="checked" />
+                        <input type="radio" id="alipay" name="payment" value="1" checked="checked" />
                         <label for="alipay"><p><img src="$gv_imgRoot/alipay.png">支付宝</p></label>
                     </div>
 
                     <div style="display:inline-block">
-                        <input type="radio" id="weixinpay" name="payment" value="weixin" />
+                        <input type="radio" id="weixinpay" name="payment" value="2" />
                         <label for="weixinpay"><p><img src="$gv_imgRoot/weixin.png">微信支付</p></label>
                     </div>
                 </form>
-                <button class="btn" id="pay_btn" data-pay="url">确认支付</button>
+                <button class="btn" id="pay_btn" data-pay="/trade/check">确认支付</button>
                 <button class="btn" id="cancel_btn">取消</button>
             </div>
         </div>
