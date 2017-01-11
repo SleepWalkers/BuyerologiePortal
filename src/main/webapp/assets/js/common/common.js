@@ -50,12 +50,13 @@ $("#logout_btn").click(function(e) {
 	$.ajax({
 		url: $(this).data("logout"),
 		type: 'POST',
+		dataType: "json",
 		success: function(data) {
 			if (data.isRedirect) {
 				location.href=data.redirectURL;
 			} else {
 				if (data.isSuccess) {
-					location.reload();
+					location.href="/";
 				} else {
 					alert(data.msg);
 				};

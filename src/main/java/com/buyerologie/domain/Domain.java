@@ -15,7 +15,7 @@ public class Domain {
     /**
      * 域名 http://cloudpay.liulianginn.com
      */
-    public static String getDomain() {
+    public static Domain getInstance() {
         if (instance == null) {
             synchronized (Domain.class) {
                 if (instance == null) {
@@ -23,6 +23,10 @@ public class Domain {
                 }
             }
         }
-        return instance.domain;
+        return instance;
+    }
+
+    public String getDomain() {
+        return domain;
     }
 }

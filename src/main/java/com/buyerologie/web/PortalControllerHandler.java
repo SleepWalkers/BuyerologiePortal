@@ -8,19 +8,24 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.buyerologie.core.spring.mvc.interceptor.DefaultControllerHandler;
+import com.buyerologie.domain.Domain;
 import com.buyerologie.security.SecurityService;
 
 @Component("ControllerHandler")
 public class PortalControllerHandler extends DefaultControllerHandler {
 
     @Resource
-    private SecurityService securityService;
+    private SecurityService     securityService;
+
+    private static final String DOMAIN = Domain.getInstance().getDomain();
 
     @Override
     public void postSyncHandle(HttpServletRequest request, HttpServletResponse response,
                                ModelAndView modelAndView) throws Exception {
 
         modelAndView.addObject("requestUri", request.getRequestURI());
+
+        modelAndView.addObject("domain", DOMAIN);
 
         modelAndView.addObject("gvUser", securityService.getCurrentUser());
     }

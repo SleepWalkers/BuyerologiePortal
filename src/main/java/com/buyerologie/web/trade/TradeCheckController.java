@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.buyerologie.common.vo.JsonVO;
 import com.buyerologie.enums.PayType;
 import com.buyerologie.trade.TradeService;
 import com.buyerologie.trade.exception.TradeException;
@@ -38,8 +37,6 @@ public class TradeCheckController {
 
         User user = userService.getCurrentUser();
 
-        tradeService.trade(user.getId(), PayType.get(payType), productId);
-
-        return new JsonVO(true).toString();
+        return tradeService.trade(user.getId(), PayType.get(payType), productId);
     }
 }

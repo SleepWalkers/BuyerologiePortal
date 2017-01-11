@@ -1,5 +1,5 @@
 <nav class="container public_navbar" role="navigation">
-    <a href="#"><img src="$gv_imgRoot/logo.png" /></a>
+    <a href="/"><img src="$gv_imgRoot/logo.png" /></a>
 	#if(!$!{gvUser})
     <ul class="nav navbar-nav navbar-right login_nav">
         <li><a data-toggle="modal" data-target="#registerModal"><span>注册</span></a></li>
@@ -19,7 +19,7 @@
                 <div class="arrow"></div>
                 <a href="/account/favourite.html"><img src="$gv_imgRoot/favorite_icon.png">我的收藏</a>
                 <a href="/account/usermodify.html"><img src="$gv_imgRoot/setting_icon.png">账号设置</a>
-                <a id="logout_btn" data-logout="/api/user/logout"><img src="$gv_imgRoot/logout_icon.png">退出</a>
+                <a id="logout_btn" data-logout="/api/user/logout?redirectUrl=$!{requestUri}"><img src="$gv_imgRoot/logout_icon.png">退出</a>
             </div>
         </li>
 		#end

@@ -30,4 +30,23 @@ public class UserLoginController {
 
         return new JsonVO(true).toString();
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/api/user/logout", method = RequestMethod.POST)
+    public String logout(@RequestParam String redirectUrl, HttpServletRequest request,
+                         HttpServletResponse response) throws UserException {
+
+        securityService.logout(request, response);
+
+        JsonVO jsonVO = new JsonVO(true);
+        jsonVO.setIsRedirect(true);
+
+        if (!redirectUrl.contains("/account/")) {
+            jsonVO.setRedirectURL(redirectUrl);
+        } else {
+            jsonVO.setRedirectURL("/");
+        }
+
+        return jsonVO.toString();
+    }
 }

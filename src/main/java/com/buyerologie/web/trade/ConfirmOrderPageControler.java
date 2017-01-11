@@ -2,6 +2,7 @@ package com.buyerologie.web.trade;
 
 import javax.annotation.Resource;
 
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ public class ConfirmOrderPageControler {
     @Resource
     private ProductService productService;
 
+    @Secured("ROLE_USER")
     @RequestMapping(value = "/confirm/order.html", method = RequestMethod.GET)
     public String aboutUs(Model model) {
         model.addAttribute("products", productService.getAllProducts());

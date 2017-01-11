@@ -89,8 +89,6 @@
             </div>
         </div>
     </div>
-
-    #parse("common/layout/footer.vm")
     #parse("common/layout/foot.vm")
     <script type="text/javascript" src="$gv_jsRoot/page/course_payment.js"></script>
 </body>

@@ -19,7 +19,7 @@
 				#if($!{StringUtils.isNotBlank($!{mainBannerCircle.recordMap.get("Banner图片地址").value})})
 					<div class="item #if($velocityCount == 1) active#end" >
                         <a href="#">
-                            <img src="$!{domain}$!{mainBannerCircle.recordMap.get("Banner图片地址").value}">
+                            <img src="$!{mainBannerCircle.recordMap.get("Banner图片地址").value}">
                         </a>
                     </div>
 				#end
@@ -39,8 +39,8 @@
             <h3>认识您的工作</h3>
             <h4>WORK</h4>
 			#foreach($work in $!{page.moduleMap.get("认识您的工作")})
-            <img src="$!{domain}$!{work.recordMap.get("图片1地址").value}">
-            <img src="$!{domain}$!{work.recordMap.get("图片2地址").value}">
+            <img src="$!{work.recordMap.get("图片1地址").value}">
+            <img src="$!{work.recordMap.get("图片2地址").value}">
             <p>$!{work.recordMap.get("文字描述").value}
             </p>
 			#end
@@ -54,7 +54,7 @@
 			#foreach($tutor in $!{page.moduleMap.get("了解您的导师")})
             <div class="tutor_info">
                 <img src="$gv_imgRoot/wave_line3.png" class="wave_line">
-                <img src="$!{domain}$!{tutor.recordMap.get("导师头像地址").value}" class="tutor">
+                <img src="$!{tutor.recordMap.get("导师头像地址").value}" class="tutor">
                 <p><span>$!{tutor.recordMap.get("导师名字").value}</span><br>$!{tutor.recordMap.get("导师描述").value}</p>
             </div>
             <div class="tutor_history row">
@@ -137,7 +137,7 @@
 				#foreach($member in $!{page.moduleMap.get("会员介绍")})
                 <div class="col-sm-#if($memberCount==3)4#{else}3#end">
                     <div class="member">
-                        <img src="$!{domain}$!{member.recordMap.get("会员名称图片地址").value}">
+                        <img src="$!{member.recordMap.get("会员名称图片地址").value}">
                         <p class="price">￥$!{member.recordMap.get("价格").value}</p>
                         <p class="explain">$!{member.recordMap.get("时间备注").value}</p>
                         <ul class="details">
@@ -160,7 +160,7 @@
             <div class="rows">
 				#foreach($memberCase in $!{page.moduleMap.get("学员案例")})
                 <div class="single_row">
-                    <img src="$!{domain}$!{memberCase.recordMap.get("用户头像").value}">
+                    <img src="$!{memberCase.recordMap.get("用户头像").value}">
 					<div class="content">
                         <p>$!{memberCase.recordMap.get("案例描述").value}</p>
                         <p>$!{memberCase.recordMap.get("案例时间").value}</p>

@@ -8,8 +8,6 @@ import org.apache.log4j.Logger;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.buyerologie.domain.Domain;
-
 public class FileUploadUtils {
 
     private static final Logger logger                   = Logger.getLogger(FileUploadUtils.class);
@@ -21,8 +19,6 @@ public class FileUploadUtils {
     private static final String AVATAR_URI               = "/avatar";
 
     private static final String DEFALUT_LINUX_IMAGE_ROOT = ROOT_PATH + AVATAR_URI;
-
-    private static final String AVATAR_URL_PREFIX        = Domain.getDomain() + AVATAR_URI;
 
     private static String getRootPath(int deepth) {
         StringBuilder stringBuilder = new StringBuilder();
@@ -75,6 +71,6 @@ public class FileUploadUtils {
     }
 
     private static String getImagePath(String fileName) {
-        return AVATAR_URL_PREFIX + "/" + fileName;
+        return AVATAR_URI + "/" + fileName;
     }
 }
