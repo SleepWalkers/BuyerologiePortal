@@ -6,34 +6,34 @@
 	#set($sectionNum = $math.add($math.mod($math.sub($velocityCount,"1"),"6"),"1"))
     <div class="col-sm-6 section$sectionNum">
 		#if($velocityCount == 1)
-		<img class="dec" src="$gv_imgRoot/wave_line2.png">
-        <img class="dec" src="$gv_imgRoot/cross.png">
-        <img class="dec" src="$gv_imgRoot/up_tri.png">
+		<img class="dec" src="/assets/img/wave_line2.png">
+        <img class="dec" src="/assets/img/cross.png">
+        <img class="dec" src="/assets/img/up_tri.png">
 		#end
 		#if($velocityCount == 4)
-        <img class="dec" src="$gv_imgRoot/up_tri.png">
+        <img class="dec" src="/assets/img/up_tri.png">
 		#end
 		#if($velocityCount == 5)
-        <img class="dec" src="$gv_imgRoot/wave_line3.png">
+        <img class="dec" src="/assets/img/wave_line3.png">
 		#end
 		#if($velocityCount == 6)
-        <img class="dec" src="$gv_imgRoot/points.png">
-        <img class="dec" src="$gv_imgRoot/cross.png">
+        <img class="dec" src="/assets/img/points.png">
+        <img class="dec" src="/assets/img/cross.png">
 		#end
 		#if($velocityCount == 9)
-        <img class="dec" src="$gv_imgRoot/up_tri.png">
+        <img class="dec" src="/assets/img/up_tri.png">
 		#end
 		#if($velocityCount == 10)
-        <img class="dec1" src="$gv_imgRoot/wave_line3.png">
+        <img class="dec1" src="/assets/img/wave_line3.png">
 		#end
 		#if($velocityCount == 11)
-        <img class="dec1" src="$gv_imgRoot/points.png">
-        <img class="dec1" src="$gv_imgRoot/cross.png">
-        <img class="dec1" src="$gv_imgRoot/up_tri.png">
+        <img class="dec1" src="/assets/img/points.png">
+        <img class="dec1" src="/assets/img/cross.png">
+        <img class="dec1" src="/assets/img/up_tri.png">
 		#end
 		#if($velocityCount == 12)
-        <img class="dec1" src="$gv_imgRoot/wave_line2.png">
-        <img class="dec1" src="$gv_imgRoot/cross.png">
+        <img class="dec1" src="/assets/img/wave_line2.png">
+        <img class="dec1" src="/assets/img/cross.png">
 		#end
         <a href="/news/articles/$!{news.id}.html">
 			#foreach($image in $!{news.images})
