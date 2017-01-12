@@ -7,7 +7,7 @@
             <img src="$gv_imgRoot/sub_logo.png">
             <p>恭喜您注册成为BUYEROLOGY会员，请您进一步完善您的个人信息。</p>
 
-            <form class="form-horizontal" enctype="multipart/form-data" action="/api/user/edit" method="POST">
+            <form id="user-complete-form" class="form-horizontal" enctype="multipart/form-data" action="/api/user/edit" method="POST">
                 <div class="form-group account">
                     <label class="col-sm-2">账号</label>
                     <span class="col-sm-10 not_send">
@@ -51,7 +51,7 @@
                 </div>
 
                 <p><img src="$gv_imgRoot/success.png">我已经认真阅读并接受<a href="/123123">《BUYEROLOGY免责声明》</a></p>
-                <button id="submit_btn" class="btn btn-default">提交</button>
+                <button id="user_complete_submit_btn" class="btn btn-default">提交</button>
             </form>
         </div>
     </div>

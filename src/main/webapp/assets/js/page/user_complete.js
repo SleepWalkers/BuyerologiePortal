@@ -17,6 +17,24 @@ $(function() {
 	});
 })
 
+$("#user_complete_submit_btn").click(function (e) {
+	e.preventDefault();
+    var options = {
+        beforeSubmit: function () {
+            // showLoader();
+        },
+        success: function (data) {
+            // hideLoader();
+            json = $.parseJSON(data);
+            if (json.isSuccess == 1) {
+                alert("保存成功");
+            } else {
+                alert(json.msg);
+            }
+        },
+    };
+    $("#user-complete-form").ajaxSubmit(options);
+});
 function initSelectJob() {
 	function toggleModal() {
 		if ($(".selectJobModal").is(":hidden")) {
