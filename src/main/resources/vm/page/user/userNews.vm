@@ -2,7 +2,7 @@
 	#foreach($collectedNews in $!{collectedNewses})
     <!-- 添加删除遮罩层 -->
     <div class="col-sm-4">
-        <a href="#" class="vedio">
+        <a href="/news/articles/$!{collectedNews.id}.html" class="vedio">
             <div class="delete_cover">
                 <div id="info_delete" class="delete_btn" data-url="/api/topic/uncollect" data-id="$!{collectedNews.id}" >
                     <img src="$gv_imgRoot/info_delete.png"/>

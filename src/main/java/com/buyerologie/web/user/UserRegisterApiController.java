@@ -61,9 +61,9 @@ public class UserRegisterApiController {
 
     @ResponseBody
     @RequestMapping(value = "/api/user/getResetCheckCode", method = RequestMethod.POST)
-    public String postSMSResetCode(HttpSession session, @RequestParam(required = true) String phone)
-                                                                                                    throws SMSException,
-                                                                                                    UserException {
+    public String postSMSResetCode(HttpSession session,
+                                   @RequestParam(required = true) String phone) throws SMSException,
+                                                                                UserException {
 
         if (StringUtils.isBlank(phone)) {
             throw new PhoneNumberBlankException();
@@ -101,9 +101,9 @@ public class UserRegisterApiController {
 
     @ResponseBody
     @RequestMapping(value = "/api/user/getCheckCode", method = RequestMethod.POST)
-    public String postSMSCheckCode(HttpSession session, @RequestParam(required = true) String phone)
-                                                                                                    throws RegisterException,
-                                                                                                    SMSException {
+    public String postSMSCheckCode(HttpSession session,
+                                   @RequestParam(required = true) String phone) throws RegisterException,
+                                                                                SMSException {
 
         if (StringUtils.isBlank(phone)) {
             throw new PhoneNumberBlankException();
@@ -144,8 +144,8 @@ public class UserRegisterApiController {
     public String resetPassword(HttpSession session, @RequestParam(required = true) String phone,
                                 @RequestParam(required = true) String code,
                                 @RequestParam(required = true) String password,
-                                HttpServletRequest request, HttpServletResponse response)
-                                                                                         throws UserException {
+                                HttpServletRequest request,
+                                HttpServletResponse response) throws UserException {
 
         validate(session, phone, code);
 
@@ -156,6 +156,7 @@ public class UserRegisterApiController {
 
         userService.setPassword(user.getId(), password);
 
+        securityService.login(request, response, phone, password);
         JsonVO jsonVO = new JsonVO(true);
         return jsonVO.toString();
     }
@@ -166,8 +167,8 @@ public class UserRegisterApiController {
                                 @RequestParam(required = true) String code,
                                 @RequestParam(required = true) String password,
                                 @RequestParam(required = false) String redirectUrl,
-                                HttpServletRequest request, HttpServletResponse response)
-                                                                                         throws UserException {
+                                HttpServletRequest request,
+                                HttpServletResponse response) throws UserException {
 
         validate(session, phone, code);
 

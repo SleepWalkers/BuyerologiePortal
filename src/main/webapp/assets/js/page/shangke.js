@@ -5,9 +5,10 @@ $(function(){
 function go_lesson_list(obj) {
 	var $logged = $(obj).data("logged");
 
+	var $url = $(obj).data("url");
 	if ($logged) {
 		// 跳转课程列表页
-		// location.href=''
+		location.href=$url
 	} else {
 		$("#loginModal").modal('show');
 	};

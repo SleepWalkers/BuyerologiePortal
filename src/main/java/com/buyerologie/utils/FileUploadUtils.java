@@ -12,6 +12,8 @@ public class FileUploadUtils {
 
     private static final Logger logger                   = Logger.getLogger(FileUploadUtils.class);
 
+    private static final String OS                       = System.getProperty("os.name");
+
     private static final String UPPER_PATH               = "../";
 
     private static final String ROOT_PATH                = "buyerology";
@@ -22,6 +24,9 @@ public class FileUploadUtils {
 
     private static String getRootPath(int deepth) {
         StringBuilder stringBuilder = new StringBuilder();
+        if (OS.contains("Windows")) {
+            deepth--;
+        }
         for (int i = 0; i < deepth; i++) {
             stringBuilder.append(UPPER_PATH);
         }

@@ -44,12 +44,12 @@ public class SMSUtils {
     }
 
     public static void sendResetPasswordSMS(String phoneNumber, String code) throws SMSException {
-        send(phoneNumber, String.format(RESET_PASSWORD_SMS_TEMPLATE_ID, code),
-            SEND_REGISTER_SMS_TEMPLATE_ID);
+        send(phoneNumber, String.format(VALIDATE_SMS_CONTENT, code),
+            RESET_PASSWORD_SMS_TEMPLATE_ID);
     }
 
-    private static void send(String telNumber, String content, String templateId)
-                                                                                 throws SMSSendFailedException {
+    private static void send(String telNumber, String content,
+                             String templateId) throws SMSSendFailedException {
         TaobaoClient client = new DefaultTaobaoClient(URL, APP_KEY, SECRET);
         AlibabaAliqinFcSmsNumSendRequest req = new AlibabaAliqinFcSmsNumSendRequest();
         req.setSmsType(SMS_TYPE);

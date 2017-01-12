@@ -18,7 +18,7 @@
 			#foreach($mainBannerCircle in $!{page.moduleMap.get("首屏Banner")})
 				#if($!{StringUtils.isNotBlank($!{mainBannerCircle.recordMap.get("Banner图片地址").value})})
 					<div class="item #if($velocityCount == 1) active#end" >
-                        <a href="#">
+                        <a href="$!{mainBannerCircle.recordMap.get("Banner链接").value}">
                             <img src="$!{mainBannerCircle.recordMap.get("Banner图片地址").value}">
                         </a>
                     </div>
@@ -173,13 +173,15 @@
     </div>
 
     <div class="learn_section">
-        <img src="$gv_imgRoot/learn_bg.png" class="bg">
-        <div class="content">
-            <img src="$gv_imgRoot/learn_font.png" class="font">
-            <!-- (data-logged=false)未登录，弹出登录框登录并跳转到课程列表页；
-                 (data-logged=true)已登录，直接跳转 -->
-            <a class="btn" data-logged="false" onclick="go_lesson_list(this)">去试听</a>
-        </div>
+	    #foreach($learn in $!{page.moduleMap.get("系统学习时尚营销")})
+	        <img src="$!{learn.recordMap.get("背景图地址").value}" class="bg">
+	        <div class="content">
+	            <img src="$gv_imgRoot/learn_font.png" class="font">
+	            <!-- (data-logged=false)未登录，弹出登录框登录并跳转到课程列表页；
+	                 (data-logged=true)已登录，直接跳转 -->
+	            <a class="btn" data-logged="#if($!{gvUser})true#{else}false#end" data-url="$!{learn.recordMap.get("链接地址").value}" onclick="go_lesson_list(this)">去试听</a>
+	        </div>
+	    #end
     </div>
 
     <div class="about_us_section">

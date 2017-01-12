@@ -60,7 +60,7 @@
     				#if($!{gvUser})
         				<form class="comment_form clearfix" id="commentForm">
         					<img src="$!{gvUser.avatar}">
-    						<input type="hidden" name="newsId" value=$!{newsDetail.id} />
+    						<input type="hidden" name="newsId" value=$!{course.id} />
         					<textarea rows="4" name="comment"></textarea>
     						<button type="submit" id="comment_btn" class="btn j_comment_button" data-comment="/api/comment/publish">发表评论</button>
         				</form>

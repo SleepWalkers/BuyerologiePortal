@@ -6,7 +6,9 @@
   .course_page .col-sm-8 {
     background-color: #fff;
     border-radius: 4px;
-    padding: 22px 22px 35px; }
+    padding: 22px 22px 35px;
+    width: 804px;
+    position: absolute; }
     .course_page .col-sm-8 .course_title {
       font-size: 20px;
       color: #2E2E2E;
@@ -36,7 +38,9 @@
         margin-bottom: 3px; }
   .course_page .col-sm-4 {
     border-radius: 4px;
-    padding: 0 0 0 16px; }
+    padding: 0 0 0 16px;
+    margin-left: 804px;
+    width: auto; }
     .course_page .col-sm-4 .list_name {
       background-color: #fff;
       color: #8094CC;
