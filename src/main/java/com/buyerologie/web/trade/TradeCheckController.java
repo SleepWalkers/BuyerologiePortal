@@ -32,7 +32,9 @@ public class TradeCheckController {
                                                                                                  PayException {
 
         User user = userService.getCurrentUser();
-        tradeService.trade(user.getId(), PayType.get(payType), productId);
-        return "page/trade/confirmOrder";
+
+        long orderNumber = tradeService.trade(user.getId(), PayType.get(payType), productId);
+
+        return "redirect:/trade/pay?orderNumber=" + orderNumber;
     }
 }
