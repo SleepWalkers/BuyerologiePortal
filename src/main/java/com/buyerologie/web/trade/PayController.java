@@ -30,15 +30,17 @@ public class PayController {
     private static final Logger logger = Logger.getLogger(PayController.class);
 
     @Resource
-    private TradeService        tradeService;
+    private TradeService        alipayTradeService;
+
+    @Resource
+    private TradeService        weixinTradeService;
 
     @ResponseBody
     @RequestMapping(value = "/trade/pay/getqrcode", method = { RequestMethod.GET,
-            RequestMethod.POST })
-    public void qrCode(Model model, @RequestParam String codeUrl, HttpServletResponse response)
-                                                                                               throws UserException,
-                                                                                               TradeException,
-                                                                                               PayException {
+                                                               RequestMethod.POST })
+    public void qrCode(Model model, @RequestParam String codeUrl,
+                       HttpServletResponse response) throws UserException, TradeException,
+                                                     PayException {
 
         BufferedImage image = QrCodeUtils.encodeQrcodeImage(codeUrl, 300, 300);
 
@@ -52,9 +54,10 @@ public class PayController {
     @ResponseBody
     @RequestMapping(value = "/trade/pay", method = { RequestMethod.GET, RequestMethod.POST })
     public String tradePay(Model model, @RequestParam long orderNumber) throws UserException,
-                                                                       TradeException, PayException {
+                                                                        TradeException,
+                                                                        PayException {
 
-        TradeOrder tradeOrder = tradeService.get(orderNumber);
+        TradeOrder tradeOrder = alipayTradeService.get(orderNumber);
         if (tradeOrder == null) {
             throw new OrderNotExistException();
         }
@@ -63,10 +66,13 @@ public class PayController {
 
         if (payType.equals(PayType.WEIXIN)) {
             JsonVO jsonVO = new JsonVO(true);
-            jsonVO.setData(tradeService.trade(orderNumber));
+            jsonVO.setData(weixinTradeService.trade(orderNumber));
             return jsonVO.toString();
+        } else if (payType.equals(PayType.ALIPAY)) {
+            alipayTradeService.trade(orderNumber);
         } else {
             return "";
         }
+        return "";
     }
 }

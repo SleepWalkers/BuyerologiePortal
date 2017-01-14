@@ -23,17 +23,34 @@ public class TradeCheckController {
     private UserService  userService;
 
     @Resource
-    private TradeService tradeService;
+    private TradeService alipayTradeService;
+
+    @Resource
+    private TradeService weixinTradeService;
 
     @RequestMapping(value = "/trade/check", method = { RequestMethod.GET, RequestMethod.POST })
-    public String tradeCheck(Model model, @RequestParam int productId, @RequestParam int payType)
-                                                                                                 throws UserException,
-                                                                                                 TradeException,
-                                                                                                 PayException {
+    public String tradeCheck(Model model, @RequestParam int productId,
+                             @RequestParam int payType) throws UserException, TradeException,
+                                                        PayException {
 
         User user = userService.getCurrentUser();
 
-        long orderNumber = tradeService.trade(user.getId(), PayType.get(payType), productId);
+        long orderNumber = 0;
+        PayType payTypeEnum = PayType.get(payType);
+        switch (payTypeEnum) {
+            case ALIPAY: {
+                orderNumber = alipayTradeService.trade(user.getId(), PayType.get(payType),
+                    productId);
+            }
+                break;
+            case WEIXIN: {
+                orderNumber = weixinTradeService.trade(user.getId(), PayType.get(payType),
+                    productId);
+            }
+                break;
+            default:
+                break;
+        }
 
         return "redirect:/trade/pay?orderNumber=" + orderNumber;
     }
