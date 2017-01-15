@@ -66,4 +66,8 @@
     <servlet-name>velocity</servlet-name>
     <url-pattern>*.vm</url-pattern>
   </servlet-mapping>
+  <error-page>
+    <error-code>404</error-code>
+    <location>/error/404.html</location>
+  </error-page>
 </web-app>

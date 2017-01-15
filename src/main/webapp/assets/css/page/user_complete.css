@@ -97,8 +97,17 @@
         .user_complete .container form p img {
           height: 16px;
           width: 16px;
-          margin: 0 14px 0 0; }
-      .user_complete .container form #submit_btn {
+          position: absolute;
+          top: 3px; }
+      .user_complete .container form .circle {
+        display: inline-block;
+        border: 1px solid #8094CC;
+        border-radius: 50%;
+        height: 16px;
+        width: 16px;
+        position: absolute;
+        top: 3px; }
+      .user_complete .container form #user_complete_submit_btn {
         margin-left: 40px;
         background-color: #8094CC;
         border-color: #8094CC;

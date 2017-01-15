@@ -30,10 +30,7 @@ public class PayController {
     private static final Logger logger = Logger.getLogger(PayController.class);
 
     @Resource
-    private TradeService        alipayTradeService;
-
-    @Resource
-    private TradeService        weixinTradeService;
+    private TradeService        tradeService;
 
     @ResponseBody
     @RequestMapping(value = "/trade/pay/getqrcode", method = { RequestMethod.GET,
@@ -57,7 +54,7 @@ public class PayController {
                                                                         TradeException,
                                                                         PayException {
 
-        TradeOrder tradeOrder = alipayTradeService.get(orderNumber);
+        TradeOrder tradeOrder = tradeService.get(orderNumber);
         if (tradeOrder == null) {
             throw new OrderNotExistException();
         }
@@ -66,10 +63,10 @@ public class PayController {
 
         if (payType.equals(PayType.WEIXIN)) {
             JsonVO jsonVO = new JsonVO(true);
-            jsonVO.setData(weixinTradeService.trade(orderNumber));
+            jsonVO.setData(tradeService.trade(orderNumber));
             return jsonVO.toString();
         } else if (payType.equals(PayType.ALIPAY)) {
-            alipayTradeService.trade(orderNumber);
+            tradeService.trade(orderNumber);
         } else {
             return "";
         }

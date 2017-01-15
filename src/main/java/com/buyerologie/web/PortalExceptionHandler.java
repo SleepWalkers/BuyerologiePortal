@@ -62,7 +62,7 @@ public class PortalExceptionHandler implements ExceptionHandler {
             //                return modelAndView;
             //            }
             //            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-            //            modelAndView.setViewName("/error/404");
+        	modelAndView.setViewName("/error/404");
 
             return modelAndView;
         }

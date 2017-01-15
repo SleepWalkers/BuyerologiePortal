@@ -4,8 +4,6 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.buyerologie.enums.PayType;
@@ -23,34 +21,16 @@ public class TradeCheckController {
     private UserService  userService;
 
     @Resource
-    private TradeService alipayTradeService;
+    private TradeService tradeService;
 
-    @Resource
-    private TradeService weixinTradeService;
-
-    @RequestMapping(value = "/trade/check", method = { RequestMethod.GET, RequestMethod.POST })
+    //  @RequestMapping(value = "/trade/check", method = { RequestMethod.GET, RequestMethod.POST })
     public String tradeCheck(Model model, @RequestParam int productId,
                              @RequestParam int payType) throws UserException, TradeException,
                                                         PayException {
 
         User user = userService.getCurrentUser();
 
-        long orderNumber = 0;
-        PayType payTypeEnum = PayType.get(payType);
-        switch (payTypeEnum) {
-            case ALIPAY: {
-                orderNumber = alipayTradeService.trade(user.getId(), PayType.get(payType),
-                    productId);
-            }
-                break;
-            case WEIXIN: {
-                orderNumber = weixinTradeService.trade(user.getId(), PayType.get(payType),
-                    productId);
-            }
-                break;
-            default:
-                break;
-        }
+        long orderNumber = tradeService.trade(user.getId(), PayType.get(payType), productId);
 
         return "redirect:/trade/pay?orderNumber=" + orderNumber;
     }

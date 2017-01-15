@@ -17,6 +17,17 @@ $(function() {
 	});
 })
 
+
+$(".circle").click(function() {
+	$(this).siblings("img").show();
+	$("#user_complete_submit_btn").prop("disabled",false);
+})
+
+$(".checked_circle").click(function() {
+	$(this).hide();
+	$("#user_complete_submit_btn").prop("disabled",true);
+})
+
 $("#user_complete_submit_btn").click(function (e) {
 	e.preventDefault();
     var options = {

@@ -1,0 +1,9 @@
+#set($title = $!{newsDetail.title})
+#parse("common/layout/head.vm")
+
+<body style="text-align:center;">
+    <div style="position:absolute;top:50%;margin-top:-205px;left:50%;margin-left:-225px">
+        <img src="$gv_imgRoot/building.png">
+    </div>
+</body>
+</html>

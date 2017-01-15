@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.buyerologie.enums.PayType;
 import com.buyerologie.trade.TradeService;
 import com.buyerologie.trade.exception.TradeException;
 import com.buyerologie.user.UserService;
@@ -21,20 +22,22 @@ public class PayReturnController {
     private UserService  userService;
 
     @Resource
-    private TradeService alipayTradeService;
+    private TradeService tradeService;
 
-    @RequestMapping(value = "/alipay/pay_return", method = { RequestMethod.GET, RequestMethod.POST })
+    @RequestMapping(value = "/alipay/pay_return", method = { RequestMethod.GET,
+                                                             RequestMethod.POST })
     public String payReturn(HttpServletRequest request) throws TradeException, UserException,
-                                                       VipException {
-        alipayTradeService.payReturn(request);
+                                                        VipException {
+        tradeService.payReturn(request, PayType.ALIPAY);
         return "redirect:/trade/paysuccess";
     }
 
     @ResponseBody
-    @RequestMapping(value = "/alipay/pay_notify", method = { RequestMethod.GET, RequestMethod.POST })
+    @RequestMapping(value = "/alipay/pay_notify", method = { RequestMethod.GET,
+                                                             RequestMethod.POST })
     public String payNotify(HttpServletRequest request) throws TradeException, UserException,
-                                                       VipException {
-        alipayTradeService.payReturn(request);
+                                                        VipException {
+        tradeService.payReturn(request, PayType.ALIPAY);
         return "success";
     }
 }

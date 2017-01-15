@@ -1,20 +1,13 @@
-//$(function() {
-//	if ($(document).width()>=992) {
-//		$height='402'
-//	} else {
-//		$height='300'
-//	};
-//	player = polyvObject('#plv_9b986371749aa39d26ecc7b66c063c83_9').videoPlayer({
-//	    'width': '100%',
-//	    'height': $height,
-//		// 'list_id':'1480865569520_9',
-//	    'vid' : '9b986371749aa39d26ecc7b66c063c83_9'
-//	});
-//
-//	$(".list_content").height($(".course_list .col-sm-8").outerHeight()-74);
-//
-//	set_at_color();	
-//})
+$(function() {
+	if ($(document).width()>=992) {
+		$height='516'
+	} else {
+		$height='516'
+	};
+	$(".list_content").height($(".course_list .col-sm-8").outerHeight()-74);
+
+	set_at_color();	
+})
 
 $(window).resize(function() {
 	$(".list_content").height($(".course_list .col-sm-8").outerHeight()-74);
