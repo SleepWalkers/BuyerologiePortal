@@ -19,16 +19,23 @@ import com.buyerologie.user.UserActionService;
 import com.buyerologie.user.UserService;
 import com.buyerologie.user.model.User;
 import com.buyerologie.user.model.UserBroadcastRecord;
+import com.buyerologie.user.model.VipDetail;
 import com.buyerologie.utils.PageUtil;
 import com.buyerologie.video.VideoService;
 import com.buyerologie.video.vo.DetailedPlayList;
 import com.buyerologie.video.vo.ListVideo;
+import com.buyerologie.vip.VipService;
+import com.buyerologie.vip.exception.VipException;
+import com.buyerologie.vip.exception.VipExpireException;
 
 @Controller
 public class CourseDetailPageController {
 
     @Resource
     private UserService       userService;
+
+    @Resource
+    private VipService        vipService;
 
     @Resource
     private VideoService      videoService;
@@ -49,13 +56,21 @@ public class CourseDetailPageController {
     @Secured("ROLE_USER")
     @RequestMapping(value = "/course/video/{courseId}.html", method = RequestMethod.GET)
     public String courseDetail(Model model, @PathVariable int courseId)
-                                                                       throws PageNotFoundException {
+                                                                       throws PageNotFoundException,
+                                                                       VipException {
 
         Course course = courseService.getCourse(courseId);
 
+        User user = userService.getCurrentUser();
+
+        if (!course.getIsFree()) {
+            VipDetail vipDetail = vipService.getLastVipDetail(user.getId());
+            if (vipDetail == null || vipDetail.isExpired()) {
+                throw new VipExpireException();
+            }
+        }
         model.addAttribute("course", course);
 
-        User user = userService.getCurrentUser();
         if (user != null) {
             course.setIsCollected(userActionService.isCollected(user.getId(), courseId));
         }

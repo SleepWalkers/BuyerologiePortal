@@ -1,14 +1,18 @@
 package com.buyerologie.web;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.buyerologie.common.vo.JsonVO;
 import com.buyerologie.core.spring.mvc.ExceptionHandler;
+import com.buyerologie.vip.exception.VipExpireException;
 
 @Component("ExceptionHandler")
 public class PortalExceptionHandler implements ExceptionHandler {
@@ -23,48 +27,23 @@ public class PortalExceptionHandler implements ExceptionHandler {
     public ModelAndView resolveSyncException(HttpServletRequest request,
                                              HttpServletResponse response, Exception exception) {
 
-        logger.error("", exception);
         ModelAndView modelAndView = new ModelAndView();
+        logger.error("", exception);
+        try {
+            if (exception instanceof RuntimeException) {
+            } else {
+                if (exception instanceof VipExpireException) {
 
-        if (exception instanceof RuntimeException) {
-            //无权限用户判断
-            //            if (exception instanceof AccessDeniedException) {
-            //                String redirectURL = HttpServletUtil.getEncodedHttpRequestURL(request);
-            //
-            //                modelAndView.setViewName("redirect:/login?redirectURL=" + redirectURL);
-            //
-            //                return modelAndView;
-            //                //密码错误用户判断 或 用户名不存在
-            //            } else if (exception instanceof UserNotFoundException
-            //                       || exception instanceof UserPasswordErrorException) {
-            //                String redirectURL = request.getParameter("redirectURL");
-            //
-            //                modelAndView.setViewName("redirect:/login?redirectURL=" + redirectURL);
-            //
-            //                return modelAndView;
-            //                //其他Runtime异常处理
-            //            } else {
-            //                logError(exception);
-            //                response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            //
-            //                modelAndView.setViewName("/error/50x");
-            //
-            //                return modelAndView;
-            //            }
-            //非Runtime异常默认404页面处理
-        } else {
+                    response.sendRedirect("/confirm/order.html");
 
-            //            if (exception instanceof BizException) {
-            //                logError(exception);
-            //                response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            //                modelAndView.setViewName("/error/50x");
-            //                modelAndView.addObject("msg", exception.getMessage());
-            //                return modelAndView;
-            //            }
-            //            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-        	modelAndView.setViewName("/error/404");
-
-            return modelAndView;
+                } else if (exception instanceof AccessDeniedException) {
+                    response.sendRedirect("/");
+                } else {
+                    modelAndView.setViewName("/error/404");
+                }
+            }
+        } catch (IOException e) {
+            logger.error("", e);
         }
         return modelAndView;
     }
@@ -82,34 +61,6 @@ public class PortalExceptionHandler implements ExceptionHandler {
         jsonVO.setIsSuccess(false);
         jsonVO.setMsg(exception.getMessage());
         return jsonVO.toString();
-        //
-        //        if (exception instanceof AccessDeniedException) {
-        //            Map<String, Object> jsonMap = new HashMap<String, Object>();
-        //            StringBuffer redirectURL = new StringBuffer();
-        //            //获取登录跳转URL
-        //            String scheme = request.getScheme();
-        //            String serverName = request.getServerName();
-        //            int serverPort = request.getServerPort();
-        //
-        //            String servletPath = request.getServletPath();
-        //            String service = scheme + "://" + serverName;
-        //
-        //            if (serverPort != 80) {
-        //                service = service + ":" + serverPort;
-        //            }
-        //            try {
-        //                redirectURL.append(SSOUtil.LOGIN_SERVER_NAME).append("?service=")
-        //                    .append(URLEncoder.encode(service, "utf8")).append("&loginRedirectUri=")
-        //                    .append(URLEncoder.encode(servletPath, "utf8"));
-        //            } catch (UnsupportedEncodingException e) {
-        //                logger.error("", e);
-        //            }
-        //            jsonMap.put("isSuccess", 0);
-        //            jsonMap.put("isRedirect", 1);
-        //            jsonMap.put("redirectURL", redirectURL.toString());
-        //            return new Gson().toJson(jsonMap);
-        //        } else {
-
     }
 
 }
