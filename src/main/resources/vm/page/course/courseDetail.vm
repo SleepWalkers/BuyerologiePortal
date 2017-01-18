@@ -1,3 +1,5 @@
+#set($title = $!{course.title})
+
 #parse("common/layout/head.vm")
 <body>
 #parse("page/brick/registerBrick.vm")
