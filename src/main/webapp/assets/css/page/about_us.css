@@ -35,4 +35,19 @@
       width: 94px;
       height: 94px; }
 
+.footer {
+  background-color: #A7A7AE;
+  text-align: center;
+  padding: 18px 0; }
+  .footer p {
+    font-size: 12px;
+    color: #fff; }
+    .footer p:last-of-type {
+      margin-bottom: 0; }
+    .footer p span {
+      display: inline-block;
+      margin-right: 24px; }
+      .footer p span:last-of-type {
+        margin-right: 0; }
+
 /*# sourceMappingURL=about_us.css.map */

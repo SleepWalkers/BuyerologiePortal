@@ -14,6 +14,7 @@
 	
     <img class="to_top" src="$gv_imgRoot/to_top.png">
 		
+	#parse("common/layout/footer.vm")
 	#parse("common/layout/foot.vm")
     <script type="text/javascript" src="$gv_jsRoot/page/info.js"></script>
 </body>

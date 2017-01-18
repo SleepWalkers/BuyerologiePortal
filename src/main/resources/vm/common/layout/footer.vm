@@ -1,5 +1,12 @@
-
-<div class="row_blue copyright_section">
-    <img src="$gv_imgRoot/code.png">
+<div class="footer">
+	#foreach($footer in $!{globalPage.moduleMap.get("页脚")})
+		$!{footer.recordMap.get("页脚").value}
+	#end
+	
     <p>Copyright © 2009-2016 BUYERLOGY 杭州某某网络技术有限公司</p>
+    <p>
+        <span>京公安备06788999436789号6</span>
+        <span>京ICP备06788999号</span>
+        <span>邮箱：support@163.com</span>
+    </p>
 </div>

@@ -433,5 +433,19 @@
     bottom: 50px;
     z-index: 3;
     cursor: pointer; }
+  .info_page .footer {
+    background-color: #F2F2F3;
+    text-align: center;
+    padding: 18px 0; }
+    .info_page .footer p {
+      font-size: 12px;
+      color: #575757; }
+      .info_page .footer p:last-of-type {
+        margin-bottom: 0; }
+      .info_page .footer p span {
+        display: inline-block;
+        margin-right: 24px; }
+        .info_page .footer p span:last-of-type {
+          margin-right: 0; }
 
 /*# sourceMappingURL=info.css.map */

@@ -1,3 +1,6 @@
+#set($title = $!{page.title})
+#set($description = $!{page.description})
+#set($keywords = $!{page.keywords})
 #parse("common/layout/head.vm")
 <body>
 #parse("common/layout/header.vm")
@@ -26,6 +29,7 @@
             <p>官方公众号：fashion buyerology </p>
         </div>
     </div>
+	#parse("common/layout/footer.vm")
 	#parse("common/layout/foot.vm")
 </body>
 </html>
