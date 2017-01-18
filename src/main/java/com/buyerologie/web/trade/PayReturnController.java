@@ -24,20 +24,26 @@ public class PayReturnController {
     @Resource
     private TradeService tradeService;
 
-    @RequestMapping(value = "/alipay/pay_return", method = { RequestMethod.GET,
-                                                             RequestMethod.POST })
+    @RequestMapping(value = "/alipay/pay_return", method = { RequestMethod.GET, RequestMethod.POST })
     public String payReturn(HttpServletRequest request) throws TradeException, UserException,
-                                                        VipException {
+                                                       VipException {
         tradeService.payReturn(request, PayType.ALIPAY);
         return "redirect:/trade/paysuccess";
     }
 
     @ResponseBody
-    @RequestMapping(value = "/alipay/pay_notify", method = { RequestMethod.GET,
-                                                             RequestMethod.POST })
+    @RequestMapping(value = "/alipay/pay_notify", method = { RequestMethod.GET, RequestMethod.POST })
     public String payNotify(HttpServletRequest request) throws TradeException, UserException,
-                                                        VipException {
+                                                       VipException {
         tradeService.payReturn(request, PayType.ALIPAY);
         return "success";
     }
+
+    @RequestMapping(value = "/weixin/pay_return", method = { RequestMethod.GET, RequestMethod.POST })
+    public String weixinPayReturn(HttpServletRequest request) throws TradeException, UserException,
+                                                             VipException {
+        tradeService.payReturn(request, PayType.WEIXIN);
+        return "redirect:/trade/paysuccess";
+    }
+
 }

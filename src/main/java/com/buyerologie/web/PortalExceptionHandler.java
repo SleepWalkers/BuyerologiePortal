@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.buyerologie.common.vo.JsonVO;
 import com.buyerologie.core.spring.mvc.ExceptionHandler;
+import com.buyerologie.trade.exception.TradeException;
 import com.buyerologie.vip.exception.VipExpireException;
 
 @Component("ExceptionHandler")
@@ -38,6 +39,8 @@ public class PortalExceptionHandler implements ExceptionHandler {
 
                 } else if (exception instanceof AccessDeniedException) {
                     response.sendRedirect("/");
+                } else if (exception instanceof TradeException) {
+                    response.sendRedirect("/trade/payfailed?error=" + exception.getMessage());
                 } else {
                     modelAndView.setViewName("/error/404");
                 }
