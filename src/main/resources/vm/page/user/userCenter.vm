@@ -14,14 +14,14 @@
             <button class="btn" id="edit_btn"><a href="/account/usermodify.html">编辑个人资料</a></button>
             <!-- 进度条，两个60%都要修改 -->
             <div class="progress_point">
-                <img class="point" src="$gv_imgRoot/member_point.png" style="left: 60%;">
+                <img class="point" src="$gv_imgRoot/member_point.png" style="left: #if($!{totalDays})$!{number.format("#0",$math.mul($math.div($math.sub($!{totalDays},$!{restDays}),$!{totalDays}),100))}%#{else}0%#end;">
             </div>
             <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: #if($!{totalDays})$!{number.format("#0",$math.mul($math.div($math.sub($!{totalDays},$!{restDays}),$!{totalDays}),100))}%#{else}0%#end;">
                     <span class="sr-only">60% Complete</span>
                 </div>
             </div>
-            <p class="day_left">您还可以学习<span>28天</span></p>
+            <p class="day_left">您还可以学习<span>$!{restDays}天</span></p>
         </div>
     </div>
 

@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.joda.time.DateTime;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,13 +24,18 @@ import com.buyerologie.user.UserActionService;
 import com.buyerologie.user.UserService;
 import com.buyerologie.user.model.User;
 import com.buyerologie.user.model.UserBroadcastRecord;
+import com.buyerologie.user.model.VipDetail;
 import com.buyerologie.video.VideoService;
 import com.buyerologie.video.model.PlayList;
 import com.buyerologie.video.vo.DetailedPlayList;
 import com.buyerologie.video.vo.ListVideo;
+import com.buyerologie.vip.VipService;
 
 @Controller
 public class UserDetailPageController {
+
+    @Resource
+    private VipService        vipService;
 
     @Resource
     private UserService       userService;
@@ -53,6 +59,8 @@ public class UserDetailPageController {
 
     private static final int  COURSE_CATE_ID = 2;
 
+    private static final long ONE_DAY        = 1 * 24 * 60 * 60 * 1000;
+
     @RequestMapping(value = "/account/usercenter.html", method = RequestMethod.GET)
     public String userDetail(Model model) throws PageNotFoundException {
 
@@ -63,6 +71,19 @@ public class UserDetailPageController {
         }
         User user = userService.getUser(userAuthCredentials.getId());
         model.addAttribute("user", user);
+
+        VipDetail vipDetail = vipService.getLastVipDetail(user.getId());
+        model.addAttribute("vip", vipDetail);
+
+        int restDays = 0;
+        if (!vipDetail.isExpired()) {
+            restDays = (int) (((vipDetail.getEndTime().getTime() - System.currentTimeMillis())) / ONE_DAY);
+            model.addAttribute("totalDays",
+                new DateTime(vipDetail.getEndTime().getTime()).getDayOfYear()
+                        - new DateTime(vipDetail.getStartTime().getTime()).getDayOfYear());
+        }
+
+        model.addAttribute("restDays", restDays);
 
         setUserCourse(user.getId(), model);
 
