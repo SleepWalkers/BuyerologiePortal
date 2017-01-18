@@ -1,0 +1,14 @@
+#set($title = "课程购买")
+#parse("common/layout/head.vm")
+<body>
+#parse("common/layout/header.vm")
+
+
+
+<img src="/trade/pay/getqrcode?codeUrl=$!{}" />
+
+
+
+#parse("common/layout/foot.vm")
+</body>
+</html>

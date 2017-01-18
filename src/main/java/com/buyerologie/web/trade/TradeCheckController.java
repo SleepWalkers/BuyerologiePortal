@@ -23,10 +23,11 @@ public class TradeCheckController {
     @Resource
     private TradeService tradeService;
 
-    //  @RequestMapping(value = "/trade/check", method = { RequestMethod.GET, RequestMethod.POST })
-    public String tradeCheck(Model model, @RequestParam int productId,
-                             @RequestParam int payType) throws UserException, TradeException,
-                                                        PayException {
+    //@RequestMapping(value = "/trade/check", method = { RequestMethod.GET, RequestMethod.POST })
+    public String tradeCheck(Model model, @RequestParam int productId, @RequestParam int payType)
+                                                                                                 throws UserException,
+                                                                                                 TradeException,
+                                                                                                 PayException {
 
         User user = userService.getCurrentUser();
 

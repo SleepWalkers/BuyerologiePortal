@@ -34,10 +34,11 @@ public class PayController {
 
     @ResponseBody
     @RequestMapping(value = "/trade/pay/getqrcode", method = { RequestMethod.GET,
-                                                               RequestMethod.POST })
-    public void qrCode(Model model, @RequestParam String codeUrl,
-                       HttpServletResponse response) throws UserException, TradeException,
-                                                     PayException {
+            RequestMethod.POST })
+    public void qrCode(Model model, @RequestParam String codeUrl, HttpServletResponse response)
+                                                                                               throws UserException,
+                                                                                               TradeException,
+                                                                                               PayException {
 
         BufferedImage image = QrCodeUtils.encodeQrcodeImage(codeUrl, 300, 300);
 
@@ -48,11 +49,16 @@ public class PayController {
         }
     }
 
+    @RequestMapping(value = "/qrtest", method = { RequestMethod.GET, RequestMethod.POST })
+    public String qrtest() throws UserException, TradeException, PayException {
+
+        return "/page/trade/qrTest";
+    }
+
     @ResponseBody
     @RequestMapping(value = "/trade/pay", method = { RequestMethod.GET, RequestMethod.POST })
     public String tradePay(Model model, @RequestParam long orderNumber) throws UserException,
-                                                                        TradeException,
-                                                                        PayException {
+                                                                       TradeException, PayException {
 
         TradeOrder tradeOrder = tradeService.get(orderNumber);
         if (tradeOrder == null) {
