@@ -1,0 +1,92 @@
+#set($title = "课程购买")
+#parse("common/layout/head.vm")
+<body>
+#parse("common/layout/header.vm")
+    <div class="order_payment">
+        <div class="container">  
+            <h5><img src="$gv_imgRoot/logo.png" /><br><br><br>订单支付</h5>
+
+            <div class="order_status">
+     ##           <h4><img src="$gv_imgRoot/pay_success.png">交易成功</h4>
+                <h4>
+                    <img src="$gv_imgRoot/pay_wait.png">待支付
+                    <span>为避免系统自动取消订单，请在<span style="color:#FC6C65;margin-left:0;">30分钟内</span>完成付款哦～</span>
+                </h4>
+      ##          <h4>
+      ##              <img src="$gv_imgRoot/pay_failed.png">交易关闭
+      ##              <span>非常抱歉，支付时间超出<span style="color:#FC6C65;margin-left:0;">30分钟内</span>，请重新下单～</span>
+      ##          </h4>
+            </div>
+
+            <div class="order_info">
+                <p>订单编号：$!{tradeOrder.orderNumber}</p>
+                <p>支付方式：#if($!{tradeOrder.payType}==1)支付宝#{else}微信#{end}支付</p>
+                <p>下单时间：$!date.format('yyyy-MM-dd HH:mm:ss ',$!{tradeOrder.gmtCreated})</p>
+            ##    <p>商品有效期：2017-01-01至2017-07-07</p>
+
+                <div class="order_set clearfix">
+                    <img src="$gv_imgRoot/order_set.png">
+                    <div class="right">
+                        <p>buyerology【$!{tradeOrder.productName}】</p>
+                        <p>单价：<span>¥$!{tradeOrder.actualPrice}</span></p>
+                    </div>
+                </div>
+                <input type="hidden" class="j_PayUrl" value="/trade/pay?orderNumber=$!{tradeOrder.orderNumber}"/>
+                <input type="hidden" class="j_PayType" value="$!{tradeOrder.payType}"/>
+            </div>
+
+            <button class="btn" id="pay_order">去支付</button>
+         ##   <button class="btn" id="cancel_order">取消订单</button>
+        </div>
+	</div>
+
+    <!-- 支付提示弹窗 -->
+    <div class="modal fade myModal" id="payNoticeModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              </div>
+
+              <div class="modal-body">
+                <img src="$gv_imgRoot/logo1.png">
+                <p class="title">支付提示</p>
+                <p>请在新打开的支付页面完成支付，支付完成前请不要关闭窗口哦。</p>
+                <p>如支付遇到问题，请联系0571-000000000</p>
+                <form role="form">
+                    <button class="btn btn-default" onclick="location.href='/account/usercenter'">已经完成支付</button>
+                </form>
+              </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 微信支付弹窗 -->
+    <div class="modal fade myModal" id="weixinModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              </div>
+
+              <div class="modal-body clearfix">
+                <h3>微信支付</h3>
+                <div class="col-xs-6">
+                    <img src="$gv_imgRoot/scan.png" class="scan">
+                    <span class="font">请使用微信扫一扫<br>扫描二维码支付</span>
+                    <img src="" id="qr_code">
+                    <p>二维码有效时长为30分钟，请尽快完成支付哦～</p>
+                </div>
+                <div class="col-xs-6">
+                    <img src="$gv_imgRoot/weixin_pay.png" class="example_img">
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    
+    #parse("common/layout/foot.vm")
+    <script type="text/javascript" src="$gv_jsRoot/page/order_payment.js"></script>
+</body>
+</html>

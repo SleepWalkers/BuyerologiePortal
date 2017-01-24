@@ -11,39 +11,13 @@ $(".course").click(function() {
 	};
 })
 
+
 $("#pay_btn").click(function(e) {
 	e.preventDefault();
 
 	var url = $(this).data("pay") + "?productId=" + $set + "&payType=" + $("input[type=radio]:checked").val();
 	window.open(url);  
-
-	$("#paySuccessModal .set_type").text(data.data.set_type);
-	$("#paySuccessModal").modal('show');
-	
-//	$.ajax({
-//		url: $(this).data("pay"),
-//		data: {
-//			productId: $set,
-//			payType: $("input[type=radio]:checked").val()
-//		},
-//		type: 'POST',
-//		dataType:'json',
-//		success: function(data) {
-//			if (data.isRedirect) {
-//				location.href=data.redirectURL;
-//			} else {
-//				if (data.isSuccess) {
-//					// 返回购买套餐名称
-//					$("#paySuccessModal .set_type").text(data.data.set_type);
-//					$("#paySuccessModal").modal('show');
-//				} else {
-//					$("#payFailedModal").modal('show');
-//				};
-//			};
-//		}
-//	})
 })
-
 $("#cancel_btn").click(function(e) {
 	e.preventDefault();
 	history.back();

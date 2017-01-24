@@ -1,0 +1,71 @@
+.order_payment {
+  background-color: #f2f2f3;
+  padding: 50px 0 100px; }
+  .order_payment .container {
+    background-color: #fff;
+    padding: 70px 50px 180px;
+    border-radius: 6px 6px 0 0; }
+    .order_payment .container h5 {
+      text-align: center;
+      font-size: 14px;
+      color: #575757;
+      margin-top: 0;
+      margin-bottom: 80px; }
+    .order_payment .container .order_status {
+      padding-bottom: 20px;
+      border-bottom: 1px solid #ccc; }
+      .order_payment .container .order_status h4 {
+        font-size: 20px;
+        color: #2E2E2E; }
+        .order_payment .container .order_status h4 span {
+          color: #474747;
+          font-size: 14px;
+          margin-left: 30px; }
+      .order_payment .container .order_status img {
+        margin-right: 22px; }
+    .order_payment .container .order_info {
+      padding-top: 38px; }
+      .order_payment .container .order_info p {
+        color: #575757; }
+    .order_payment .container .order_set {
+      background-color: #FAFAFA;
+      border-radius: 2px;
+      padding: 15px;
+      margin-top: 20px;
+      margin-bottom: 40px; }
+      .order_payment .container .order_set .right {
+        display: inline-block;
+        margin-left: 35px; }
+        .order_payment .container .order_set .right p {
+          position: relative;
+          top: 5px; }
+        .order_payment .container .order_set .right p:last-of-type {
+          top: 30px; }
+          .order_payment .container .order_set .right p:last-of-type span {
+            font-size: 20px;
+            color: #8094CC; }
+    .order_payment .container .btn {
+      background: #8094CC;
+      border-radius: 4px;
+      font-size: 16px;
+      color: #fff;
+      width: 220px;
+      padding: 0;
+      line-height: 36px;
+      margin-right: 40px; }
+    .order_payment .container #cancel_order {
+      background-color: #A7A7AE; }
+
+#payNoticeModal .title {
+  color: #8094CC;
+  text-align: center; }
+#payNoticeModal p {
+  font-size: 18px;
+  color: #575757;
+  text-align: start; }
+  #payNoticeModal p:last-of-type {
+    font-size: 14px;
+    color: #999;
+    margin: 20px 0 70px; }
+
+/*# sourceMappingURL=order_payment.css.map */
