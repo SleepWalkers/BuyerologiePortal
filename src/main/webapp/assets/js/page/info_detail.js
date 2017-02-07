@@ -8,26 +8,51 @@ $("#back_btn").click(function() {
 
 $("#favourite_btn").click(function() {
 	if ($(this).data("logged")) {
-		$.ajax({
-			url: $(this).data("favourite"),
-			type: 'POST',
-			dataType: "json",  
-			data: {
-				topicId: $(this).data("info-id"),
-			},
-			success: function(data) {
-				if (data.isRedirect) {
-					location.href=data.redirectURL;
-				} else {
-					if (data.isSuccess) {
-						$(".j_fav").children("span").text("已收藏");
-						$(".j_fav").attr("disabled",true);
+		if ($(this).hasClass("clicked")) {
+			$.ajax({
+				url: $(this).data("favourite"),
+				type: 'POST',
+				dataType: "json",  
+				data: {
+					topicId: $(this).data("info-id"),
+				},
+				success: function(data) {
+					if (data.isRedirect) {
+						location.href=data.redirectURL;
 					} else {
-						alert(data.msg);
+						if (data.isSuccess) {
+							$(this).children("span").text("收藏");
+							$(this).removeClass("clicked");
+						} else {
+							alert(data.msg);
+						};
 					};
-				};
-			}
-		});
+				}
+			});
+		}else{
+			$.ajax({
+				url: $(this).data("favourite"),
+				type: 'POST',
+				dataType: "json",  
+				data: {
+					topicId: $(this).data("info-id"),
+				},
+				success: function(data) {
+					if (data.isRedirect) {
+						location.href=data.redirectURL;
+					} else {
+						if (data.isSuccess) {
+//							$(".j_fav").children("span").text("已收藏");
+//							$(".j_fav").attr("disabled",true);
+							$(this).children("span").text("已收藏");
+							$(this).addClass("clicked");
+						} else {
+							alert(data.msg);
+						};
+					};
+				}
+			});
+		}
 	} else {
 		$('#loginModal').modal("show");
 	};

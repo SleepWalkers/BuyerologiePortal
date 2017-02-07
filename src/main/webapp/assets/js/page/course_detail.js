@@ -5,12 +5,13 @@ $(function() {
 		$height='516'
 	};
 	$(".list_content").height($(".course_list .col-sm-8").outerHeight()-74);
-
+	$(".list_content").width($(".comment_block").outerWidth()-$(".course_list .col-sm-8").outerWidth()-16);
 	set_at_color();	
 })
 
 $(window).resize(function() {
 	$(".list_content").height($(".course_list .col-sm-8").outerHeight()-74);
+	$(".list_content").width($(".comment_block").outerWidth()-$(".course_list .col-sm-8").outerWidth()-16);
 })
 
 $("#favourite_btn").click(function() {

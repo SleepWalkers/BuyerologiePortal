@@ -1,4 +1,6 @@
 @charset "UTF-8";
+.shangke_page {
+  font-family: pingfangsc; }
 .shangke_page #Carousel .carousel-indicators li {
   height: 3px;
   width: 37px;
@@ -255,7 +257,7 @@
 .shangke_page .copyright_section {
   position: relative; }
   .shangke_page .copyright_section img {
-    width: 168px;
+    width: 270px;
     position: absolute;
     left: 50%;
     bottom: 80%;
