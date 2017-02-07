@@ -25,15 +25,11 @@ public class UserActionApiController {
     @ResponseBody
     @RequestMapping(value = "/api/topic/collect", method = { RequestMethod.POST, RequestMethod.GET })
     public String collect(@RequestParam(required = true) int topicId, HttpServletRequest request) {
-        userActionService.collect(securityService.getCurrentUser().getId(), topicId);
-        return new JsonVO(true).toString();
-    }
-
-    @ResponseBody
-    @RequestMapping(value = "/api/topic/uncollect", method = { RequestMethod.POST,
-            RequestMethod.GET })
-    public String uncollect(@RequestParam(required = true) int topicId, HttpServletRequest request) {
-        userActionService.uncollect(securityService.getCurrentUser().getId(), topicId);
+        if (userActionService.isCollected(securityService.getCurrentUser().getId(), topicId)) {
+            userActionService.uncollect(securityService.getCurrentUser().getId(), topicId);
+        } else {
+            userActionService.collect(securityService.getCurrentUser().getId(), topicId);
+        }
         return new JsonVO(true).toString();
     }
 

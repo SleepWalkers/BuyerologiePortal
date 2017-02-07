@@ -21,8 +21,8 @@ $("#favourite_btn").click(function() {
 						location.href=data.redirectURL;
 					} else {
 						if (data.isSuccess) {
-							$(this).children("span").text("收藏");
-							$(this).removeClass("clicked");
+							$(".j_fav").children("span").text("收藏");
+							$(".j_fav").removeClass("clicked");
 						} else {
 							alert(data.msg);
 						};
@@ -42,10 +42,8 @@ $("#favourite_btn").click(function() {
 						location.href=data.redirectURL;
 					} else {
 						if (data.isSuccess) {
-//							$(".j_fav").children("span").text("已收藏");
-//							$(".j_fav").attr("disabled",true);
-							$(this).children("span").text("已收藏");
-							$(this).addClass("clicked");
+							$(".j_fav").children("span").text("已收藏");
+							$(".j_fav").addClass("clicked");
 						} else {
 							alert(data.msg);
 						};

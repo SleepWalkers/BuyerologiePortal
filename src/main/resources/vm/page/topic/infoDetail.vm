@@ -18,8 +18,7 @@
 			#if(!$!{newsDetail.isCollected})
 			<button id="favourite_btn" class="btn favourite j_fav" data-logged=#if($!{gvUser})"true"#else"false"#end data-favourite="/api/topic/collect" data-info-id="$!{newsDetail.id}"><img src="$gv_imgRoot/star.png"><span>收藏</span></button>
 			#else
-			
-			<button id="favourite_btn" class="btn favourite clicked" data-logged=#if($!{gvUser})"true"#else"false"#end data-favourite="/api/topic/uncollect" data-info-id="$!{newsDetail.id}"><img src="$gv_imgRoot/star.png"><span>已收藏</span></button>
+			<button id="favourite_btn" class="btn favourite j_fav clicked" data-logged=#if($!{gvUser})"true"#else"false"#end data-favourite="/api/topic/collect" data-info-id="$!{newsDetail.id}"><img src="$gv_imgRoot/star.png"><span>已收藏</span></button>
 			#end
 		</div>
 
