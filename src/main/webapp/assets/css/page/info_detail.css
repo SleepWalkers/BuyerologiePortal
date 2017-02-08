@@ -9,6 +9,9 @@
       padding: 25px;
       background-color: #fff;
       border-bottom: 1px solid #CCCCCC; }
+      .info_detail .container .title a {
+        display: inline-block;
+        height: 54px; }
       .info_detail .container .title .back {
         cursor: pointer; }
       .info_detail .container .title .logo {

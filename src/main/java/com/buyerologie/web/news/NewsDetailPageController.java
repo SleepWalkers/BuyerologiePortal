@@ -44,6 +44,9 @@ public class NewsDetailPageController {
     public String userDetail(Model model, @PathVariable int newsId) throws PageNotFoundException {
         DetailedNews detailedNews = newsService.getNews(newsId);
 
+        if(detailedNews == null){
+        	throw new PageNotFoundException();
+        }
         UserAuthCredentials user = securityService.getCurrentUser();
         if (user != null) {
             detailedNews.setIsCollected(userActionService.isCollected(user.getId(), newsId));

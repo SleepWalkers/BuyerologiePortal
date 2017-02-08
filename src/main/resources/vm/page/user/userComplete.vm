@@ -1,6 +1,7 @@
 #set($title = $!{user.username})
-<#parse("common/layout/head.vm")
+#parse("common/layout/head.vm")
 <body class="about_us">
+#parse("common/layout/header.vm")
 
     <div class="user_complete">
         <div class="container">
