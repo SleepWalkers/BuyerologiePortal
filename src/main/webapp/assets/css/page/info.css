@@ -300,4 +300,13 @@
     z-index: 3;
     cursor: pointer; }
 
+  .info_page .copyright_section img {
+   display:none }
+    
+  .info_page .copyright_section p {
+    text-align: center;
+    font-size: 12px;
+    padding: 30px 0 26px;
+    margin: 0; }
+
 /*# sourceMappingURL=info.css.map */
