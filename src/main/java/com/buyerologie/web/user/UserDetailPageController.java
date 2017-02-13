@@ -73,18 +73,18 @@ public class UserDetailPageController {
         model.addAttribute("user", user);
 
         VipDetail vipDetail = vipService.getLastVipDetail(user.getId());
-        model.addAttribute("vip", vipDetail);
 
         int restDays = 0;
-        if (!vipDetail.isExpired()) {
-            restDays = (int) (((vipDetail.getEndTime().getTime() - System.currentTimeMillis())) / ONE_DAY);
-            model.addAttribute("totalDays",
-                new DateTime(vipDetail.getEndTime().getTime()).getDayOfYear()
-                        - new DateTime(vipDetail.getStartTime().getTime()).getDayOfYear());
+        if(vipDetail != null){
+	        model.addAttribute("vip", vipDetail);
+	        if (!vipDetail.isExpired()) {
+	            restDays = (int) (((vipDetail.getEndTime().getTime() - System.currentTimeMillis())) / ONE_DAY);
+	            model.addAttribute("totalDays",
+	                new DateTime(vipDetail.getEndTime().getTime()).getDayOfYear()
+	                        - new DateTime(vipDetail.getStartTime().getTime()).getDayOfYear());
+	        }
         }
-
         model.addAttribute("restDays", restDays);
-
         setUserCourse(user.getId(), model);
 
         return "page/user/userCenter";
