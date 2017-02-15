@@ -1,27 +1,29 @@
-<nav class="container public_navbar" role="navigation">
-    <a href="/"><img src="$gv_imgRoot/logo.png" /></a>
-	#if(!$!{gvUser})
-    <ul class="nav navbar-nav navbar-right login_nav">
-        <li><a data-toggle="modal" data-target="#registerModal"><span>注册</span></a></li>
-        <li><a data-toggle="modal" data-target="#loginModal">登录</a></li>
-    </ul>		
-	#end
-
-    <ul class="nav navbar-nav navbar-right">
-        <li><a href="/news/news.html" #if($!{pageName}=="infoList" || $!{pageName} == "infoDetail")class="active"#end><span>资讯</span></a></li>
-        <li><a href="/course/course.html" #if($!{pageName}=="course")class="active"#end><span>尚课</span></a></li>
-        <li><a href="/source/source.html"><span>资源</span></a></li>
-        <li><a href="/aboutus/aboutus.html" #if($!{pageName}=="aboutus")class="active"#end><span>关于我们</span></a></li>
-		#if($!{gvUser})
-        <li class="user_center_nav">
-            <a href="/account/usercenter.html" #if($!{pageName}=="userCenter")class="active"#end><span>个人中心</span></a>
-            <div class="userCenterModal" hidden>
-                <div class="arrow"></div>
-                <a href="/account/favourite.html"><img src="$gv_imgRoot/favorite_icon.png">我的收藏</a>
-                <a href="/account/usermodify.html"><img src="$gv_imgRoot/setting_icon.png">账号设置</a>
-                <a id="logout_btn" data-logout="/api/user/logout?redirectUrl=$!{requestUri}"><img src="$gv_imgRoot/logout_icon.png">退出</a>
-            </div>
-        </li>
+<nav id="public_navbar" role="navigation">
+    <div class="container">
+	    <a href="/"><img src="$gv_imgRoot/logo.png" /></a>
+		#if(!$!{gvUser})
+	    <ul class="nav navbar-nav navbar-right login_nav">
+	        <li><a data-toggle="modal" data-target="#registerModal"><span>注册</span></a></li>
+	        <li><a data-toggle="modal" data-target="#loginModal">登录</a></li>
+	    </ul>
 		#end
-    </ul>
+	
+	    <ul class="nav navbar-nav navbar-right">
+	        <li><a href="/news/news.html" #if($!{pageName}=="infoList" || $!{pageName} == "infoDetail")class="active"#end><span>News</span></a></li>
+	        <li><a href="/course/course.html" #if($!{pageName}=="course")class="active"#end><span>Course</span></a></li>
+	        <li><a href="/source/source.html"><span>Resourses</span></a></li>
+	        <li><a href="/aboutus/aboutus.html" #if($!{pageName}=="aboutus")class="active"#end><span>About Us</span></a></li>
+			#if($!{gvUser})
+	        <li class="user_center_nav">
+	            <a href="/account/usercenter.html" #if($!{pageName}=="userCenter")class="active"#end><span>Personal Center</span></a>
+	            <div class="userCenterModal" hidden>
+	                <div class="arrow"></div>
+	                <a href="/account/favourite.html"><img src="$gv_imgRoot/favorite_icon.png">我的收藏</a>
+	                <a href="/account/usermodify.html"><img src="$gv_imgRoot/setting_icon.png">账号设置</a>
+	                <a id="logout_btn" data-logout="/api/user/logout?redirectUrl=$!{requestUri}"><img src="$gv_imgRoot/logout_icon.png">退出</a>
+	            </div>
+	        </li>
+			#end
+	    </ul>
+    </div>
 </nav>
