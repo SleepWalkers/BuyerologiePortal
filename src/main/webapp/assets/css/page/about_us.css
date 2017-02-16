@@ -1,5 +1,5 @@
 .about_us {
-  font-family: pingfangsc; }
+  font-family: "pingfangsc"; }
 .about_us {
   position: relative;
   background-color: #f2f2f3;
@@ -51,5 +51,10 @@
       margin-right: 24px; }
       .footer p span:last-of-type {
         margin-right: 0; }
+        .footer img {
+          width: 130px;
+          height: 130px;
+          margin-bottom: 15px;
+        }
 
 /*# sourceMappingURL=about_us.css.map */

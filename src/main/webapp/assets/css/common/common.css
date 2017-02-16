@@ -1,41 +1,50 @@
 @charset "UTF-8";
-/*@font-face {
-    font-family: "STHeitiSC-Medium";
-    src: url('../../fonts/STHeitiSCMedium.ttc') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-}*/
+@font-face {
+  font-family: "Apple Chancery";
+  src: url("/assets/fonts/apple_chancery.ttf") format("truetype"); }
+@font-face {
+  font-family: "pingfangsc";
+  src: url("/assets/fonts/pingfangsc.ttf") format("truetype"); }
 body {
-  font-family: pingfangsc; }
+  font-family: "pingfangsc"; }
 
-.public_navbar {
+#public_navbar {
   background-color: #fff;
-  height: 70px; }
-  .public_navbar img {
+  height: 70px;
+  font-family: "Apple Chancery";
+  font-size: 17px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 999; }
+  #public_navbar .container {
+    padding: 0; }
+  #public_navbar img {
     padding: 13px 0;
     height: 70px; }
-  .public_navbar .navbar-nav a {
+  #public_navbar .navbar-nav a {
     font-size: 16px;
     line-height: 70px;
     padding: 0 15px;
     color: #2e2e2e;
     text-align: center;
     cursor: pointer; }
-    .public_navbar .navbar-nav a span {
+    #public_navbar .navbar-nav a span {
       display: inline-block;
       line-height: 27px;
-      padding: 0 4px; }
-    .public_navbar .navbar-nav a:hover, .public_navbar .navbar-nav a:focus, .public_navbar .navbar-nav a.active {
+      padding: 0 4px;
+      font-size: 17px; }
+    #public_navbar .navbar-nav a:hover, #public_navbar .navbar-nav a:focus, #public_navbar .navbar-nav a.active {
       color: #8094CC;
       background-color: #fff; }
-      .public_navbar .navbar-nav a:hover span, .public_navbar .navbar-nav a:focus span, .public_navbar .navbar-nav a.active span {
+      #public_navbar .navbar-nav a:hover span, #public_navbar .navbar-nav a:focus span, #public_navbar .navbar-nav a.active span {
         border-bottom: 3px solid #8094CC; }
-  .public_navbar .user_center_nav {
+  #public_navbar .user_center_nav {
     /*display: none;*/
     position: relative; }
-    .public_navbar .user_center_nav:hover .userCenterModal {
+    #public_navbar .user_center_nav:hover .userCenterModal {
       display: block; }
-  .public_navbar .userCenterModal {
+  #public_navbar .userCenterModal {
     position: absolute;
     left: -40px;
     width: 126px;
@@ -43,7 +52,7 @@ body {
     box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.29);
     border-radius: 3px;
     z-index: 1; }
-    .public_navbar .userCenterModal a {
+    #public_navbar .userCenterModal a {
       display: inline-block;
       line-height: 35px;
       width: 100%;
@@ -52,18 +61,18 @@ body {
       cursor: pointer;
       position: relative;
       z-index: 2; }
-      .public_navbar .userCenterModal a img {
+      #public_navbar .userCenterModal a img {
         position: relative;
         top: -1px;
         width: 20px;
         height: 20px;
         padding: 0;
         margin-right: 7px; }
-      .public_navbar .userCenterModal a:hover, .public_navbar .userCenterModal a:focus {
+      #public_navbar .userCenterModal a:hover, #public_navbar .userCenterModal a:focus {
         background-color: #8094CC;
         color: #2e2e2e;
         text-decoration: none; }
-    .public_navbar .userCenterModal .arrow {
+    #public_navbar .userCenterModal .arrow {
       position: absolute;
       left: 72%;
       top: -9px;
@@ -80,21 +89,21 @@ body {
       /* Safari 和 Chrome */
       -o-transform: rotate(45deg);
       /* Opera */ }
-  .public_navbar .login_nav {
+  #public_navbar .login_nav {
     margin-left: 34px; }
-    .public_navbar .login_nav li a {
+    #public_navbar .login_nav li a {
       cursor: pointer;
       color: #F09077;
       padding: 0;
       width: 50px;
       text-align: center; }
-      .public_navbar .login_nav li a span {
+      #public_navbar .login_nav li a span {
         line-height: 15px;
         border-right: 2px solid #979797;
         width: 50px; }
-      .public_navbar .login_nav li a:hover, .public_navbar .login_nav li a:focus {
+      #public_navbar .login_nav li a:hover, #public_navbar .login_nav li a:focus {
         color: #F09077; }
-        .public_navbar .login_nav li a:hover span, .public_navbar .login_nav li a:focus span {
+        #public_navbar .login_nav li a:hover span, #public_navbar .login_nav li a:focus span {
           border-bottom: none; }
 
 .myModal .modal-dialog {
@@ -176,7 +185,7 @@ body {
   margin-top: -320px; }
   #registerModal .v_code input, #forgetModal .v_code input {
     display: inline-block;
-    width: 226px; }
+    width: 224px; }
   #registerModal .v_code button, #forgetModal .v_code button {
     font-size: 16px;
     color: #FFFFFF;

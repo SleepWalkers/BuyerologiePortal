@@ -7,6 +7,12 @@
     <hr>
 
     <div class="container info_list" id="info_list">
+		#foreach($mainBanner in $!{cmsPage.moduleMap.get("头图")})
+			#if($!{StringUtils.isNotBlank($!{mainBanner.recordMap.get("图片地址").value})})
+    		<img src="$!{mainBanner.recordMap.get("图片地址").value}" width="100%" style="margin-bottom: 45px;">
+			#end
+		#end
+			
         <div id="scroll_content">
 		#parse("page/brick/infoListBrick.vm")
 		</div>

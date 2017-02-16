@@ -15,7 +15,7 @@
 	}
 }*/
 .info_page {
-  font-family: pingfangsc; }
+  font-family: "pingfangsc"; }
 @-webkit-keyframes left {
   from {
     /*@include filter(grayscale(100%));*/
