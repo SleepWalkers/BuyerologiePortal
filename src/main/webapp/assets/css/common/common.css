@@ -6,7 +6,9 @@
   font-family: "pingfangsc";
   src: url("/assets/fonts/pingfangsc.ttf") format("truetype"); }
 body {
-  font-family: "pingfangsc"; }
+  font-family: "pingfangsc"; 
+  padding-top: 70px;  
+}
 
 #public_navbar {
   background-color: #fff;
