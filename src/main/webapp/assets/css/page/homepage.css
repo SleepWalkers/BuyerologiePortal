@@ -4,11 +4,8 @@
   background: url(../../img/background.gif);
   background-size: cover; }
   .index img {
-    position: absolute;
-    left: 50%;
-    margin-left: -124px;
-    top: 50%;
-    margin-top: -162px; }
+    display: block;
+    margin: 20% auto 0; }
   .index a {
     display: inline-block;
     font-size: 28px;
