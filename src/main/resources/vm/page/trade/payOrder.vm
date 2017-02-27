@@ -54,8 +54,8 @@
                 <p class="title">支付提示</p>
                 <p>请在新打开的支付页面完成支付，支付完成前请不要关闭窗口哦。</p>
                 <p>如支付遇到问题，请联系0571-000000000</p>
-                <form role="form">
-                    <button class="btn btn-default" onclick="location.href='/account/usercenter'">已经完成支付</button>
+                <form role="form" action="/account/usercenter.html">
+                    <button class="btn btn-default">已经完成支付</button>
                 </form>
               </div>
             </div>
