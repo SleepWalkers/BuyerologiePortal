@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.buyerologie.trade.ProductService;
 import com.buyerologie.trade.TradeService;
 import com.buyerologie.trade.exception.TradeException;
 import com.buyerologie.trade.model.TradeOrder;
@@ -18,7 +19,10 @@ import com.buyerologie.user.exception.UserException;
 public class PayOrderController {
 
     @Resource
-    private TradeService tradeService;
+    private TradeService   tradeService;
+
+    @Resource
+    private ProductService productService;
 
     @RequestMapping(value = "/trade/payorder", method = { RequestMethod.GET, RequestMethod.POST })
     public String tradePay(Model model, @RequestParam long orderNumber) throws UserException,
@@ -27,6 +31,9 @@ public class PayOrderController {
 
         TradeOrder tradeOrder = tradeService.get(orderNumber);
 
+        if (tradeOrder != null) {
+            model.addAttribute("vipProduct", productService.get(tradeOrder.getProductId()));
+        }
         model.addAttribute("pageName", "payorder");
         model.addAttribute("tradeOrder", tradeOrder);
 

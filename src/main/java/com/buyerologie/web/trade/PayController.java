@@ -34,11 +34,10 @@ public class PayController {
 
     @ResponseBody
     @RequestMapping(value = "/trade/pay/getqrcode", method = { RequestMethod.GET,
-            RequestMethod.POST })
-    public void qrCode(Model model, @RequestParam String codeUrl, HttpServletResponse response)
-                                                                                               throws UserException,
-                                                                                               TradeException,
-                                                                                               PayException {
+                                                               RequestMethod.POST })
+    public void qrCode(Model model, @RequestParam String codeUrl,
+                       HttpServletResponse response) throws UserException, TradeException,
+                                                     PayException {
 
         BufferedImage image = QrCodeUtils.encodeQrcodeImage(codeUrl, 300, 300);
 
@@ -58,7 +57,8 @@ public class PayController {
     @ResponseBody
     @RequestMapping(value = "/trade/pay", method = { RequestMethod.GET, RequestMethod.POST })
     public String tradePay(Model model, @RequestParam long orderNumber) throws UserException,
-                                                                       TradeException, PayException {
+                                                                        TradeException,
+                                                                        PayException {
 
         TradeOrder tradeOrder = tradeService.get(orderNumber);
         if (tradeOrder == null) {
@@ -77,5 +77,19 @@ public class PayController {
             return "";
         }
         return "";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/trade/isPaid", method = { RequestMethod.GET, RequestMethod.POST })
+    public String isPaid(@RequestParam long orderNumber) throws TradeException {
+
+        TradeOrder tradeOrder = tradeService.get(orderNumber);
+        if (tradeOrder == null) {
+            throw new OrderNotExistException();
+        }
+        JsonVO jsonVO = new JsonVO(true);
+        //    jsonVO.setData(true);
+        jsonVO.setData(tradeOrder.getPaidTime() != null);
+        return jsonVO.toString();
     }
 }
