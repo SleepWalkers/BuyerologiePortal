@@ -1,5 +1,9 @@
 $(function() {
-	set_at_color();	
+	set_at_color();
+
+	baguetteBox.run('.gallery', {
+		animation:'fadeIn',
+	});
 })
 
 $("#back_btn").click(function() {

@@ -311,4 +311,74 @@ body {
       top: 2px;
       left: 6px; }
 
+#paySuccessModal {
+	top: 50px;
+}
+#paySuccessModal img {
+  margin-bottom: 40px; }
+#paySuccessModal p {
+  font-size: 18px;
+  color: #575757;
+  text-align: start;
+  margin-bottom: 14px; }
+
+#payFailedModal img {
+  margin-bottom: 40px; }
+#payFailedModal p {
+  text-align: start;
+  font-size: 18px;
+  color: #575757; }
+  #payFailedModal p:last-of-type {
+    font-size: 16px;
+    margin-bottom: 45px; }
+  #payFailedModal p img {
+    height: 24px;
+    width: 24px;
+    margin-bottom: 0;
+    margin-right: 12px; }
+#payFailedModal .modal-body {
+  padding: 0 30px 40px 40px; }
+#payFailedModal .confirm_btn {
+  background-color: #8094CC;
+  border-color: #8094CC;
+  color: #fff;
+  width: 110px;
+  float: right; }
+
+#weixinModal .modal-dialog {
+  width: auto; }
+#weixinModal .modal-content {
+  width: auto; }
+#weixinModal .modal-body {
+  padding: 0 50px 80px; }
+#weixinModal h3 {
+  text-align: start;
+  font-size: 22px;
+  color: #575757;
+  margin: 0 0 24px; }
+#weixinModal p {
+  font-size: 12px;
+  color: #575757;
+  margin-top: 20px; }
+#weixinModal .scan {
+  height: 33px;
+  width: 33px;
+  margin: 40px 0; }
+#weixinModal .font {
+  display: inline-block;
+  text-align: start;
+  position: relative;
+  top: 10px;
+  margin-left: 20px; }
+#weixinModal .example_img {
+  height: 400px;
+  width: auto; }
+#weixinModal .col-xs-6 {
+  padding: 0 20px; }
+#weixinModal #qr_code {
+  display: inline-block;
+  width: 240px;
+  height: 240px;
+  padding: 16px;
+  border: 1px solid #8094CC; }
 /*# sourceMappingURL=common.css.map */

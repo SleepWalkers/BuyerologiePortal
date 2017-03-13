@@ -13,7 +13,7 @@
 		</div>
 		
 
-		<div class="content">
+		<div class="content gallery">
 			$!{newsDetail.content.content}
 			#if(!$!{newsDetail.isCollected})
 			<button id="favourite_btn" class="btn favourite j_fav" data-logged=#if($!{gvUser})"true"#else"false"#end data-favourite="/api/topic/collect" data-info-id="$!{newsDetail.id}"><img src="$gv_imgRoot/star.png"><span>收藏</span></button>
@@ -45,6 +45,7 @@
 	</div>
     <!-- end -->	
 	#parse("common/layout/foot.vm")
+    <script type="text/javascript" src="$gv_jsRoot/page/baguetteBox.min.js"></script>
     <script type="text/javascript" src="$gv_jsRoot/page/info_detail.js"></script>
 </body>
 </html>
