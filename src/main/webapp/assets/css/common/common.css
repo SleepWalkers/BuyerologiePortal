@@ -311,9 +311,9 @@ body {
       top: 2px;
       left: 6px; }
 
-#paySuccessModal {
-	top: 50px;
-}
+#paySuccessModal .modal-dialog {
+  margin-top: 150px; }
+  
 #paySuccessModal img {
   margin-bottom: 40px; }
 #paySuccessModal p {
